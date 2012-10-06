@@ -127,6 +127,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
         'django.contrib.admin',
         # Uncomment the next line to enable admin documentation:
         # 'django.contrib.admindocs',
+        'oboevsky',
     )
 
     # A sample logging configuration. The only tangible logging
