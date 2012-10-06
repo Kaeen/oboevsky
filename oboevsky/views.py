@@ -7,5 +7,5 @@ def common_context_proc(Request):
     #TODO: common context
     return {}
 
-def home(request):
+def home(Request):
     return render_to_response('public/index.tpl', {}, RequestContext(Request, processors=[common_context_proc,]))

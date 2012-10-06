@@ -2,6 +2,9 @@
 import os
 import sys
 
+sys.path = ['/home/kaeen/webapps/oboevsky/lib/python2.7',] + sys.path
+os.environ.setdefault("OBOEVSKY_SERVER", "stage")
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oboevsky.settings")
 

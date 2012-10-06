@@ -2,7 +2,7 @@
 import os
 
 if os.environ.get("OBOEVSKY_SERVER") == 'stage':
-    DEBUG = False
+    DEBUG = True
     TEMPLATE_DEBUG = DEBUG
 
     ADMINS = (
@@ -16,7 +16,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
             'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
             'NAME': 'kaeen_oboevsky',        # Or path to database file if using sqlite3.
             'USER': 'kaeen_oboevsky',        # Not used with sqlite3.
-            'PASSWORD': '90409e23',          # Not used with sqlite3.
+            'PASSWORD': '1qw23er4',          # Not used with sqlite3.
             'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
             'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
         }
@@ -52,7 +52,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
 
     # Absolute filesystem path to the directory that will hold user-uploaded files.
     # Example: "/home/media/media.lawrence.com/media/"
-    MEDIA_ROOT = '/home/kaeen/webapps/oboevsky/oboevsky/media/'
+    MEDIA_ROOT = '/home/kaeen/webapps/oboevsky/oboevsky/oboevsky/media/'
 
     # URL that handles the media served from MEDIA_ROOT. Make sure to use a
     # trailing slash.
@@ -63,7 +63,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
     # Don't put anything in this directory yourself; store your static files
     # in apps' "static/" subdirectories and in STATICFILES_DIRS.
     # Example: "/home/media/media.lawrence.com/static/"
-    STATIC_ROOT = '/home/kaeen/webapps/oboevsky/oboevsky/static/'
+    STATIC_ROOT = '/home/kaeen/webapps/oboevsky/oboevsky/oboevsky/static/'
 
     # URL prefix for static files.
     # Example: "http://media.lawrence.com/static/"
@@ -110,7 +110,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
     WSGI_APPLICATION = 'oboevsky.wsgi.application'
 
     TEMPLATE_DIRS = (
-        '/home/kaeen/webapps/oboevsky/oboevsky/templates/',
+        '/home/kaeen/webapps/oboevsky/oboevsky/oboevsky/templates',
         # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
