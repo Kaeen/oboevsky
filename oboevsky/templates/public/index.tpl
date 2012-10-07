@@ -3,6 +3,30 @@
 {% block content %}
     <a href="#"><img alt="" src="static/images/sample_moneyshot.jpg" /></a>
 
+    {% if on_clearance|length > 0 %}
+    <div class="contentBlock">
+        <div>
+            <a href="#"><h2>Новинки</h2></a>
+            <div class="items clear">
+                {% for item in on_clearance %}
+                <div class="item">
+                    <a href="{{item.get_absolute_url}}">
+                        <img alt="{{item.get_first_image.image.short_desc}}" src="{{item.get_first_image.url}}" />
+                    </a>
+                    <p>{{item.title}}</p>
+                    <p>&nbsp;</p>
+                    <p><a href="#">В корзину</a></p>
+                </div>
+
+                {% if forloop.counter|divisibleby:"3" %}
+                    <div class="spacer"></div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     {% if top_sells|length > 0 %}
     <div class="contentBlock">
         <div>
@@ -18,7 +42,7 @@
                     <p><a href="#">В корзину</a></p>
                 </div>
 
-                {% if forloop.countrer % 3 == 0 %}
+                {% if forloop.counter|divisibleby:"3" %}
                     <div class="spacer"></div>
                 {% endif %}
                 {% endfor %}
@@ -26,50 +50,6 @@
         </div>
     </div>
     {% endif %}
-
-    <div class="contentBlock">
-        <div>
-            <a href="#"><h2>Новинки</h2></a>
-            <div class="items clear">
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
 
     <div class="contentBlockNoBorder">
         <h1>Тектовый блок</h1>
