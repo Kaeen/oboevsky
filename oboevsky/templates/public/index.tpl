@@ -11,7 +11,7 @@
                 {% for item in on_clearance %}
                 <div class="item">
                     <a href="{{item.get_absolute_url}}">
-                        {{item.get_first_image.image.url}}
+                        <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
                     </a>
                     <p>{{item.title}}</p>
                     <p>&nbsp;</p>
@@ -35,7 +35,7 @@
                 {% for item in top_sells %}
                 <div class="item">
                     <a href="{{item.get_absolute_url}}">
-                        {{item.get_first_image.image.url}}
+                        <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
                     </a>
                     <p>{{item.title}}</p>
                     <p>&nbsp;</p>
