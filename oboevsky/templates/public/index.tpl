@@ -3,49 +3,29 @@
 {% block content %}
     <a href="#"><img alt="" src="static/images/sample_moneyshot.jpg" /></a>
 
+    {% if top_sells|length > 0 %}
     <div class="contentBlock">
         <div>
-            <a href="#"><h2>Новинки</h2></a>
+            <a href="#"><h2>Топ продаж</h2></a>
             <div class="items clear">
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item">
-                        <img alt="" src="static/images/sample_item.jpg" />
-                        <p>Название товара</p>
-                    </div>
-                </a>
+                {% for item in top_sells %}
+                <div class="item">
+                    <a href="{{item.get_absolute_url}}">
+                        <img alt="{{item.get_first_image.image.short_desc}}" src="{{item.get_first_image.url}}" />
+                    </a>
+                    <p>{{item.title}}</p>
+                    <p>&nbsp;</p>
+                    <p><a href="#">В корзину</a></p>
+                </div>
+
+                {% if forloop.countrer % 3 == 0 %}
+                    <div class="spacer"></div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
+    {% endif %}
 
     <div class="contentBlock">
         <div>

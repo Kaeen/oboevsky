@@ -143,12 +143,17 @@ class Wallpaper(models.Model):
 		return self.title if self.visible else u'<s>{0}</s>'.format(self.title) if self.visible else u'<s>{0}</s>'.format(self.title)
 
 	def get_absolute_url(self):
-		return u'/обои/'+self.url
+		return u'/wallpaper/'+self.url
+
+	def get_first_image(self):
+		url = u'/media/pictures/{0}'.format(os.path.split(self.images[0].path))
+		image = self.images[0]
+		return {'url': url, 'image': image}
 
 	class Meta:
 		verbose_name = _(u'обои')
 		verbose_name_plural = _(u'обои')
-		ordering = ['priority']
+		ordering = ['priority',]
 
 
 ############################
