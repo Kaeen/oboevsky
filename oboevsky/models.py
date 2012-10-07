@@ -235,13 +235,13 @@ class Country(models.Model):
 	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
 
 	def get_absolute_url(self):
-		return u'/страна/'+self.url
+		return u'/country/'+self.url
 
 	def get_html(self):
 		import os
 		return u'''
 			<a href="{0}">
-				<img src="/media/countries/{1}" align="left" height width />&nbsp;{1}
+				<img src="/media/countries/{1}" align="left" height width />&nbsp;{2}
 			</a>
 			'''.format(self.get_absolute_url(), os.path.split(self.pic.path)[1], self.title) # TODO HEIGHT WIDTH
 	get_html.short_description = u'Изображение'
