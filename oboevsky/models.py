@@ -153,7 +153,7 @@ class Wallpaper(models.Model):
 	def get_first_image_html(self):
 		return """
 			<img alt="{0}" src="{1}" />
-		""".format(self.short_description, os.path.split(self.images.all()[0].path)[1])
+		""".format(self.short_desc, os.path.split(self.images.all()[0].path)[1])
 
 	class Meta:
 		verbose_name = _(u'обои')
