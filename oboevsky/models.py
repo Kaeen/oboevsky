@@ -145,15 +145,8 @@ class Wallpaper(models.Model):
 	def get_absolute_url(self):
 		return u'/wallpaper/'+self.url
 
-	def get_first_image(self):
-		url = u'/media/pictures/{0}'.format(os.path.split(self.images[0].path)[1])
-		image = self.images[0]
-		return {'url': url, 'image': image}
-
 	def get_first_image_html(self):
-		return """
-			<img alt="{0}" src="{1}" />
-		""".format(self.short_desc, os.path.split(self.images.all()[0].image.path)[1])
+		return self.images.all()[0].get_preview_html()
 
 	class Meta:
 		verbose_name = _(u'обои')
@@ -416,7 +409,7 @@ class Picture(models.Model):
 	#TODO: preview methods
 
 	def get_preview_html(self):
-		return "<img src='{0}' alt='{1}' />".format(self.get_filename(), self.short_desc)
+		return u"<img src='{0}' alt='{1}' />".format(self.get_filename(), self.short_desc)
 
 	def __unicode__(self):
 	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
