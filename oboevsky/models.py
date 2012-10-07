@@ -536,7 +536,7 @@ class Material(models.Model):
 
 	def get_absolute_url(self):
 		# TODO: id => url!!!
-		return u'/materials/'+self.id
+		return u'/materials/{0}/'.format(self.id)
 
 class MaterialAdmin(admin.ModelAdmin):
 	filter_horizontal = ('info_blocks',)
