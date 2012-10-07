@@ -1,6 +1,6 @@
 <div id="headerWrapper" class="clear">
     <div id="logoWrapper" class="left">
-        <a href="#"><img alt="Обоевский" title="" src="static/images/oboevsky.png" /></a>
+        <a href="/"><img alt="Обоевский" title="" src="static/images/oboevsky.png" /></a>
     </div>
     <div id="phoneWrapper" class="left">
         <h2>+7 (495) 666-13-13</h2>
@@ -18,10 +18,10 @@
     </div>
 </div>
 <div id="menuWrapper">
-    <a href="#">Главная</a>
-    <a href="#">Каталог обоев</a>
+    <a href="/">Главная</a>
+    <a href="/catalog/">Каталог обоев</a>
     <a href="#">Сделать заказ</a>
     <a href="#">Доставка</a>
     <a href="#">Новости</a>
-    <a href="#">Связь</a>
+    <a href="/contact-us">Связь</a>
 </div>

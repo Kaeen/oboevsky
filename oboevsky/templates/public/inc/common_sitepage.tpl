@@ -78,7 +78,7 @@
                 <p class="text-center">В Вашей корзине нет товаров</p>
             </div>
 
-            <a href="#">
+            <a href="/order-sample">
             <div class="pageColumn">
                 <br />
                 <h2>Заказать образец</h2>
