@@ -5,10 +5,10 @@ from django.shortcuts import render_to_response, get_list_or_404, get_object_or_
 
 def common_context_proc(Request):
     # Building menus:
-    menu_categories = Category.objects.all()
-    menu_countries = Country.objects.all()
-    menu_materials = Material.objects.all()
-    menu_producers = Producer.objects.all()
+    menu_categories = Category.objects.filter(visible=True)
+    menu_countries = Country.objects.filter(visible=True)
+    menu_materials = Material.objects.filter(visible=True)
+    menu_producers = Producer.objects.filter(visible=True)
 
     return {
         'menu_categories': menu_categories,
@@ -18,4 +18,9 @@ def common_context_proc(Request):
     }
 
 def home(Request):
-    return render_to_response('public/index.tpl', {}, RequestContext(Request, processors=[common_context_proc,]))
+    vars = {
+        'top_sells': Wallpaper.objects.filter(top_sells=True),
+        'on_clearance': Wallpaper.objects.filter(on_clearance=True),
+    }
+
+    return render_to_response('public/index.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
