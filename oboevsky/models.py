@@ -146,7 +146,7 @@ class Wallpaper(models.Model):
 		return u'/wallpaper/'+self.url
 
 	def get_first_image(self):
-		url = u'/media/pictures/{0}'.format(os.path.split(self.images[0].path))
+		url = u'/media/pictures/{0}'.format(os.path.split(self.images[0].path)[1]])
 		image = self.images[0]
 		return {'url': url, 'image': image}
 
