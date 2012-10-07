@@ -535,7 +535,8 @@ class Material(models.Model):
 	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
 
 	def get_absolute_url(self):
-		return u'/materials/'+self.url
+		# TODO: id => url!!!
+		return u'/materials/'+self.id
 
 class MaterialAdmin(admin.ModelAdmin):
 	filter_horizontal = ('info_blocks',)
