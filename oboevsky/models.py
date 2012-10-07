@@ -409,7 +409,7 @@ class Picture(models.Model):
 	#TODO: preview methods
 
 	def get_preview_html(self):
-		return u"<img src='{0}' alt='{1}' />".format(self.get_filename(), self.short_desc)
+		return u"<img src='{0}' alt='{1}' />".format(self.image.get_filename(), self.short_desc)
 
 	def __unicode__(self):
 	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
