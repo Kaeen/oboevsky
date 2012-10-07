@@ -37,7 +37,7 @@
                         <h3>Обои по странам</h3>
                         <ul>
                             {% for temp in menu_countries %}
-                                <li><a href="#">{{temp.title}}</a></li>
+                                <li>{{temp.get_html}}</li>
                             {% endfor %}
                         </ul>
                     </li>
