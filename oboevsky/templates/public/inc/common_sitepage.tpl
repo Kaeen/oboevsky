@@ -15,22 +15,16 @@
             <div class="pageColumn">
                 <h2>Категории обоев</h2>
                 <ul>
-                    {% comment %}
-
-                    <!--TODO-->
-
+                    {% if menu_categories|length > 0 %}
                     <li>
                         <h3>Обои по назначению</h3>
                         <ul>
-                            <li><a href="#">Для спальни</a></li>
-                            <li><a href="#">Для гостинной</a></li>
-                            <li><a href="#">Для кузни</a></li>
-                            <li><a href="#">Для детской</a></li>
-                            <li><a href="#">Для прихожей</a></li>
-                            <li><a href="#">Для офиса</a></li>
+                            {% for temp in menu_categories %}
+                            <li><a href="{{temp.get_absolute_url}}">{{temp.title}}</a></li>
+                            {% endfor %}
                         </ul>
                     </li>
-                    {% endcomment %}
+                    {% endif %}
 
                     {% if menu_countries|length > 0 %}
                     <li>
@@ -48,7 +42,7 @@
                         <h3>Виды обоев</h3>
                         <ul>
                             {% for temp in menu_materials %}
-                                <li><a href="#">{{temp.title}}</a></li>
+                                <li><a href="{{temp.get_absolute_url}}">{{temp.title}}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
@@ -61,7 +55,7 @@
                 <h2>Производители обоев</h2>
                 <ul class="no-list">
                     {% for temp in menu_producers %}
-                        <li><a href="#">{{temp.title}}</a></li>
+                        <li><a href="{{temp.get_absolute_url}}">{{temp.title}}</a></li>
                     {% endfor %}
                 </ul>
             </div>

@@ -315,7 +315,7 @@ class Category(models.Model):
 	get_breadcrumps.short_description = u'Путь'
 
 	def get_absolute_url(self):
-		return u'/каталог/'+self.url
+		return u'/catalog/'+self.url
 
 	def get_parents(self, include_self=False):
 		""" Получить все родительские объекты.
@@ -535,7 +535,7 @@ class Material(models.Model):
 	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
 
 	def get_absolute_url(self):
-		return u'/материалы/'+self.url
+		return u'/materials/'+self.url
 
 class MaterialAdmin(admin.ModelAdmin):
 	filter_horizontal = ('info_blocks',)
