@@ -189,7 +189,7 @@ class Producer(models.Model):
 		verbose_name_plural = _(u'производители')
 
 	def __unicode__(self):
-	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
+	    return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 
 	def get_absolute_url(self):
 		return u'/производитель/'+self.url
@@ -235,7 +235,7 @@ class Country(models.Model):
 		verbose_name_plural = _(u'страны')
 
 	def __unicode__(self):
-	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
+	    return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 
 	def get_absolute_url(self):
 		return u'/country/'+self.url
@@ -304,7 +304,7 @@ class Category(models.Model):
 		verbose_name_plural = _(u'категории товаров')
 
 	def __unicode__(self):
-	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
+	    return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 
 	def get_breadcrumps_list(self):
 		""" 
@@ -412,7 +412,7 @@ class Picture(models.Model):
 		return u"<img src='{0}' alt='{1}' />".format(self.image.get_filename(), self.short_desc)
 
 	def __unicode__(self):
-	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
+	    return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 
 
 class PictureInline(admin.options.InlineModelAdmin):
@@ -485,7 +485,7 @@ class Texture(models.Model):
 		return self.title
 
 	def list_title(self):
-	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
+	    return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 	list_title.allow_tags = True
 	list_title.short_description = u'Название'
 
@@ -535,7 +535,7 @@ class Material(models.Model):
 	get_preview_html.short_description = u'Картинки'
 
 	def __unicode__(self):
-	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
+	    return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 
 	def get_absolute_url(self):
 		# TODO: id => url!!!
@@ -576,7 +576,7 @@ class Template(models.Model):
 		verbose_name_plural = _(u'шаблоны')
 
 	def __unicode__(self):
-	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
+	    return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 
 class TemplateAdmin(admin.ModelAdmin):
 	filter_horizontal = ('info_blocks',)
@@ -605,7 +605,7 @@ class iBlock(models.Model):
 		verbose_name_plural = _(u'инфоблоки')
 
 	def __unicode__(self):
-	    return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
+	    return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 
 class iBlockAdmin(admin.ModelAdmin):
 	readonly_fields = ('created', 'modified')
@@ -671,7 +671,7 @@ class PromoCampain(models.Model):
 		verbose_name_plural = _(u'Акции')
 
 	def __unicode__(self):
-		return self.title if self.visible else u'<s>{0}</s>'.format(self.title)
+		return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 
 	def save(self):
 		# TODO: take all categories and add their items to wallpapers!!!
