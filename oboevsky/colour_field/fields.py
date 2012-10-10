@@ -28,7 +28,7 @@ class ColourField(models.Field):
     def value_to_string(self, obj):
         value = self._get_val_from_obj(obj)
         if value:
-            return value.strip() or None
+            return value.strip() or ''
         
     def formfield(self, *args, **kwargs):
         defaults = {'form_class': ColourFormField}
