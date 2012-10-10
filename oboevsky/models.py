@@ -140,7 +140,7 @@ class Wallpaper(models.Model):
 	get_first_category_breadcrumps.short_description = u'Категория с наивысшим приоритетом'
 
 	def __unicode__(self):
-		return self.title if self.visible else u'<s>{0}</s>'.format(self.title) if self.visible else u'<s>{0}</s>'.format(self.title)
+		return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 
 	def get_absolute_url(self):
 		return u'/wallpaper/'+self.url
