@@ -33,3 +33,14 @@ def wallpaper(Request, Url):
     }
 
     return render_to_response('public/item.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+def country(Request, Url):
+    country = get_object_or_404(Country, url=Url, visible=True)
+
+    vars = {
+        'country': country,
+        'coutnry_items': [] #TODO
+    }
+
+    return render_to_response('public/country.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
