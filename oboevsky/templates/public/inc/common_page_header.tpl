@@ -1,6 +1,6 @@
 <div id="headerWrapper" class="clear">
     <div id="logoWrapper" class="left">
-        <a href="/"><img alt="Обоевский" title="" src="static/images/oboevsky.png" /></a>
+        <a href="/"><img alt="Обоевский" title="" src="/static/images/oboevsky.png" /></a>
     </div>
     <div id="phoneWrapper" class="left">
         <h2>+7 (495) 666-13-13</h2>
@@ -13,8 +13,8 @@
         </h3>
     </div>
     <div id="bannersWrapper" class="right">
-        <a href="#"><img class="right" alt="" src="static/images/sample_banner1.jpg" /></a>
-        <a href="#"><img class="right" alt="" src="static/images/sample_banner2.jpg" /></a>
+        <a href="#"><img class="right" alt="" src="/static/images/sample_banner1.jpg" /></a>
+        <a href="#"><img class="right" alt="" src="/static/images/sample_banner2.jpg" /></a>
     </div>
 </div>
 <div id="menuWrapper">

@@ -9,10 +9,11 @@
                 <div id="itemInfo" class="clear">
                     <h1>{{item.title}}</h1>
 
-
+                    {% if item.images.all %}
                     <div id="itemPreviewWrapper" class="right">
-                        <img src="static/images/item_preview.png" alt="" />
+                        <img src="{{item.images.all.0.image.url}}" alt="" />
                     </div>
+                    {% endif %}
 
                     <div class="itemAttribute clear">
                         <div class="caption">Артикул:</div>
