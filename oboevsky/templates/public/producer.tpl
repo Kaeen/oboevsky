@@ -11,8 +11,8 @@
             {% if producer.logo %}
                 <img id="producerLogo" src="{{producer.logo.image.url}}" />
             {% endif %}
-            {{producer.long_desc}}
-            <h2>{{producer.country.get_html}}</h2>
+            {{producer.long_desc|safe}}
+            <h2>{{producer.country.get_html|safe}}</h2>
         </div>
     </div>
 
