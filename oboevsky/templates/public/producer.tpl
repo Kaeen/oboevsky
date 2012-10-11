@@ -9,7 +9,7 @@
         <div id="producerProfile">
             <h1>{{producer.title}}</h1>
             {% if producer.logo %}
-                <img id="producerLogo" src="{{producer.logo.image.url}}" />
+                <img id="producerLogo" src="{{producer.logo.url}}" />
             {% endif %}
             {{producer.long_desc|safe}}
             <h2>{{producer.country.get_html|safe}}</h2>
