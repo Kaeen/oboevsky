@@ -68,7 +68,7 @@ def producer(Request, Url):
         vars['items'] = items.popitem()[1]
     else:
         vars['items_display_mode'] = 'grouped'
-        vars['items'] = items
+        vars['items'] = wallpapers
 
     return render_to_response('public/producer.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
