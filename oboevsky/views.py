@@ -63,7 +63,7 @@ def producer(Request, Url):
         else:
             items[ (cat.title, cat.get_absolute_url()) ] = [item,]
 
-    if len(groups_found.keys()) > 0:
+    if len(groups_found.keys()) == 1:
         vars['items_display_mode'] = 'plain'
         vars['items'] = wallpapers
     else:
