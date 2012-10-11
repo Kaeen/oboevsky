@@ -63,7 +63,7 @@ def producer(Request, Url):
         else:
             items[ (cat.title, cat.get_absolute_url()) ] = [item,]
 
-    if length(groups_found.keys()) > 0:
+    if len(groups_found.keys()) > 0:
         vars['items_display_mode'] = 'plain'
         vars['items'] = items.popitem()[1]
     else:
