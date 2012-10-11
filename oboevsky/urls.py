@@ -7,7 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'oboevsky.views.home'),
-	url(r'^wallpaper/(?P<Url>\w+)/?$', 'oboevsky.views.wallpaper'),
+	url(r'^wallpaper/(?P<Url>[a-z_-0-9])/?$', 'oboevsky.views.wallpaper'),
 
     # Examples:
     # url(r'^$', 'oboevsky.views.home', name='home'),
