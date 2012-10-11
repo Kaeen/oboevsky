@@ -58,7 +58,7 @@ def producer(Request, Url):
     for item in wallpapers:
         cat = item.get_first_category()
         groups_found[cat.pk] = None
-        # Упростить до одного прохода!!!
+        # Simplify to one list walk
         if items.has_key( (cat.title, cat.get_absolute_url()) ):
             items[ (cat.title, cat.get_absolute_url()) ].append( item )
         else:
