@@ -6,7 +6,9 @@ from oboevsky import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^$', 'oboevsky.views.home'),
+    url(r'^$', 'oboevsky.views.home'),
+	url(r'^/wallpaper/(?P<Url>\w)$', 'oboevsky.views.wallpaper'),
+
     # Examples:
     # url(r'^$', 'oboevsky.views.home', name='home'),
     # url(r'^oboevsky/', include('oboevsky.foo.urls')),

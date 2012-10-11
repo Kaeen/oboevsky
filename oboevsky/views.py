@@ -19,8 +19,17 @@ def common_context_proc(Request):
 
 def home(Request):
     vars = {
-        'top_sells': Wallpaper.objects.filter(top_sells=True),
-        'on_clearance': Wallpaper.objects.filter(on_clearance=True),
+        'top_sells_items': Wallpaper.objects.filter(top_sells=True),
+        'new_items': Wallpaper.objects.filter(new=True),
     }
 
     return render_to_response('public/index.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+def wallpaper(Request, Url):
+    item = get_object_or_404(Wallpaper, url=Url, visible=True)
+
+    vars = {
+        'item': item
+    }
+
+    return render_to_response('public/item.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
