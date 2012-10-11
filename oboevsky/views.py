@@ -58,6 +58,7 @@ def producer(Request, Url):
     for item in wallpapers:
         cat = item.get_first_category()
         groups_found[cat.pk] = None
+        # Упростить до одного прохода!!!
         if items.has_key( (cat.title, cat.get_absolute_url()) ):
             items[ (cat.title, cat.get_absolute_url()) ].append( item )
         else:
@@ -67,8 +68,12 @@ def producer(Request, Url):
         vars['items_display_mode'] = 'plain'
         vars['items'] = wallpapers
     else:
+        wallpapers = []
+        for x in items:
+            wallpapers.append( (x[0], x[1], items[x]) )
+
         vars['items_display_mode'] = 'grouped'
-        vars['items'] = items
+        vars['items'] = wallpapers
 
     return render_to_response('public/producer.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 

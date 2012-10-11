@@ -18,13 +18,12 @@
 
     {% if items_display_mode == 'grouped' %}
 
-        {% for group, group_items in items %}
+        {% for group in items %}
             <div class="contentBlock">
                 <div>
                     <a href="{{group.1}}"><h2>{{group.0}}</h2></a>
                     <div class="items clear">
-                        {% for item in group_items %}
-                            {{item}}
+                        {% for item in group.2 %}
                             <div class="item">
                                 {% if item.get_first_image %}
                                     <a href="{{item.get_absolute_url}}">
