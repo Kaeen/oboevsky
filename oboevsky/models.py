@@ -248,15 +248,15 @@ class Country(models.Model):
 			<a href="{0}">
 				<img src="/media/countries/{1}" align="left" height width />&nbsp;{2}
 			</a>
-			'''.format(self.get_absolute_url(), os.path.split(self.pic.path)[1], self.title) # TODO HEIGHT WIDTH
+			'''.format(self.get_absolute_url(), os.path.split(self.pic.path)[1], self.title.strip()) # TODO HEIGHT WIDTH
 	get_html.short_description = u'Изображение'
 	get_html.allow_tags = True
 
 	def get_admin_html(self):
 		import os
-		return u'''
-				<img src="/media/countries/{0}" align="left" height width />&nbsp;{1}
-			'''.format(os.path.split(self.pic.path)[1], self.title) # TODO HEIGHT WIDTH
+		return u'''<img src="/media/countries/{0}" align="left" height width />{1}'''.format(
+			os.path.split(self.pic.path)[1], self.title
+		) # TODO HEIGHT WIDTH
 	get_admin_html.short_description = u'Изображение'
 	get_admin_html.allow_tags = True
 
