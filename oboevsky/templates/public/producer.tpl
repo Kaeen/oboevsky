@@ -12,7 +12,7 @@
                 <img id="producerLogo" src="{{producer.logo.url}}" />
             {% endif %}
             {{producer.long_desc|safe}}
-            <h2>Страна: <a href="{{producer.get_absolute_url}}"><img src="{{producer.country.pic.url}}" alt="{{producer.country.short_desc}}" width height /></a></h2>
+            <h2>Страна: &nbsp;<a href="{{producer.get_absolute_url}}"><img src="{{producer.country.pic.url}}" alt="{{producer.country.short_desc}}" width height /></a>&nbsp;<a href="{{producer.get_absolute_url}}">{{producer.country.title}}</a></h2>
         </div>
     </div>
 
