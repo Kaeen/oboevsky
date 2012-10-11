@@ -24,7 +24,7 @@
                     </div>
                     <div class="itemAttribute clear">
                         <div class="caption">Страна-производитель:</div>
-                        <div class="left">{{item.producer.country.get_html}}</div>
+                        <div class="left">{{item.producer.country.get_html|safe}}</div>
                     </div>
                 </div>
             </div>
