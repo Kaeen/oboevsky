@@ -65,10 +65,10 @@ def producer(Request, Url):
 
     if len(groups_found.keys()) > 0:
         vars['items_display_mode'] = 'plain'
-        vars['items'] = items.popitem()[1]
+        vars['items'] = wallpapers
     else:
         vars['items_display_mode'] = 'grouped'
-        vars['items'] = wallpapers
+        vars['items'] = items.popitem()[1]
 
     return render_to_response('public/producer.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
