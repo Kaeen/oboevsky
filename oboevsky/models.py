@@ -246,7 +246,7 @@ class Country(models.Model):
 		import os
 		return u'''
 			<a href="{0}">
-				<img src="/media/countries/{1}" align="left" height width />&nbsp;{2}
+				<img src="/media/countries/{1}" align="left" height width />{2}
 			</a>
 			'''.format(self.get_absolute_url(), os.path.split(self.pic.path)[1], self.title.strip()) # TODO HEIGHT WIDTH
 	get_html.short_description = u'Изображение'
