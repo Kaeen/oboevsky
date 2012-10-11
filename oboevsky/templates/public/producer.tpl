@@ -57,7 +57,7 @@
                     <div class="items clear">
                         <div class="item">
                             <a href="{{item.get_absolute_url}}">
-                                <img alt="{{item.short_desc}}" src="{{item.images.all.0.image.url}}" />
+                                <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
                             </a>
                             <p>{{item.title}}</p>
                             {% if item.price %}

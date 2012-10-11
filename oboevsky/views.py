@@ -65,7 +65,7 @@ def producer(Request, Url):
 
     if len(groups_found.keys()) > 0:
         vars['items_display_mode'] = 'plain'
-        vars['items'] = items.popitem()[1]
+        vars['items'] = items.popitem()
     else:
         vars['items_display_mode'] = 'grouped'
         vars['items'] = items

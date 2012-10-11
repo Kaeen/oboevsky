@@ -11,6 +11,6 @@
         <p id="publicNote">Цены на данном сайте не являются публичной офертой согласно законодательству РФ</p>
     </div>
     <div id="signatureWrapper" class="right">
-        <img alt="" src="static/images/signature.png" />
+        <img alt="" src="/static/images/signature.png" />
     </div>
 </div>
