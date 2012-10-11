@@ -24,10 +24,11 @@
                     <a href="{{group.1}}"><h2>{{group.0}}</h2></a>
                     <div class="items clear">
                         {% for item in group_items %}
+                            {{item}}
                             <div class="item">
                                 {% if item.get_first_image %}
                                     <a href="{{item.get_absolute_url}}">
-                                        <img src="{{item.images.all.0.image.url}}" alt="{{item.short_desc}}" />
+                                        <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
                                     </a>
                                 {% endif %}
                                 <p>{{item.title}}</p>
@@ -57,7 +58,7 @@
                     <div class="items clear">
                         <div class="item">
                             <a href="{{item.get_absolute_url}}">
-                                <img src="{{item.images.all.0.image.url}}" alt="{{item.short_desc}}" />
+                                <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
                             </a>
                             <p>{{item.title}}</p>
                             {% if item.price %}
