@@ -56,10 +56,12 @@
                     <div class="items clear">
                         <div class="item">
                             <a href="{{item.get_absolute_url}}">
-                                <img alt="" src="{{item.images.all.0.image.url}}" />
+                                <img alt="{{item.short_desc}}" src="{{item.images.all.0.image.url}}" />
                             </a>
                             <p>{{item.title}}</p>
-                            <p>{{item.price}} руб</p>
+                            {% if item.price %}
+                                <p>{{item.price}} руб</p>
+                            {% endif %}
                             <p><a href="#">В корзину</a></p>
                         </div>
                     </div>
