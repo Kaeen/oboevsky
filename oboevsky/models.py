@@ -101,6 +101,8 @@ class Wallpaper(models.Model):
 	top_sells = models.BooleanField(verbose_name=_(u'топ продаж'))
 	# Распродажа: 
 	on_clearance = models.BooleanField(verbose_name=_(u'распродажа'))
+	# Новинка: 
+	new = models.BooleanField(verbose_name=_(u'новинка'))
 	# Количество: 
 	quantity = models.IntegerField(blank=True, null=True, verbose_name=_(u'количество в наличии'))
 

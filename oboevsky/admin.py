@@ -23,7 +23,7 @@ class WallpaperAdmin(admin.ModelAdmin):
 			}
 		),
 		('Маркетология', {
-				'fields': ['top_sells', 'on_clearance', 'quantity'],
+				'fields': ['top_sells', 'on_clearance', 'new', 'quantity'],
 				'classes': []#['collapse']
 			}
 		),
