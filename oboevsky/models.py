@@ -148,7 +148,7 @@ class Wallpaper(models.Model):
 		return u'/wallpaper/'+self.url
 
 	def get_first_image(self):
-		return self.images.all()[0]
+		return self.images.all()[0] if self.images.all() else None
 
 	class Meta:
 		verbose_name = _(u'обои')
