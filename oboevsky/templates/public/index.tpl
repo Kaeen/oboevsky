@@ -3,12 +3,12 @@
 {% block content %}
     <a href="#"><img alt="" src="static/images/sample_moneyshot.jpg" /></a>
 
-    {% if on_clearance|length > 0 %}
+    {% if new_items|length > 0 %}
     <div class="contentBlock">
         <div>
             <a href="#"><h2>Новинки</h2></a>
             <div class="items clear">
-                {% for item in on_clearance %}
+                {% for item in new_items %}
                 <div class="item">
                     <a href="{{item.get_absolute_url}}">
                         <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
@@ -27,12 +27,12 @@
     </div>
     {% endif %}
 
-    {% if top_sells|length > 0 %}
+    {% if top_sells_items|length > 0 %}
     <div class="contentBlock">
         <div>
             <a href="#"><h2>Топ продаж</h2></a>
             <div class="items clear">
-                {% for item in top_sells %}
+                {% for item in top_sells_items %}
                 <div class="item">
                     <a href="{{item.get_absolute_url}}">
                         <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
