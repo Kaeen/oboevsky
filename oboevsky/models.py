@@ -176,7 +176,7 @@ class Producer(models.Model):
 	# Информационные блоки: 
 	info_blocks = models.ManyToManyField('iBlock', blank=True, verbose_name=_(u'информационные блоки'))
 	# Изображение: 
-	logo = models.ImageField(upload_to='producers/', verbose_name=u'изображение') # TODO: WIDTH, HEIGHT
+	logo = models.ImageField(upload_to='producers/', verbose_name=u'логотип') # TODO: WIDTH, HEIGHT
 
 	# Приоритет отображения: 
 	priority = models.PositiveIntegerField(blank=True, default=0, verbose_name=u'приоритет отображения')

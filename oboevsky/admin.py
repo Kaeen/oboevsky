@@ -3,7 +3,7 @@ from django.contrib import admin
 from oboevsky.models import *
 
 class WallpaperAdmin(admin.ModelAdmin):
-	list_display = ['id', 'sku', 'title', 'producer', 'get_first_category_breadcrumps', 'top_sells', 'on_clearance', 'visible', 'priority']
+	list_display = ['id', 'sku', 'title', 'producer', 'get_first_category_breadcrumps', 'top_sells', 'on_clearance', 'new', 'visible', 'priority']
 	horizontal_filter = ('categories', 'materials', 'info_blocks')
 	readonly_fields = ('created', 'modified')
 	filter_horizontal = ('categories', 'materials', 'texture', 'info_blocks')
