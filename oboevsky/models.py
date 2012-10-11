@@ -194,7 +194,7 @@ class Producer(models.Model):
 	    return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 
 	def get_absolute_url(self):
-		return u'/производитель/'+self.url
+		return u'/producer/'+self.url
 
 
 class ProducerAdmin(admin.ModelAdmin): 

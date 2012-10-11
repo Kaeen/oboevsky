@@ -4,54 +4,55 @@
     <a href="#"><img alt="" src="static/images/sample_moneyshot.jpg" /></a>
 
     {% if new_items|length > 0 %}
-    <div class="contentBlock">
-        <div>
-            <a href="#"><h2>Новинки</h2></a>
-            <div class="items clear">
-                {% for item in new_items %}
-                <div class="item">
-                    {% if item.get_first_image %}
-                    <a href="{{item.get_absolute_url}}">
-                        <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
-                    </a>
-                    {% endif %}
-                    <p>{{item.title}}</p>
-                    <p>&nbsp;</p>
-                    <p><a href="#">В корзину</a></p>
-                </div>
+        <div class="contentBlock">
+            <div>
+                <a href="#"><h2>Новинки</h2></a>
+                <div class="items clear">
+                    {% for item in new_items %}
+                        <div class="item">
+                            {% if item.get_first_image %}
+                                <a href="{{item.get_absolute_url}}">
+                                    <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
+                                </a>
+                            {% endif %}
+                            <p>{{item.title}}</p>
+                            <p>&nbsp;</p>
+                            <p><a href="#">В корзину</a></p>
+                        </div>
 
-                {% if forloop.counter|divisibleby:"3" %}
-                    <div class="spacer"></div>
-                {% endif %}
-                {% endfor %}
+                            {% if forloop.counter|divisibleby:"3" %}
+                                <div class="spacer"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
     {% endif %}
 
     {% if top_sells_items|length > 0 %}
-    <div class="contentBlock">
-        <div>
-            <a href="#"><h2>Топ продаж</h2></a>
-            <div class="items clear">
-                {% for item in top_sells_items %}
-                    {% if item.get_first_image %}
-                    <a href="{{item.get_absolute_url}}">
-                        <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
-                    </a>
-                    {% endif %}
-                    <p>{{item.title}}</p>
-                    <p>&nbsp;</p>
-                    <p><a href="#">В корзину</a></p>
-                </div>
+        <div class="contentBlock">
+            <div>
+                <a href="#"><h2>Топ продаж</h2></a>
+                <div class="items clear">
+                    {% for item in top_sells_items %}
+                        <div class="item">
+                            {% if item.get_first_image %}
+                                <a href="{{item.get_absolute_url}}">
+                                    <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
+                                </a>
+                            {% endif %}
+                            <p>{{item.title}}</p>
+                            <p>&nbsp;</p>
+                            <p><a href="#">В корзину</a></p>
+                        </div>
 
-                {% if forloop.counter|divisibleby:"3" %}
-                    <div class="spacer"></div>
-                {% endif %}
-                {% endfor %}
+                        {% if forloop.counter|divisibleby:"3" %}
+                            <div class="spacer"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
     {% endif %}
 
     <div class="contentBlockNoBorder">

@@ -44,3 +44,31 @@ def country(Request, Url):
 
     return render_to_response('public/country.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
+def producer(Request, Url):
+    producer = get_object_or_404(Producer, url=Url, visible=True)
+
+    vars = {
+        'producer': producer,
+    }
+
+    groups_found = dict()
+    items = dict()
+
+    wallpapers = Wallpaper.objects.filter(producer=producer, visible=True)
+    for item in wallpapers:
+        cat = item.get_first_category()
+        groups_found[cat.pk] = None
+        if items.has_key( (cat.title, cat.get_absolute_url()) ):
+            items[ (cat.title, cat.get_absolute_url()) ].append( item )
+        else:
+            items[ (cat.title, cat.get_absolute_url()) ] = [item,]
+
+    if length(groups_found.keys()) > 0:
+        vars['items_display_mode'] = 'plain'
+        vars['items'] = items.popitem()[1]
+    else:
+        vars['items_display_mode'] = 'grouped'
+        vars['items'] = items
+
+    return render_to_response('public/producer.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
