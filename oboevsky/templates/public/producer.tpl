@@ -54,8 +54,8 @@
                 {# PAGINATION #}
                 {#<p><a href="#">1</a>, <a href="#">2</a>, <a href="#">3</a></p>#}
 
-                {% for item in items %}
-                    <div class="items clear">
+                <div class="items clear">
+                    {% for item in items %}
                         <div class="item">
                             <a href="{{item.get_absolute_url}}">
                                 <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
@@ -66,8 +66,8 @@
                             {% endif %}
                             <p><a href="#">В корзину</a></p>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
 
                 {# PAGINATION #}
                 {#<p><a href="#">1</a>, <a href="#">2</a>, <a href="#">3</a></p>#}
