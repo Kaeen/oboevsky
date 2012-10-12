@@ -10,9 +10,9 @@
                     <h1>{{item.title}}</h1>
 
                     {% if item.images.all %}
-                    <div id="itemPreviewWrapper" class="right">
-                        <img src="{{item.images.all.0.image.url}}" alt="" />
-                    </div>
+                        <div id="itemPreviewWrapper" class="right">
+                            <img src="{{item.images.all.0.image.url}}" alt="" />
+                        </div>
                     {% endif %}
 
                     <div class="itemAttribute clear">
