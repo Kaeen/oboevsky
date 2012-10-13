@@ -117,6 +117,6 @@ def material(Request, Id):
     }
 
     wallpapers = material.wallpapers.all().filter( visible=True)
-    build_items_var(wallpapers, vars, lambda x: x.category) #start_page, step...)
+    build_items_var(wallpapers, vars, lambda x: x.get_first_category()) #start_page, step...)
 
     return render_to_response('public/material.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
