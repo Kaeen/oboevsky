@@ -83,8 +83,10 @@ def country(Request, Url):
     vars = {
         'country': country,
         'producers': Producer.objects.all().filter(country=country, visible=True),
-        'country_items': [] #TODO
     }
+
+    wallpapers = Wallpaper.objects.filter(producer__country=country, visible=True)
+    build_items_var(wallpapers, vars, lambda x: x.get_first_category()) #start_page, step...)
 
     return render_to_response('public/country.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 

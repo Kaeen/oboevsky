@@ -22,30 +22,63 @@
             </div>
         </div>
 
-        {% if country_items %}
+    {% if items_display_mode == 'grouped' %}
+
+        {% for group in items %}
+            <div class="contentBlock">
+                <div>
+                    <a href="{{group.1}}"><h2>{{group.0}}</h2></a>
+                    <div class="items clear">
+                        {% for item in group.2 %}
+                            <div class="item">
+                                {% if item.get_first_image %}
+                                    <a href="{{item.get_absolute_url}}">
+                                        <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
+                                    </a>
+                                {% endif %}
+                                <p>{{item.title}}</p>
+                                <p>&nbsp;</p>
+                                <p><a href="#">В корзину</a></p>
+                            </div>
+
+                            {% if forloop.counter|divisibleby:"3" %}
+                                <div class="spacer"></div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    {% else %}
+
         <div class="contentBlock">
             <div>
+                <h2>Обои {{category.title|lower}}</h2>
                 {# PAGINATION #}
                 {#<p><a href="#">1</a>, <a href="#">2</a>, <a href="#">3</a></p>#}
 
-                {% for item in country_items %}
                 <div class="items clear">
-                    <div class="item">
-                        <a href="{{item.get_absolute_url}}">
-                            <img alt="" src="{{item.images.all.0.image.url}}" />
-                        </a>
-                        <p>{{item.title}}</p>
-                        <p>{{item.price}} руб</p>
-                        <p><a href="#">В корзину</a></p>
-                    </div>
+                    {% for item in items %}
+                        <div class="item">
+                            <a href="{{item.get_absolute_url}}">
+                                <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
+                            </a>
+                            <p>{{item.title}}</p>
+                            {% if item.price %}
+                                <p>{{item.price}} руб</p>
+                            {% endif %}
+                            <p><a href="#">В корзину</a></p>
+                        </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
 
                 {# PAGINATION #}
                 {#<p><a href="#">1</a>, <a href="#">2</a>, <a href="#">3</a></p>#}
             </div>
         </div>
-        {% endif %}
-    </div>
+
+    {% endif %}
 
 {% endblock %}
