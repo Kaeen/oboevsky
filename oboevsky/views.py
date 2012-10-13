@@ -110,7 +110,7 @@ def category(Request, Url):
     return render_to_response('public/category.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def material(Request, Url):
-    material = get_object_or_404(Material, url=Url, visible-True)
+    material = get_object_or_404(Material, url=Url, visible=True)
 
     vars = {
         'material': material,
