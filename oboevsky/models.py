@@ -484,6 +484,9 @@ class Texture(models.Model):
 	def __unicode__(self):
 		return self.title
 
+	def get_absolute_url(self):
+		return '#'
+
 	def list_title(self):
 	    return self.title if self.visible else u'{0} (скрыт)'.format(self.title)
 	list_title.allow_tags = True

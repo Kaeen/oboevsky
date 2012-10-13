@@ -24,6 +24,16 @@
                 <div class="left"><a href="{{item.producer.get_absolute_url}}" alt="{{item.producer.short_desc}}">{{item.producer.title}}</a>
                     ({{item.producer.country.get_html|safe}})</div>
             </div>
+            {% if item.texture.all %}
+            <div class="itemAttribute clear">
+                <div class="caption">Узоры:</div>
+                <div class="left">
+                    {% for texture in item.texture.all %}
+                        <a href="{{texture.get_absolute_url}}"><img src="{{texture.pic.url}}" alt="{{texture.short_desc}}" class="left icon" /></a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 
