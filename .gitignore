@@ -133,6 +133,8 @@ Desktop.ini
 
 *.py[co]
 
+.pyc
+
 # Packages
 *.egg
 *.egg-info
@@ -161,3 +163,7 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+######
+media/
+manage.py
