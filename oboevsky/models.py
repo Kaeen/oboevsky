@@ -539,7 +539,7 @@ class Material(models.Model):
 
 	def get_absolute_url(self):
 		# TODO: id => url!!!
-		return u'/materials/{0}/'.format(self.id)
+		return u'/material/{0}/'.format(self.id)
 
 class MaterialAdmin(admin.ModelAdmin):
 	filter_horizontal = ('info_blocks',)
