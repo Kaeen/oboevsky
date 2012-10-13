@@ -21,8 +21,7 @@
             </div>
             <div class="itemAttribute clear">
                 <div class="caption">Торговая марка:</div>
-                <div class="left"><a href="{{item.producer.get_absolute_url}}" alt="{{item.producer.short_desc}}">{{item.producer.title}}</a>
-                    ({{item.producer.country.get_html|safe}})</div>
+                <div class="left"><a href="{{item.producer.country.get_absolute_url}}"><img alt="{{item.producer.country.short_desc}}" align="absmiddle" src="{{item.producer.country.pic.url}}" /></a> <a href="{{item.producer.get_absolute_url}}" alt="{{item.producer.short_desc}}">{{item.producer.title}}</a></div>
             </div>
             {% if item.texture.all %}
             <div class="itemAttribute clear">
