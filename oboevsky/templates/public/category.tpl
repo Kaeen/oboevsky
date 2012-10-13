@@ -10,7 +10,9 @@
             <h1>{{category.title}}</h1>
             {{category.long_desc}}
         </div>
+        {% if items|length > 0 %}
         <h1>{{category.title}}</h1>
+        {% endif %}
     </div>
 
     {% if items_display_mode == 'grouped' %}
