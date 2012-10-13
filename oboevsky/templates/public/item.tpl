@@ -43,6 +43,7 @@
             {% endif %}
         </div>
 
+        <p>&nbsp;</p>
         {{item.long_desc|safe}}
     </div>
 
