@@ -26,7 +26,7 @@ def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_
             vars['items'] = items_list
 
         vars['start_page'] = start_page
-        vars['items_number'] = len(items)
+        vars['items_number'] = len(items_list)
         vars['step'] = step
     else:
         wallpapers = []
@@ -96,3 +96,14 @@ def producer(Request, Url):
 
     return render_to_response('public/producer.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
+def category(Request, Url):
+    category = get_object_or_404(Category, url=Url, visible=True)
+
+    vars = {
+        'category': category,
+    }
+
+    wallpapers = category.wallpapers.all().filter( visible=True)
+    build_items_var(wallpapers, vars, lambda x: x.producer) #start_page, step...)
+
+    return render_to_response('public/category.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))

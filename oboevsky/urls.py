@@ -8,7 +8,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'oboevsky.views.home'),
     url(r'^wallpaper/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.wallpaper'),
-	url(r'^producer/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.producer'),
+    url(r'^producer/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.producer'),
+	url(r'^catalog/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.category'),
 
     # Examples:
     # url(r'^$', 'oboevsky.views.home', name='home'),

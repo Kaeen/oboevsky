@@ -1,336 +1,75 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<!--
-    <title>{% block page_title %}Обоевский{% endblock %}</title>
-    <meta name="content-type" content="text/html;encoding=utf-8" />
-    <meta name="description" content="{% block meta_description %}{% endblock %}" />
-    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
-    <meta name='yandex-verification' content='79ebedfb7b6478a9' />
-    {% block extra_meta %}{% endblock %}
+{% extends "public/inc/common_sitepage.tpl" %}
 
-    <link media="all" rel="stylesheet" href="/static/css/common.css" />
+{% block content %}
 
-    {% block page_css %}{% endblock %}
-
-    {% block page_scripts %}
-        {% comment %}
-            <script type="text/javascript" src=""></script>
-        {% endcomment %}
-    {% endblock %}
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-33434730-1']);
-      _gaq.push(['_setDomainName', '{{Request.META.HTTP_HOST}}']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
--->
-    <link rel="stylesheet" type="text/css" href="static/css/common.css">
-</head>
-<body>
-<!--{% block body %}{% endblock %}-->
-<div id="pageWrapper">
-    <div id="headerWrapper" class="clear">
-        <div id="logoWrapper" class="left">
-            <a href="#"><img alt="Обоевский" title="" src="static/images/oboevsky.png" /></a>
+    <div class="contentBlockNoBorder">
+        <div id="breadcrumps">
+            <a href="/">Главная</a> / <a href="/catalog/">Каталог</a> / {{category.title}}
         </div>
-        <div id="phoneWrapper" class="left">
-            <h2>+7 (495) 666-13-13</h2>
-            <p>
-                пн-пт с 9:00 до 20:00<br />
-                сб-вс с 10:00 до 18:00
-            </p>
-            <h3>
-                skype: oboevsky
-            </h3>
+        <div id="producerProfile">
+            <h1>{{category.title}}</h1>
+            {{category.long_desc}}
         </div>
-        <div id="bannersWrapper" class="right">
-            <a href="#"><img class="right" alt="" src="static/images/sample_banner1.jpg" /></a>
-            <a href="#"><img class="right" alt="" src="static/images/sample_banner2.jpg" /></a>
-        </div>
+        <h1>{{category.title}}</h1>
     </div>
-    <div id="menuWrapper">
-        <a href="#">Главная</a>
-        <a href="#">Каталог обоев</a>
-        <a href="#">Сделать заказ</a>
-        <a href="#">Доставка</a>
-        <a href="#">Новости</a>
-        <a href="#">Связь</a>
-    </div>
-    <div id="contentWrapper" class="clear">
-        <div class="pageSidebar left">
-            <div class="pageColumn">
-                <h2>Категории обоев</h2>
-                <ul>
-                    <li>
-                        <h3>Обои по назначению</h3>
-                        <ul>
-                            <li><a href="#">Для спальни</a></li>
-                            <li><a href="#">Для гостинной</a></li>
-                            <li><a href="#">Для кузни</a></li>
-                            <li><a href="#">Для детской</a></li>
-                            <li><a href="#">Для прихожей</a></li>
-                            <li><a href="#">Для офиса</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>Обои по странам</h3>
-                        <ul>
-                            <li><a href="#"><img src="static/images/sample_italy.png" align="absmiddle" /> Италия</a></li>
-                            <li><a href="#"><img src="static/images/sample_sweden.png" align="absmiddle" /> Швеция</a></li>
-                            <li><a href="#"><img src="static/images/sample_england.png" align="absmiddle" /> Англия</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>Виды обоев</h3>
-                        <ul>
-                            <li><a href="#">Бумажные</a></li>
-                            <li><a href="#">Виниловые</a></li>
-                            <li><a href="#">Флезилиновые</a></li>
-                            <li><a href="#">Текстильные</a></li>
-                            <li><a href="#">Флоковые</a></li>
-                            <li><a href="#">Натуральные</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
 
-            <div class="pageColumn">
-                <h2>Категории обоев</h2>
-                <ul class="no-list">
-                    <li><a href="#">ABC</a></li>
-                    <li><a href="#">АРТ</a></li>
-                    <li><a href="#">Alev Designs</a></li>
-                    <li><a href="#">Artshow</a></li>
-                    <li><a href="#">AS Creation</a></li>
-                    <li><a href="#">Blue Mountain</a></li>
-                    <li><a href="#">BN international</a></li>
-                    <li><a href="#">Carl Robinson</a></li>
-                    <li><a href="#">Cosmos Wallpaper</a></li>
-                    <li><a href="#">Cosca</a></li>
-                    <li><a href="#">Coswig</a></li>
-                    <li><a href="#">Decor Maison</a></li>
-                    <li><a href="#">Decori &amp; Decori</a></li>
-                    <li><a href="#">Duro</a></li>
-                    <li><a href="#">Emiliana Parati</a></li>
-                    <li><a href="#">Erismann-R</a></li>
-                    <li><a href="#">Father &amp; Sons</a></li>
-                    <li><a href="#">Graham &amp; Brown</a></li>
-                    <li><a href="#">Grandeco</a></li>
-                    <li><a href="#">Grantil</a></li>
-                    <li><a href="#">Hohenberger</a></li>
-                    <li><a href="#">Holden Decor</a></li>
-                    <li><a href="#">Hookedonwalls</a></li>
-                    <li><a href="#">Ideco</a></li>
-                    <li><a href="#">Inverno</a></li>
-                    <li><a href="#">Jannelli &amp; Volpi</a></li>
-                    <li><a href="#">Jacquards</a></li>
-                    <li><a href="#">KT Exclusive</a></li>
-                    <li><a href="#">LG</a></li>
-                    <li><a href="#">Limonta</a></li>
-                    <li><a href="#">Living in Style</a></li>
-                    <li><a href="#">Marburg</a></li>
-                    <li><a href="#">Nextwall</a></li>
-                    <li><a href="#">Norwall</a></li>
-                    <li><a href="#">Portofino</a></li>
-                    <li><a href="#">P+S International</a></li>
-                    <li><a href="#">Rasch</a></li>
-                    <li><a href="#">Rasch-Textil</a></li>
-                    <li><a href="#">Sandudd</a></li>
-                    <li><a href="#">Seabrook</a></li>
-                    <li><a href="#">SergioRossellini</a></li>
-                    <li><a href="#">Sintra</a></li>
-                    <li><a href="#">Sirpi</a></li>
-                    <li><a href="#">Texdecor</a></li>
-                    <li><a href="#">Thibaut</a></li>
-                    <li><a href="#">Victoria Stenova</a></li>
-                    <li><a href="#">Wallquest</a></li>
-                    <li><a href="#">Wilman</a></li>
-                    <li><a href="#">York</a></li>
-                    <li><a href="#">Zambaiti</a></li>
-                    <li><a href="#">Палитра</a></li>
-                </ul>
-            </div>
-        </div>
+    {% if items_display_mode == 'grouped' %}
 
-        <div class="pageSidebar right">
-            <div class="pageColumn">
-                <h2>Поиск</h2>
-                <p class="text-center">TODO</p>
-            </div>
-
-            <div class="pageColumn">
-                <h2>Корзина</h2>
-                <p class="text-center">В Вашей корзине нет товаров</p>
-            </div>
-
-            <a href="#">
-            <div class="pageColumn">
-                <br />
-                <h2>Заказать образец</h2>
-            </div>
-            </a>
-        </div>
-
-        <div id="content">
-
-            <div class="contentBlockNoBorder">
-                <div id="breadcrumps">
-                    <a href="#">Главная</a> / <a href="#">Каталог</a> / Элитные обои
-                </div>
-                <div id="producerProfile">
-                    <h1>Элитные обои</h1>
-                    <p>В нашем каталоге Вы всегда сможете найти модели эксклюзивных стильных элитных дизайнерских обоев для стен (флизелиновых, бумажных, виниловых, натуральных, под покраску, текстильных, детских) таких производителей, как Ульфа Морица, Вернера Берга, Крима Рашида.  Данные изделия отличаются особым дизайном, внешним видом, который оказывается по настоящему неповторимым.</p>
-                    <p>Модели эксклюзивных, стильных элитных обоев для стен (текстильных, виниловых, натуральных, флизелиновых, бумажных, детских,под покраску) могут быть средством создания особого, неповторимого дизайна.</p>
-                    <p>Мы предлагаем Вашему вниманию широчайший ассортимент продукции из ката- лога, и Вы всегда сможете выбрать одну из предлагаемых разновидностей продукции. </p>
-                    <p>Такие изделия непременно порадуют дизайнеров и декораторов, которые для своих проектов всегда стремятся найти нечто необычное и даже экстраординарное. И мы всегда готовы предложить им такую продукцию. Предлагаемые материалы помимо высокого качества отличаются и оригинальностью дизайна, зачастую авторского. Кроме того, для их производства нередко используются инновационные технологии и самые необычные материалы, как природного, так и синтетического происхождения.</p>
-                </div>
-                <h1>Элитные обои</h1>
-            </div>
-
+        {% for group in items %}
             <div class="contentBlock">
                 <div>
-                    <a href="#"><h2>Виниловые</h2></a>
+                    <a href="{{group.1}}"><h2>{{group.0}}</h2></a>
                     <div class="items clear">
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="spacer"></div>
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="spacer"></div>
+                        {% for item in group.2 %}
+                            <div class="item">
+                                {% if item.get_first_image %}
+                                    <a href="{{item.get_absolute_url}}">
+                                        <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
+                                    </a>
+                                {% endif %}
+                                <p>{{item.title}}</p>
+                                <p>&nbsp;</p>
+                                <p><a href="#">В корзину</a></p>
+                            </div>
+
+                            {% if forloop.counter|divisibleby:"3" %}
+                                <div class="spacer"></div>
+                            {% endif %}
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>
+        {% endfor %}
 
-            <div class="contentBlock">
-                <div>
-                    <a href="#"><h2>Текстильные</h2></a>
-                    <div class="items clear">
+    {% else %}
+
+        <div class="contentBlock">
+            <div>
+                <h2>Обои {{category.title|lower}}</h2>
+                {# PAGINATION #}
+                {#<p><a href="#">1</a>, <a href="#">2</a>, <a href="#">3</a></p>#}
+
+                <div class="items clear">
+                    {% for item in items %}
                         <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
+                            <a href="{{item.get_absolute_url}}">
+                                <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
                             </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
+                            <p>{{item.title}}</p>
+                            {% if item.price %}
+                                <p>{{item.price}} руб</p>
+                            {% endif %}
                             <p><a href="#">В корзину</a></p>
                         </div>
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="spacer"></div>
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img alt="" src="static/images/sample_item.jpg" />
-                            </a>
-                            <p>217006 Обои Grantil Emotion</p>
-                            <p>670 руб</p>
-                            <p><a href="#">В корзину</a></p>
-                        </div>
-                        <div class="spacer"></div>
-                    </div>
+                    {% endfor %}
                 </div>
+
+                {# PAGINATION #}
+                {#<p><a href="#">1</a>, <a href="#">2</a>, <a href="#">3</a></p>#}
             </div>
-
         </div>
 
+    {% endif %}
 
-    </div>
-    <div id="footerWrapper" class="clear">
-        <div id="copyrightWrapper" class="left">
-            <p><strong>&copy; Обоевский 2012г.</strong></p>
-            <p>
-                +7 495 666-13-13<br />
-                skype: oboevsky
-            </p>
-        </div>
-        <div id="bottomMenu" class="left">
-            <p><a href="#">Главная</a> &middot; <a href="#">Контактная информация</a> &middot; <a href="#">О магазине</a></p>
-            <p id="publicNote">Цены на данном сайте не являются публичной офертой согласно законодательству РФ</p>
-        </div>
-        <div id="signatureWrapper" class="right">
-            <img alt="" src="static/images/signature.png" />
-        </div>
-    </div>
-</div>
-</body>
-</html>
+{% endblock %}
