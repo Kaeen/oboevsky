@@ -1,7 +1,42 @@
+﻿# coding: utf-8
 from django.http import HttpResponse, HttpRequest, Http404
 from models import *
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_list_or_404, get_object_or_404
+
+####################################
+#       Common functionality       # 
+####################################
+
+def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_category(), start_page=0, step=15):
+    # Checking for by_attribute
+    groups = dict()
+    for item in items_list:
+        if group_criteria_func(item) in groups:
+            groups[group_criteria_func(item)].append(item)
+        else:
+            groups[group_criteria_func(item)] = [item,]
+
+    if len(groups.keys()) == 1:
+        vars['items_display_mode'] = 'plain'
+
+        if step and start_page:
+            vars['items'] = items_list[start_page::step]
+        else:
+            vars['items'] = items_list
+
+        vars['start_page'] = start_page
+        vars['items_number'] = len(items)
+        vars['step'] = step
+    else:
+        wallpapers = []
+        for x in groups:
+            wallpapers.append( (x.title, x.get_absolute_url(), groups[x]) )
+
+        vars['items_display_mode'] = 'grouped'
+        vars['items'] = wallpapers
+
+    return vars
 
 def common_context_proc(Request):
     # Building menus:
@@ -16,6 +51,11 @@ def common_context_proc(Request):
         'menu_materials': menu_materials,
         'menu_producers': menu_producers
     }
+
+
+####################################
+#              Views               # 
+####################################
 
 def home(Request):
     vars = {
@@ -51,29 +91,8 @@ def producer(Request, Url):
         'producer': producer,
     }
 
-    groups_found = dict()
-    items = dict()
-
     wallpapers = Wallpaper.objects.filter(producer=producer, visible=True)
-    for item in wallpapers:
-        cat = item.get_first_category()
-        groups_found[cat.pk] = None
-        # Simplify to one list walk
-        if items.has_key( (cat.title, cat.get_absolute_url()) ):
-            items[ (cat.title, cat.get_absolute_url()) ].append( item )
-        else:
-            items[ (cat.title, cat.get_absolute_url()) ] = [item,]
-
-    if len(groups_found.keys()) == 1:
-        vars['items_display_mode'] = 'plain'
-        vars['items'] = wallpapers
-    else:
-        wallpapers = []
-        for x in items:
-            wallpapers.append( (x[0], x[1], items[x]) )
-
-        vars['items_display_mode'] = 'grouped'
-        vars['items'] = wallpapers
+    build_items_var(wallpapers, vars, lambda x: x.get_first_category()) #start_page, step...)
 
     return render_to_response('public/producer.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
