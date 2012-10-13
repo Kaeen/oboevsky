@@ -20,8 +20,7 @@
 <div id="menuWrapper">
     <a href="/">Главная</a>
     <a href="/catalog/">Каталог обоев</a>
-    <a href="#">Сделать заказ</a>
-    <a href="#">Доставка</a>
-    <a href="#">Новости</a>
-    <a href="/contact-us">Связь</a>
+    {% for flatpage in flatpages %}
+        <a href="{{flatpage.url}}">{{flatpage.title}}</a>
+    {% endfor %}
 </div>

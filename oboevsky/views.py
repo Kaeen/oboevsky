@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpRequest, Http404
 from models import *
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_list_or_404, get_object_or_404
+from django.contrib.flatpages.models import *
 
 ####################################
 #       Common functionality       # 
@@ -38,18 +39,20 @@ def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_
 
     return vars
 
-def common_context_proc(Request):
+def common_context_proc(Request=None):
     # Building menus:
     menu_categories = Category.objects.filter(visible=True)
     menu_countries = Country.objects.filter(visible=True)
     menu_materials = Material.objects.filter(visible=True)
     menu_producers = Producer.objects.filter(visible=True)
+    flatpages = FlatPage.objects.all()
 
     return {
         'menu_categories': menu_categories,
         'menu_countries': menu_countries,
         'menu_materials': menu_materials,
-        'menu_producers': menu_producers
+        'menu_producers': menu_producers,
+        'flatpages': flatpages,
     }
 
 

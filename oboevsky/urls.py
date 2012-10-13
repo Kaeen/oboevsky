@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
+from django.contrib import admin, flatpages
 from oboevsky import settings
-
+from oboevsky.views import *
 
 admin.autodiscover()
 
@@ -33,5 +33,5 @@ urlpatterns = patterns('',
         'document_root': settings.MEDIA_ROOT,
     }),
 
-    url('^/', include('django.contrib.flatpages.urls')),
+    url(r'^(?P<url>.*)$', 'django.contrib.flatpages.views.flatpage'),
 )

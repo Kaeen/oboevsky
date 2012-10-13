@@ -100,7 +100,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
-        # Uncomment the next line for simple clickjacking protection:
+        # Uncomment the next line for simple clickjacking propagatetection:
         # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     )
 
@@ -115,6 +115,8 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
     )
+
+    TEMPLATE_CONTEXT_PROCESSORS = ('oboevsky.views.common_context_proc', 'django.contrib.auth.context_processors.auth')
 
     INSTALLED_APPS = (
         'django.contrib.auth',
@@ -271,6 +273,8 @@ else:
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
     )
+
+    TEMPLATE_CONTEXT_PROCESSORS = ('oboevsky.views.common_context_proc', 'django.contrib.auth.context_processors.auth')
 
     INSTALLED_APPS = (
         'django.contrib.auth',
