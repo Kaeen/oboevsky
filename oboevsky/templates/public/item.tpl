@@ -43,7 +43,7 @@
             {% endif %}
         </div>
 
-        {{item.long_desc}}
+        {{item.long_desc|safe}}
     </div>
 
 {% endblock %}
