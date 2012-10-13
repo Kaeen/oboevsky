@@ -79,7 +79,8 @@ def country(Request, Url):
 
     vars = {
         'country': country,
-        'coutnry_items': [] #TODO
+        'producers': Producer.objects.all().filter(country=country, visible=True),
+        'country_items': [] #TODO
     }
 
     return render_to_response('public/country.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
