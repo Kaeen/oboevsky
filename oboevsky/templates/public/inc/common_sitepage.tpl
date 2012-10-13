@@ -15,51 +15,59 @@
             <div class="pageColumn">
                 <h2>Категории обоев</h2>
                 <ul>
-                    {% if menu_categories|length > 0 %}
-                    <li>
-                        <h3>Обои по назначению</h3>
-                        <ul>
-                            {% for temp in menu_categories %}
-                            <li><a href="{{temp.get_absolute_url}}">{{temp.title}}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    {% endif %}
-
-                    {% if menu_countries|length > 0 %}
-                    <li>
-                        <h3>Обои по странам</h3>
-                        <ul>
-                            {% for temp in menu_countries %}
-                                <li>{{temp.get_html|safe}}</li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    {% endif %}
-
-                    {% if menu_materials|length > 0 %}
-                    <li>
-                        <h3>Виды обоев</h3>
-                        <ul>
-                            {% for temp in menu_materials %}
+                    {% block menu_categories %}
+                        {% if menu_categories|length > 0 %}
+                        <li>
+                            <h3>Обои по назначению</h3>
+                            <ul>
+                                {% for temp in menu_categories %}
                                 <li><a href="{{temp.get_absolute_url}}">{{temp.title}}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block menu_countries %}
+                        {% if menu_countries|length > 0 %}
+                        <li>
+                            <h3>Обои по странам</h3>
+                            <ul>
+                                {% for temp in menu_countries %}
+                                    <li>{{temp.get_html|safe}}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block menu_materials %}
+                        {% if menu_materials|length > 0 %}
+                        <li>
+                            <h3>Виды обоев</h3>
+                            <ul>
+                                {% for temp in menu_materials %}
+                                    <li><a href="{{temp.get_absolute_url}}">{{temp.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endif %}
+                    {% endblock %}
                 </ul>
             </div>
 
-            {% if menu_producers|length > 0 %}
-            <div class="pageColumn">
-                <h2>Производители обоев</h2>
-                <ul class="no-list">
-                    {% for temp in menu_producers %}
-                        <li><a href="{{temp.get_absolute_url}}">{{temp.title}}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endif %}
+            {% block menu_producers %}
+                {% if menu_producers|length > 0 %}
+                <div class="pageColumn">
+                    <h2>Производители обоев</h2>
+                    <ul class="no-list">
+                        {% for temp in menu_producers %}
+                            <li><a href="{{temp.get_absolute_url}}">{{temp.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            {% endblock %}
 
         </div>
         {% endblock %}
