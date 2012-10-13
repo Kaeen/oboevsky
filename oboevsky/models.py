@@ -262,7 +262,7 @@ class Country(models.Model):
 
 class CountryAdmin(admin.ModelAdmin):
 	readonly_fields = ('created', 'modified')
-	list_display = ['get_html', 'url', 'code', 'priority', 'visible']
+	list_display = ['get_admin_html', 'url', 'code', 'priority', 'visible']
 	filter_horizontal = ['info_blocks']
 
 
