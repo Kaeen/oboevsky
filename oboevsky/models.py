@@ -245,16 +245,14 @@ class Country(models.Model):
 	def get_html(self):
 		import os
 		return u'''
-			<a href="{0}">
-				<img src="/media/countries/{1}" align="absmiddle" height width />&nbsp;{2}
-			</a>
+			<a href="{0}"><img src="/media/countries/{1}" align="absmiddle" height="13px" width="20px" /></a>&nbsp;<a href="{0}">{2}</a>
 			'''.format(self.get_absolute_url(), os.path.split(self.pic.path)[1], self.title.strip()) # TODO HEIGHT WIDTH
 	get_html.short_description = u'Изображение'
 	get_html.allow_tags = True
 
 	def get_admin_html(self):
 		import os
-		return u'''<img src="/media/countries/{0}" align="left" height width />{1}'''.format(
+		return u'''<img src="/media/countries/{0}" align="absmiddle" height="13px" width="20px" />&nbsp;{1}'''.format(
 			os.path.split(self.pic.path)[1], self.title
 		) # TODO HEIGHT WIDTH
 	get_admin_html.short_description = u'Изображение'

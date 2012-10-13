@@ -52,28 +52,22 @@ def producer(Request, Url):
     }
 
     groups_found = dict()
-    items = dict()
+    items = []
+    wallpapers = []
 
     wallpapers = Wallpaper.objects.filter(producer=producer, visible=True)
     for item in wallpapers:
         cat = item.get_first_category()
         groups_found[cat.pk] = None
         # Simplify to one list walk
-        if items.has_key( (cat.title, cat.get_absolute_url()) ):
-            items[ (cat.title, cat.get_absolute_url()) ].append( item )
-        else:
-            items[ (cat.title, cat.get_absolute_url()) ] = [item,]
+        items.append( (x[0], x[1], items[x]) )
 
     if len(groups_found.keys()) == 1:
         vars['items_display_mode'] = 'plain'
         vars['items'] = wallpapers
     else:
-        wallpapers = []
-        for x in items:
-            wallpapers.append( (x[0], x[1], items[x]) )
-
         vars['items_display_mode'] = 'grouped'
-        vars['items'] = wallpapers
+        vars['items'] = items
 
     return render_to_response('public/producer.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
