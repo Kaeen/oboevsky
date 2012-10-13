@@ -125,6 +125,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
         'django.contrib.staticfiles',
         # Uncomment the next line to enable the admin:
         'django.contrib.admin',
+        'django.contrib.flatpages',
         # Uncomment the next line to enable admin documentation:
         # 'django.contrib.admindocs',
         'oboevsky',
@@ -278,6 +279,7 @@ else:
         'django.contrib.sites',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'django.contrib.flatpages',
         'oboevsky',
         # Uncomment the next line to enable the admin:
         'django.contrib.admin',
