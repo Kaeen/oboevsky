@@ -7,7 +7,12 @@
         </p>
     </div>
     <div id="bottomMenu" class="left">
-        <p><a href="/">Главная</a> &middot; <a href="/">Контактная информация</a> &middot; <a href="/">О магазине</a></p>
+        <p><a href="/">Главная</a> &middot;
+            {% for flatpage in flatpages %}
+                <a href="{{flatpage.url}}">{{flatpage.title}}</a>
+                {% if not forloop.last %} &middot; {% endif %}
+            {% endfor %}
+        </p>
         <p id="publicNote">Цены на данном сайте не являются публичной офертой согласно законодательству РФ</p>
     </div>
     <div id="signatureWrapper" class="right">
