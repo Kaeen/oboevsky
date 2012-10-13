@@ -10,7 +10,8 @@ urlpatterns = patterns('',
     url(r'^wallpaper/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.wallpaper'),
     url(r'^producer/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.producer'),
     url(r'^catalog/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.category'),
-	url(r'^country/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.country'),
+    url(r'^country/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.country'),
+	url(r'^material/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.material'),
 
     # Examples:
     # url(r'^$', 'oboevsky.views.home', name='home'),
