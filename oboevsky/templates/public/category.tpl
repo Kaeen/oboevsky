@@ -15,6 +15,13 @@
         {% endif %}
     </div>
 
+    {% for iblock in category.info_blocks.all %}
+        <div class="contentBlock">
+            <h2>{{iblock.title}}</h2>
+            {{iblock.content|safe}}
+        </div>
+    {% endfor %}
+
     {% if items_display_mode == 'grouped' %}
 
         {% for group in items %}

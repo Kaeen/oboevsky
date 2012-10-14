@@ -64,4 +64,11 @@
         {{item.long_desc|safe}}
     </div>
 
+    {% for iblock in item.info_blocks.all %}
+        <div class="contentBlock">
+            <h2>{{iblock.title}}</h2>
+            {{iblock.content|safe}}
+        </div>
+    {% endfor %}
+
 {% endblock %}

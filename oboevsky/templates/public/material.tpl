@@ -16,6 +16,13 @@
             <h1>{{material.title}}</h1>
         {% endif %}
     </div>
+    
+    {% for iblock in material.info_blocks.all %}
+        <div class="contentBlock">
+            <h2>{{iblock.title}}</h2>
+            {{iblock.content|safe}}
+        </div>
+    {% endfor %}
 
     {% if items_display_mode == 'grouped' %}
 
