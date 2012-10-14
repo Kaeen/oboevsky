@@ -2,7 +2,7 @@
 
 from django.db.models import Field
 from django.forms import Textarea
-from settings import STATIC_URL
+from oboevsky.settings import STATIC_URL
 
 class WidgetWYSIWYG(Textarea):
     def __init__(self, *args, **kwargs):
