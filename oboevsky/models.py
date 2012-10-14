@@ -1,4 +1,5 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
+
 import os
 #from django.contrib.sitemaps import Sitemap as _Sitemap
 from django.db import models
@@ -7,6 +8,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 from colour_field.fields import ColourField
 from django.db.models.signals import pre_save
+from wysiwyg import WYSIWYGField
 
 ############################
 #           Обои           #
@@ -23,7 +25,7 @@ class Wallpaper(models.Model):
 	# Короткое описание: 
 	short_desc = models.CharField(max_length=200, null=True, verbose_name=_(u'короткое описание'))
 	# Полное описание: 
-	long_desc = models.TextField(null=True, verbose_name=_(u'длинное описание'))
+	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Цена:
 	price = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True, verbose_name=_(u'цена'))
 
@@ -65,7 +67,7 @@ class Wallpaper(models.Model):
 		verbose_name=_(u'текстуры')
 	)
 	# Цвет:
-	colour = ColourField(blank=True, verbose_name=_(u'цвет'))
+	colour = ColourField(blank=True, null=True, verbose_name=_(u'цвет'))
 
 	# Изображения товара: 
 	images = models.ManyToManyField(
@@ -168,7 +170,7 @@ class Producer(models.Model):
 	# Короткое описание: 
 	short_desc = models.CharField(max_length=200, null=True, verbose_name=_(u'короткое описание'))
 	# Полное описание: 
-	long_desc = models.TextField(null=True, verbose_name=_(u'длинное описание'))
+	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Страна:
 	country = models.ForeignKey('Country', blank=False, verbose_name=_(u'страна'))
 	# Шаблон: 
@@ -212,7 +214,7 @@ class Country(models.Model):
 	# Короткое описание: 
 	short_desc = models.CharField(max_length=200, null=True, verbose_name=_(u'короткое описание'))
 	# Полное описание: 
-	long_desc = models.TextField(null=True, verbose_name=_(u'длинное описание'))
+	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Якорь:
 	url = models.SlugField(max_length=100, null=True, verbose_name=_(u'якорь'))
 	# Пиктограмма страны: 
@@ -276,7 +278,7 @@ class Category(models.Model):
 	# Короткое описание: 
 	short_desc = models.CharField(max_length=200, null=True, verbose_name=_(u'короткое описание'))
 	# Полное описание: 
-	long_desc = models.TextField(null=True, verbose_name=_(u'длинное описание'))
+	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Якорь:
 	url = models.SlugField(max_length=100, null=True, verbose_name=_(u'якорь'))
 	# Шаблон: 
@@ -390,7 +392,7 @@ class Picture(models.Model):
 	# Короткое описание: 
 	short_desc = models.CharField(max_length=200, null=True, verbose_name=_(u'короткое описание'))
 	# Полное описание: 
-	long_desc = models.TextField(null=True, verbose_name=_(u'длинное описание'))
+	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Изображение: 
 	image = models.ImageField(upload_to='pictures/', verbose_name=u'изображение') # TODO: WIDTH, HEIGHT
 
@@ -451,7 +453,7 @@ class Texture(models.Model):
 	# Короткое описание: 
 	short_desc = models.CharField(max_length=200, null=True, verbose_name=_(u'короткое описание'))
 	# Полное описание: 
-	long_desc = models.TextField(null=True, verbose_name=_(u'длинное описание'))
+	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Изображение текстуры: 
 	pic = models.ImageField(upload_to='textures/', verbose_name=_(u'изображение текстуры')) # TODO: РАЗМЕРЫ ПИКТОГРАММЫ ТЕКСТУРЫ
 	# Шаблон: 
@@ -509,7 +511,7 @@ class Material(models.Model):
 	# Короткое описание: 
 	short_desc = models.CharField(max_length=200, null=True, verbose_name=_(u'короткое описание'))
 	# Полное описание: 
-	long_desc = models.TextField(null=True, verbose_name=_(u'длинное описание'))
+	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Пиктограмма: TODO: УБРАТЬ
 	pic = models.ImageField(upload_to='textures/', blank=True, verbose_name=_(u'изображение материала')) # TODO: РАЗМЕРЫ ПИКТОГРАММЫ МАТЕРИАЛА
 	# Шаблон: 
@@ -558,7 +560,7 @@ class Template(models.Model):
 	# Название товара:
 	title = models.CharField(max_length=120, null=False, verbose_name=_(u'название'))
 	# Комментарий
-	comment = models.TextField(verbose_name=_(u'комментарий'))
+	comment = WYSIWYGField(verbose_name=_(u'комментарий'))
 	# Файл шаблона:
 	template = models.FileField(upload_to='templates/custom/') # TODO: ВАЛИДАЦИЯ РАСШИРЕНИЯ
 	# Информационные блоки: 
@@ -594,7 +596,7 @@ class iBlock(models.Model):
 	# Название товара:
 	title = models.CharField(max_length=120, null=False, verbose_name=_(u'название'))
 	# Содержимое: 
-	content = models.TextField(null=True, verbose_name=_(u'содержимое'))
+	content = WYSIWYGField(null=True, verbose_name=_(u'содержимое'))
 
 	# TODO: PRIORITY!
 	# Метки времени: 
@@ -623,7 +625,7 @@ class PromoCampain(models.Model):
 	# Название акции: 
 	title = models.CharField(max_length=120, null=False, verbose_name=_(u'название'))
 	# Содержимое: 
-	content = models.TextField(null=True, verbose_name=_(u'содержимое'))
+	content = WYSIWYGField(null=True, verbose_name=_(u'содержимое'))
 
 	# Инфоблок акции: 
 	info_blocks = models.ManyToManyField(
@@ -634,14 +636,14 @@ class PromoCampain(models.Model):
 	)
 
 	# Формула рассчёта цены товара в акции:
-	wallpaper_price_formula = models.TextField(blank=True, null=True, default="WALLPAPER_PRICE*1", verbose_name=u"формула рассчёта цены обоев")
+	wallpaper_price_formula = WYSIWYGField(blank=True, null=True, default="WALLPAPER_PRICE*1", verbose_name=u"формула рассчёта цены обоев")
 	# Формула рассчёта общей стоимости корзины: 
-	total_price_formula = models.TextField(blank=True, null=True, default="TOTAL_PRICE*1", verbose_name=u"формула рассчёта общей стоимости заказа")
+	total_price_formula = WYSIWYGField(blank=True, null=True, default="TOTAL_PRICE*1", verbose_name=u"формула рассчёта общей стоимости заказа")
 	# Формула рассчёта стоимости доставки:
-	shipping_price_formula = models.TextField(blank=True, null=True, default="SHIPPING_PRICE*1", verbose_name=u"формула рассчёта стоимости доставки")
+	shipping_price_formula = WYSIWYGField(blank=True, null=True, default="SHIPPING_PRICE*1", verbose_name=u"формула рассчёта стоимости доставки")
 
 	# Формула условий акции: 
-	conditions = models.TextField(blank=True, null=True, default="IS_PROMO", verbose_name=u"условия акции")
+	conditions = WYSIWYGField(blank=True, null=True, default="IS_PROMO", verbose_name=u"условия акции")
 
 	# Категории товара: 
 	categories = models.ManyToManyField(

@@ -1,4 +1,5 @@
-﻿# coding: utf-8
+# -*- coding: utf-8 -*-
+
 from django.http import HttpResponse, HttpRequest, Http404
 from models import *
 from django.template import RequestContext

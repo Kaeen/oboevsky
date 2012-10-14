@@ -1,6 +1,8 @@
-# coding: utf-8
+# -*- encoding: utf-8 -*-
+
 from django.contrib import admin
 from oboevsky.models import *
+from wysiwyg import WidgetWYSIWYG
 
 class WallpaperAdmin(admin.ModelAdmin):
 	list_display = ['id', 'sku', 'title', 'producer', 'get_first_category_breadcrumps', 'top_sells', 'on_clearance', 'new', 'visible', 'priority']
@@ -47,3 +49,14 @@ admin.site.register( iBlock, 	 iBlockAdmin )
 admin.site.register( Country, 	 CountryAdmin )
 admin.site.register( PromoCampain, 	 PromoCampainAdmin )
 admin.site.register( Wallpaper,  WallpaperAdmin )
+
+from django.contrib.flatpages.models import FlatPage
+from django.contrib.flatpages.admin import FlatPageAdmin as FlatPageAdminOld
+
+class FlatPageAdmin(FlatPageAdminOld):
+    formfield_overrides = {
+        models.TextField: {'widget': WidgetWYSIWYG},
+    }
+
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, FlatPageAdmin)
