@@ -9,7 +9,7 @@
         <div id="producerProfile">
             <h1>{{material.title}}</h1>
 
-            {{material.long_desc}}
+            {{material.long_desc|safe}}
 
         </div>
         {% if items|length > 0 %}

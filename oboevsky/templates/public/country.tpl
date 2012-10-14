@@ -8,7 +8,7 @@
         </div>
         <div id="producerProfile">
             <h1><img src="{{country.pic.url}}" alt="{{country.title}}" width="20px" height="13px" /> {{country.title}}</h1>
-            {{country.long_desc}}
+            {{country.long_desc|safe}}
 
             {% if producers|length > 0 %}
                 <h1>Производители:</h1>

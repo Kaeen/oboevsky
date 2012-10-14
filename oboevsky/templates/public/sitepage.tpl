@@ -7,6 +7,6 @@
         </div>
 
         <h1>{{flatpage.title}}</h1>
-        {{flatpage.content}}
+        {{flatpage.content|safe}}
     </div>
 {% endblock %}
