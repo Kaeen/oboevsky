@@ -21,7 +21,7 @@ class Wallpaper(models.Model):
 	# Название товара:
 	title = models.CharField(max_length=120, null=False, verbose_name=_(u'название'))
 	# Якорь:
-	url = models.SlugField(max_length=100, null=True, verbose_name=_(u'якорь'))
+	url = models.SlugField(max_length=100, null=True, unique=True, verbose_name=_(u'якорь'))
 	# Короткое описание: 
 	short_desc = models.CharField(max_length=200, null=True, verbose_name=_(u'короткое описание'))
 	# Полное описание: 
@@ -173,7 +173,7 @@ class Wallpaper(models.Model):
 
 class WallpaperSize(models.Model):
 	# Якорь:
-	url = models.SlugField(max_length=100, null=True, verbose_name=_(u'якорь'))
+	url = models.SlugField(max_length=100, null=True, unique=True, verbose_name=_(u'якорь'))
 	# Длина:
 	length = models.DecimalField(max_digits=5, decimal_places=2, verbose_name=u'длина')
 	# Высота:
@@ -233,7 +233,7 @@ class Producer(models.Model):
 	# Название:
 	title = models.CharField(max_length=120, null=False, verbose_name=_(u'название'))
 	# Якорь:
-	url = models.SlugField(max_length=100, null=True, verbose_name=_(u'якорь'))
+	url = models.SlugField(max_length=100, null=True, unique=True, verbose_name=_(u'якорь'))
 	# Короткое описание: 
 	short_desc = models.CharField(max_length=200, null=True, verbose_name=_(u'короткое описание'))
 	# Полное описание: 
@@ -283,7 +283,7 @@ class Country(models.Model):
 	# Полное описание: 
 	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Якорь:
-	url = models.SlugField(max_length=100, null=True, verbose_name=_(u'якорь'))
+	url = models.SlugField(max_length=100, null=True, unique=True, verbose_name=_(u'якорь'))
 	# Пиктограмма страны: 
 	pic = models.ImageField(upload_to='countries/', verbose_name=_(u'пиктограмма страны'))
 	# Код:
@@ -347,7 +347,7 @@ class Category(models.Model):
 	# Полное описание: 
 	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Якорь:
-	url = models.SlugField(max_length=100, null=True, verbose_name=_(u'якорь'))
+	url = models.SlugField(max_length=100, null=True, unique=True, verbose_name=_(u'якорь'))
 	# Шаблон: 
 	template = models.ForeignKey('Template', blank=True, null=True, verbose_name=_(u'шаблон'))
 	# Информационные блоки: 
