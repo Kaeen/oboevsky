@@ -48,6 +48,15 @@ class Wallpaper(models.Model):
 		related_name='wallpapers',
 		verbose_name=_(u'производитель')
 	)
+	# Размеры: 
+	sizes = models.ManyToManyField(
+		'WallpaperSize', 
+		blank=True, 
+		null=True,
+		default=None,
+		related_name='wallpapers',
+		verbose_name=_(u'размеры')
+	)
 	# Материалы: 
 	materials = models.ManyToManyField(
 		'Material', 
@@ -156,6 +165,64 @@ class Wallpaper(models.Model):
 		verbose_name = _(u'обои')
 		verbose_name_plural = _(u'обои')
 		ordering = ['priority',]
+
+
+############################
+#      Размеры обоев       #
+############################
+
+class WallpaperSize(models.Model):
+	# Якорь:
+	url = models.SlugField(max_length=100, null=True, verbose_name=_(u'якорь'))
+	# Длина:
+	length = models.DecimalField(max_digits=5, decimal_places=2, verbose_name=u'длина')
+	# Высота:
+	height = models.DecimalField(max_digits=5, decimal_places=2, verbose_name=u'высота')
+	# Короткое описание: 
+	short_desc = models.CharField(max_length=200, null=True, verbose_name=u'короткое описание')
+	# Полное описание: 
+	long_desc = WYSIWYGField(null=True, verbose_name=u'длинное описание')
+
+	# Шаблон: 
+	template = models.ForeignKey(
+		'Template', 
+		on_delete=models.SET_NULL,
+		blank=True, 
+		null=True, 
+		default=None,
+		related_name='wallpapersizes',
+		verbose_name=u'шаблон'
+	)
+	# Информационные блоки: 
+	info_blocks = models.ManyToManyField(
+		'iBlock', 
+		blank=True, 
+		null=True,
+		default=None,
+		related_name='wallpapersizes',
+		verbose_name=u'информационные блоки'
+	)
+
+	# Приоритет отображения: 
+	priority = models.PositiveIntegerField(blank=True, default=0, verbose_name=u'приоритет отображения')
+	# Метки времени: 
+	created    = models.DateTimeField(auto_now_add=True, editable=False, blank=True, verbose_name=u'дата создания')
+	modified   = models.DateTimeField(auto_now=True, auto_now_add=True, blank=True, verbose_name=u'дата последнего изменения')
+	# Видимость: 
+	visible    = models.BooleanField(default=False , verbose_name=u'видимость')
+
+	def __unicode__(self):
+		return '{0}x{1}'.format(self.length, self.height)
+
+	def get_absolute_url(self):
+		return u'/size/'+self.url
+
+	class Meta:
+		verbose_name = _(u'размер обоев')
+		verbose_name_plural = _(u'размеры обоев')
+		ordering = ['priority',]
+
+
 
 
 ############################

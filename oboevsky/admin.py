@@ -15,7 +15,7 @@ class WallpaperAdmin(admin.ModelAdmin):
 			}
 		),
 		('Характеристики товара', {
-				'fields': ['categories', 'producer', 'materials', 'texture', 'colour'],
+				'fields': ['categories', 'producer', 'sizes', 'materials', 'texture', 'colour'],
 				'classes': []#['collapse']
 			}
 		),
@@ -39,6 +39,30 @@ class WallpaperAdmin(admin.ModelAdmin):
 	save_as = True
 
 
+class WallpaperSizeAdmin(admin.ModelAdmin):
+	list_display = ['__unicode__', 'url', 'visible', 'priority']
+	horizontal_filter = ('info_blocks',)
+	readonly_fields = ('created', 'modified')
+	filter_horizontal = ('info_blocks',)
+	fieldsets = [
+		(None, {
+				'fields': ['length', 'height', 'url', 'short_desc', 'long_desc']
+			}
+		),
+		('Особенности отображения', {
+				'fields': ['template', 'info_blocks'],
+				'classes': []#['collapse']
+			}
+		),
+		('Системные характеристики', {
+				'fields': ['priority', 'visible'],
+				'classes': []#['collapse']
+			}
+		)
+	]
+	save_as = True
+
+
 admin.site.register( Producer,   ProducerAdmin )
 admin.site.register( Category,   CategoryAdmin )
 admin.site.register( Picture,    PictureAdmin )
@@ -49,6 +73,7 @@ admin.site.register( iBlock, 	 iBlockAdmin )
 admin.site.register( Country, 	 CountryAdmin )
 admin.site.register( PromoCampain, 	 PromoCampainAdmin )
 admin.site.register( Wallpaper,  WallpaperAdmin )
+admin.site.register( WallpaperSize,  WallpaperSizeAdmin )
 
 from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin as FlatPageAdminOld
