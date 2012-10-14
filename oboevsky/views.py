@@ -63,8 +63,8 @@ def common_context_proc(Request=None):
 
 def home(Request):
     vars = {
-        'top_sells_items': Wallpaper.objects.filter(top_sells=True),
-        'new_items': Wallpaper.objects.filter(new=True),
+        'top_sells_items': Wallpaper.objects.filter(top_sells=True, visible=True),
+        'new_items': Wallpaper.objects.filter(new=True, visible=True),
     }
 
     return render_to_response('public/index.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
