@@ -41,6 +41,23 @@
                     </div>
                 </div>
             {% endif %}
+            {% if item.sizes.all|length > 1 %}
+                <div class="itemAttribute clear">
+                    <div class="caption">Размеры:</div>
+                    <div class="left">
+                        {% for size in item.sizes.all %}
+                            <li>{{size}}</li>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% elif item.sizes.all %}
+                <div class="itemAttribute clear">
+                    <div class="caption">Размер:</div>
+                    <div class="left">
+                        {{item.sizes.all.0}}
+                    </div>
+                </div>
+            {% endif %}
         </div>
 
         <p>&nbsp;</p>
