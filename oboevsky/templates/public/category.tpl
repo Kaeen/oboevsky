@@ -4,7 +4,10 @@
 
     <div class="contentBlockNoBorder">
         <div id="breadcrumps">
-            <a href="/">Главная</a> / <a href="/catalog/">Каталог</a> / {{category.title}}
+            <a href="/">Главная</a> / <a href="/catalog/">Каталог</a> / 
+            {% for breadcrump in category.get_breadcrumps_list %}
+                {{breadcrump.title}}
+            {% endfor %}
         </div>
         <div id="producerProfile">
             <h1>{{category.title}}</h1>
