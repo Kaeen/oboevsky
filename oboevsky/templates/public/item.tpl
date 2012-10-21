@@ -1,6 +1,31 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
 {% block content %}
+    <script type="text/javascript">
+        function thumbnail_preview(image_url, image_shortdesc) {
+            i = $('#itemPreview').get(0);
+            i.src = image_url;
+            i.alt = image_shortdesc;
+        }
+
+        (function($){
+            $(window).load(function() {
+                $(".itemThumbs").mCustomScrollbar({
+                    set_height: '86px', 
+                    set_width: '270px', 
+                    horizontalScroll: true, 
+                    scrollInertia: 550,
+                    mouseWheel: true,
+                    scrollButtons:{ 
+                        enable:false, 
+                        scrollType:"continuous", 
+                        scrollSpeed:70, 
+                        scrollAmount:100 
+                    }
+                });
+            });
+        })(jQuery);
+    </script>
 
     <div class="contentBlockNoBorder">
         <div id="breadcrumps">
@@ -11,7 +36,18 @@
 
             {% if item.images.all %}
                 <div id="itemPreviewWrapper" class="right">
-                    <img src="{{item.images.all.0.image.url}}" alt="" />
+                    <img id="itemPreview" src="{{item.images.all.0.image.url}}" alt="{{item.images.all.0.short_desc}}"
+                     width="270px" height="202px" />
+                    {% if item.images.all|length > 1 %}
+                    <div class="itemThumbs" class="clear">
+                        <div class="thumbsWrapper">
+                        {% for thumb in item.images.all|slice:"1:" %}
+                            <img alt="{{thumb.short_desc}}" src="{{thumb.image.url}}" height="70px"{# width="" #} 
+                             onclick="javascript:thumbnail_preview('{{thumb.image.url}}', '{{thumb.short_desc}}');" />
+                        {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             {% endif %}
 

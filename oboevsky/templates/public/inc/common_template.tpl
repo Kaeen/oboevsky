@@ -13,9 +13,10 @@
     {% block page_css %}{% endblock %}
 
     {% block page_scripts %}
-        {% comment %}
-            <script type="text/javascript" src=""></script>
-        {% endcomment %}
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+          <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+          <script src="/static/js/jquery.mousewheel.min.js"></script>
+          <script src="/static/js/jquery.mCustomScrollbar.min.js"></script>
     {% endblock %}
     <!--
     <script type="text/javascript">
