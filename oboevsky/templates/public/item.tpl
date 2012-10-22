@@ -13,6 +13,9 @@
             $( s ).addClass('selected_thumb');
             i.src = image_url;
             i.alt = image_shortdesc;
+            $(i).removeAttr( 'width' );
+            $(i).removeAttr( 'height' );
+            $(i).css({width: "270px"});
         }
 
         (function($){
