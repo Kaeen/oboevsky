@@ -1,9 +1,16 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
 {% block content %}
+    <style type="text/css">
+        .selected_thumb {
+            opacity: 0.5;
+        }
+    </style>
     <script type="text/javascript">
-        function thumbnail_preview(image_url, image_shortdesc) {
+        function thumbnail_preview(s, image_url, image_shortdesc) {
             i = $('#itemPreview').get(0);
+            $('.thumbsWrapper > img').removeClass( 'selected_thumb' );
+            $( s ).addClass('selected_thumb');
             i.src = image_url;
             i.alt = image_shortdesc;
         }
@@ -41,9 +48,9 @@
                     {% if item.images.all|length > 1 %}
                     <div class="itemThumbs" class="clear">
                         <div class="thumbsWrapper">
-                        {% for thumb in item.images.all|slice:"1:" %}
-                            <img alt="{{thumb.short_desc}}" src="{{thumb.image.url}}" height="70px"{# width="" #} 
-                             onclick="javascript:thumbnail_preview('{{thumb.image.url}}', '{{thumb.short_desc}}');" />
+                        {% for thumb in item.images.all %}
+                            <img {% if forloop.first %}class="selected_thumb"{% endif %} alt="{{thumb.short_desc}}" src="{{thumb.image.url}}" height="70px"{# width="" #} 
+                             onclick="javascript:thumbnail_preview( this, '{{thumb.image.url}}', '{{thumb.short_desc}}');" />
                         {% endfor %}
                         </div>
                     </div>
