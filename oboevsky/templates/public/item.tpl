@@ -4,6 +4,7 @@
     <style type="text/css">
         .selected_thumb {
             opacity: 0.5;
+            cursor: default;
         }
     </style>
     <script type="text/javascript">
@@ -47,7 +48,7 @@
             {% if item.images.all %}
                 <div id="itemPreviewWrapper" class="right">
                     <img id="itemPreview" src="{{item.images.all.0.image.url}}" alt="{{item.images.all.0.short_desc}}"
-                     width="270px" height="202px" />
+                     width="270px" />
                     {% if item.images.all|length > 1 %}
                     <div class="itemThumbs" class="clear">
                         <div class="thumbsWrapper">
