@@ -13,7 +13,8 @@ urlpatterns = patterns('',
     url(r'^producer/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.producer'),
     url(r'^catalog/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.category'),
     url(r'^country/(?P<Url>[\w\d_-]+)/?$', 'oboevsky.views.country'),
-	url(r'^material/(?P<Id>[\d]+)/?$', 'oboevsky.views.material'),
+    url(r'^material/(?P<Id>[\d]+)/?$', 'oboevsky.views.material'),
+	url(r'^countries/?$', 'oboevsky.views.countries'),
 
     # Examples:
     # url(r'^$', 'oboevsky.views.home', name='home'),

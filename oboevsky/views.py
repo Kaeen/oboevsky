@@ -126,3 +126,10 @@ def material(Request, Id):
     build_items_var(wallpapers, vars, lambda x: x.get_first_category()) #start_page, step...)
 
     return render_to_response('public/material.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+def countries(Request):
+    countries = Country.objects.filter( visible=True )
+    vars = {
+        'countries': countries,
+    }
+    return render_to_response('public/categories.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
