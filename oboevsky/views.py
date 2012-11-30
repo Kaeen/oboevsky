@@ -132,4 +132,4 @@ def countries(Request):
     vars = {
         'countries': countries,
     }
-    return render_to_response('public/categories.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+    return render_to_response('public/countries.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
