@@ -1,5 +1,8 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block menu_countries %}
+{% endblock %}
+
 {% block content %}
 
     <div class="contentBlockNoBorder">
@@ -8,9 +11,11 @@
         </div>
         <div id="producerProfile">
             <h1>Страны-производители обоев</h1>
+            <ul>
             {% for country in countries %}
-                <div>{{country.get_html|safe}}</div>
+                <li>{{country.get_html|safe}}</li>
             {% endfor %}
+            </ul>
         </div>
     </div>
 
