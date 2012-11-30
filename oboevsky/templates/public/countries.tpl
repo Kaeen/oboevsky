@@ -9,7 +9,7 @@
         <div id="producerProfile">
             <h1>Страны-производители обоев</h1>
             {% for country in countries %}
-                <div>{{country.get_html}}</div>
+                <div>{{country.get_html|safe}}</div>
             {% endfor %}
         </div>
     </div>
