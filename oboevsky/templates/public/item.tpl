@@ -54,7 +54,7 @@
                         <div class="thumbsWrapper">
                         {% for thumb in item.images.all %}
                             <img {% if forloop.first %}class="selected_thumb"{% endif %} alt="{{thumb.short_desc}}" src="{{thumb.image.url_170x111}}" height="70px"{# width="" #} 
-                             onclick="javascript:thumbnail_preview( this, '{{thumb.image.url_284_201}}', '{{thumb.short_desc}}');" />
+                             onclick="javascript:thumbnail_preview( this, '{{thumb.image.url_284x201}}', '{{thumb.short_desc}}');" />
                         {% endfor %}
                         </div>
                     </div>
