@@ -9,6 +9,9 @@ from django.utils.translation import ugettext as _
 from colour_field.fields import ColourField
 from django.db.models.signals import pre_save
 from wysiwyg import WYSIWYGField
+from .thumbs import ImageWithThumbsField
+
+thumbnails_sizes = ((284, 201), (170, 111), (89, 63))
 
 ############################
 #           Обои           #
@@ -212,7 +215,7 @@ class WallpaperSize(models.Model):
 	visible    = models.BooleanField(default=False , verbose_name=u'видимость')
 
 	def __unicode__(self):
-		return '{0}x{1}'.format(self.length, self.height)
+		return u'{0}x{1}'.format(self.length, self.height)
 
 	def get_absolute_url(self):
 		return u'/size/'+self.url
@@ -461,7 +464,7 @@ class Picture(models.Model):
 	# Полное описание: 
 	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Изображение: 
-	image = models.ImageField(upload_to='pictures/', verbose_name=u'изображение') # TODO: WIDTH, HEIGHT
+	image = ImageWithThumbsField(upload_to='pictures/', verbose_name=u'изображение', sizes=thumbnails_sizes) # TODO: WIDTH, HEIGHT
 
 	# TODO: the rest of fields
 
@@ -522,7 +525,7 @@ class Texture(models.Model):
 	# Полное описание: 
 	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Изображение текстуры: 
-	pic = models.ImageField(upload_to='textures/', verbose_name=_(u'изображение текстуры')) # TODO: РАЗМЕРЫ ПИКТОГРАММЫ ТЕКСТУРЫ
+	pic = ImageWithThumbsField(upload_to='textures/', verbose_name=_(u'изображение текстуры'), sizes=thumbnails_sizes) # TODO: РАЗМЕРЫ ПИКТОГРАММЫ ТЕКСТУРЫ
 	# Шаблон: 
 	template = models.ForeignKey('Template', blank=True, null=True, verbose_name=_(u'шаблон'))
 	# Информационные блоки: 
@@ -580,7 +583,7 @@ class Material(models.Model):
 	# Полное описание: 
 	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Пиктограмма: TODO: УБРАТЬ
-	pic = models.ImageField(upload_to='textures/', blank=True, verbose_name=_(u'изображение материала')) # TODO: РАЗМЕРЫ ПИКТОГРАММЫ МАТЕРИАЛА
+	pic = ImageWithThumbsField(upload_to='textures/', blank=True, verbose_name=_(u'изображение материала'), sizes=thumbnails_sizes)
 	# Шаблон: 
 	template = models.ForeignKey('Template', blank=True, null=True, verbose_name=_(u'шаблон'))
 	# Информационные блоки: 
