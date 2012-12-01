@@ -11,7 +11,8 @@ from django.db.models.signals import pre_save
 from wysiwyg import WYSIWYGField
 from .thumbs import ImageWithThumbsField
 
-thumbnails_sizes = ((284, 201), (170, 111), (89, 63))
+thumbnails_sizes = ((284, 185), (170, 111), (89, 63))
+textures_sizes = ((28,28), (128,128))
 
 ############################
 #           Обои           #
@@ -525,7 +526,7 @@ class Texture(models.Model):
 	# Полное описание: 
 	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Изображение текстуры: 
-	pic = ImageWithThumbsField(upload_to='textures/', verbose_name=_(u'изображение текстуры'), sizes=thumbnails_sizes) # TODO: РАЗМЕРЫ ПИКТОГРАММЫ ТЕКСТУРЫ
+	pic = ImageWithThumbsField(upload_to='textures/', verbose_name=_(u'изображение текстуры'), sizes=textures_sizes) # TODO: РАЗМЕРЫ ПИКТОГРАММЫ ТЕКСТУРЫ
 	# Шаблон: 
 	template = models.ForeignKey('Template', blank=True, null=True, verbose_name=_(u'шаблон'))
 	# Информационные блоки: 
