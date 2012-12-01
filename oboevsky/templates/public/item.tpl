@@ -47,14 +47,14 @@
 
             {% if item.images.all %}
                 <div id="itemPreviewWrapper" class="right">
-                    <img id="itemPreview" src="{{item.images.all.0.image.url}}" alt="{{item.images.all.0.short_desc}}"
+                    <img id="itemPreview" src="{{item.images.all.0.image.url_284x201}}" alt="{{item.images.all.0.short_desc}}"
                      width="270px" />
                     {% if item.images.all|length > 1 %}
                     <div class="itemThumbs" class="clear">
                         <div class="thumbsWrapper">
                         {% for thumb in item.images.all %}
-                            <img {% if forloop.first %}class="selected_thumb"{% endif %} alt="{{thumb.short_desc}}" src="{{thumb.image.url}}" height="70px"{# width="" #} 
-                             onclick="javascript:thumbnail_preview( this, '{{thumb.image.url}}', '{{thumb.short_desc}}');" />
+                            <img {% if forloop.first %}class="selected_thumb"{% endif %} alt="{{thumb.short_desc}}" src="{{thumb.image.url_170x111}}" height="70px"{# width="" #} 
+                             onclick="javascript:thumbnail_preview( this, '{{thumb.image.url_284_201}}', '{{thumb.short_desc}}');" />
                         {% endfor %}
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                     <div class="caption">Узоры:</div>
                     <div class="left">
                         {% for texture in item.texture.all %}
-                            <a href="{{texture.get_absolute_url}}"><img src="{{texture.pic.url}}" alt="{{texture.short_desc}}" class="left icon" /></a>
+                            <a href="{{texture.get_absolute_url}}"><img src="{{texture.pic.url}}{# TODO?!?!? #}" alt="{{texture.short_desc}}" class="left icon" /></a>
                         {% endfor %}
                     </div>
                 </div>
