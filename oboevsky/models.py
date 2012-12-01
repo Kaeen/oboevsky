@@ -11,7 +11,7 @@ from django.db.models.signals import pre_save
 from wysiwyg import WYSIWYGField
 from .thumbs import ImageWithThumbsField
 
-thumbnails_sizes = ((284, 185), (170, 111), (89, 63))
+thumbnails_sizes = ((284, 185), (170, 111))
 textures_sizes = ((28,28), (128,128))
 
 ############################
@@ -776,7 +776,7 @@ ORDER_STATE_CHOICES = (
 )
 
 class Order(models.Model):
-
+	# TODO: поля
 	# Состояние заказа:
 	state = models.CharField(max_length=20, blank=False, verbose_name=u'состояние заказа')
 
@@ -786,7 +786,7 @@ class Order(models.Model):
 	# Видимость: 
 	visible    = models.BooleanField(default=False , verbose_name=u'видимость')
 
-	#user = models.OneToOneField(User)
+	customer = models.OneToOneField(Customer)
 
 	class Meta:
 		verbose_name = _(u'заказ')
@@ -801,6 +801,6 @@ class Order(models.Model):
 ########################
 
 class Customer(models.Model):
-
+	# TODO: поля
 	user = models.OneToOneField(User)
 
