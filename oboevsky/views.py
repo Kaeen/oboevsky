@@ -133,3 +133,36 @@ def countries(Request):
         'countries': countries,
     }
     return render_to_response('public/countries.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+#################################
+#     Всякая аутентификация     #
+#################################
+
+def authenricate(Request):
+    from django.contrib.auth.models import User
+    from django.contrib.auth import authenticate, login
+
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            #TODO: Redirect to a success page.
+            home(Request)
+        else:
+            # Return a 'disabled account' error message
+            raise Exception, u"Учётная запись заблокирована администратором"
+    else:
+        # Return an 'invalid login' error message.
+        raise Exception, u"Неверные логин/пароль"
+
+def register(Request):
+    from django.contrib.auth.models import User
+    # TODO
+
+def logout_view(request):
+    from django.contrib.auth import logout
+    logout(request)
+    #TODO: Redirect to a success page.
+    home(Request)

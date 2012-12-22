@@ -767,6 +767,10 @@ class PromoCampainAdmin(admin.ModelAdmin):
 class Customer(models.Model):
 	# TODO: поля
 	user = models.OneToOneField(User)
+	first_name = models.CharField(max_length=32, blank=False, editable=False, verbose_name=u"TODO")
+	second_name = models.CharField(max_length=32, blank=False, editable=False, verbose_name=u"TODO")
+	surname = models.CharField(max_length=32, blank=False, editable=False, verbose_name=u"TODO")
+	
 
 
 ########################
