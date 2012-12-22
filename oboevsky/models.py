@@ -760,6 +760,14 @@ class PromoCampainAdmin(admin.ModelAdmin):
 	filter_horizontal = ('info_blocks', 'categories', 'wallpapers')
 	list_display = ['title', 'conditions', 'wallpaper_price_formula', 'total_price_formula', 'shipping_price_formula', 'visible']
 
+########################
+#        Клиент        #
+########################
+
+class Customer(models.Model):
+	# TODO: поля
+	user = models.OneToOneField(User)
+
 
 ########################
 #        Заказ         #
@@ -794,13 +802,3 @@ class Order(models.Model):
 
 	def __unicode__(self):
 		pass
-
-
-########################
-#        Клиент        #
-########################
-
-class Customer(models.Model):
-	# TODO: поля
-	user = models.OneToOneField(User)
-
