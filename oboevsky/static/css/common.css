@@ -263,6 +263,10 @@ html, body {
     margin: 0;
 }
 
+.contectBlock > * {
+    margin-left: 10px;
+}
+
 .items {
 
 }
