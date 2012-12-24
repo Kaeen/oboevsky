@@ -805,6 +805,8 @@ class Order(models.Model):
 
 	dump = models.TextField(blank=True, editable=False) #...
 
+	comments = models.TextField(blank=True, editable=True, verbose_name=u"Комментарий")
+
 	customer = models.OneToOneField(Customer)
 
 	class Meta:
