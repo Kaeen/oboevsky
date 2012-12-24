@@ -777,6 +777,7 @@ class Customer(models.Model):
 	address = models.TextField(blank=True, editable=True, verbose_name=u"Адрес")
 
 
+
 ########################
 #        Заказ         #
 ########################
