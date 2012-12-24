@@ -770,7 +770,11 @@ class Customer(models.Model):
 	first_name = models.CharField(max_length=32, blank=False, editable=False, verbose_name=u"Имя")
 	second_name = models.CharField(max_length=32, blank=False, editable=False, verbose_name=u"Отчество")
 	surname = models.CharField(max_length=32, blank=False, editable=False, verbose_name=u"Фамилия")
+
 	email = models.CharField(max_length=32, blank=False, editable=False, verbose_name=u"Электропочта")
+	email_confirmation_hash = models.CharField(max_length=32, blank=True, editable=False, verbose_name=u"Хеш подтверждения")
+
+	address = models.TextField(blank=True, editable=True, verbose_name=u"Адрес")
 
 
 ########################
@@ -797,6 +801,8 @@ class Order(models.Model):
 	modified   = models.DateTimeField(auto_now=True, auto_now_add=True, blank=True, verbose_name=u'дата последнего изменения')
 	# Видимость: 
 	visible    = models.BooleanField(default=False , verbose_name=u'видимость')
+
+	dump = models.TextField(blank=True, editable=False) #...
 
 	customer = models.OneToOneField(Customer)
 
