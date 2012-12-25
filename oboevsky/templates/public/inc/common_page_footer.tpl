@@ -14,9 +14,9 @@
             {% endfor %}
   
             {% if user.is_authenticated %}
-                <a href="/login">Авторизация</a>
-            {% else %}
                 <a href="/account">Личный кабинет</a>
+            {% else %}
+                <a href="/login">Авторизация</a>
             {% endif %}
         </p>
         <p id="publicNote">Цены на данном сайте не являются публичной офертой согласно законодательству РФ</p>
