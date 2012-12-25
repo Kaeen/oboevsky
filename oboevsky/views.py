@@ -48,8 +48,8 @@ def common_context_proc(Request=None):
     menu_producers = Producer.objects.filter(visible=True)
     flatpages = FlatPage.objects.all()
     user = Request.user
-    cart_items = []
-    cart_items_total = 0
+    cart_items = [] #TODO
+    cart_items_total = 0 #TODO
 
     return {
         'menu_categories': menu_categories,
@@ -58,7 +58,8 @@ def common_context_proc(Request=None):
         'menu_producers': menu_producers,
         'flatpages': flatpages,
         'user': user,
-
+        'cart_items': cart_items,
+        'cart_items_total': cart_items_total,
     }
 
 
