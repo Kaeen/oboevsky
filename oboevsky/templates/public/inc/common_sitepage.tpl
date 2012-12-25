@@ -74,7 +74,7 @@
 
         {% block right_sidebar %}
         <div class="pageSidebar right">
-            {% if user.is_authenticated %}
+            {% if not user.is_anonymous %}
             <div class="pageColumn">
                 <h2>Здравствуйте, {{user.customer.first_name}} {{user.customer.second_name}}!</h2>
                 <p><a href="/account/">Личный кабинет</a></p>
