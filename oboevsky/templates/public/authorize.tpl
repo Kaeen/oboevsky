@@ -8,7 +8,7 @@
 
         <h1>Здравствуйте!</h1>
         <p>Пожалуйста, представьтесь. </p>
-        <form action="" method="post">
+        <form action="?do" method="post">
         	<p>
         		Логин: <input name="login" type="text" value="" />
         	</p>

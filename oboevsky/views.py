@@ -47,6 +47,7 @@ def common_context_proc(Request=None):
     menu_materials = Material.objects.filter(visible=True)
     menu_producers = Producer.objects.filter(visible=True)
     flatpages = FlatPage.objects.all()
+    user = Request.user
 
     return {
         'menu_categories': menu_categories,
@@ -54,6 +55,8 @@ def common_context_proc(Request=None):
         'menu_materials': menu_materials,
         'menu_producers': menu_producers,
         'flatpages': flatpages,
+        'user': user,
+
     }
 
 
@@ -138,31 +141,43 @@ def countries(Request):
 #     Всякая аутентификация     #
 #################################
 
-def authenricate(Request):
+def login(Request):
     from django.contrib.auth.models import User
     from django.contrib.auth import authenticate, login
+    vars = {}
 
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        if user.is_active:
-            login(request, user)
-            #TODO: Redirect to a success page.
-            home(Request)
+    if Request.GET.get('do', None):
+        username = Request.POST['username']
+        password = Request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(Request, user)
+                #TODO: Redirect to a success page.
+                return home(Request)
+            else:
+                # Return a 'disabled account' error message
+                raise Exception, u"Учётная запись заблокирована администратором"
         else:
-            # Return a 'disabled account' error message
-            raise Exception, u"Учётная запись заблокирована администратором"
-    else:
-        # Return an 'invalid login' error message.
-        raise Exception, u"Неверные логин/пароль"
+            # Return an 'invalid login' error message.
+            #raise Exception, u"Неверные логин/пароль"
+            vars = {
+                'message': u'Неверные логин/пароль',
+            }
+        
+    return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def register(Request):
     from django.contrib.auth.models import User
     # TODO
+    vars = {}
+    return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
-def logout_view(request):
+def logout(Request):
     from django.contrib.auth import logout
     logout(request)
     #TODO: Redirect to a success page.
-    home(Request)
+    return home(Request)
+
+def account(Request):
+    return home(Request)

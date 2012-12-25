@@ -74,6 +74,14 @@
 
         {% block right_sidebar %}
         <div class="pageSidebar right">
+            {% if user.is_authenticated %}
+            <div class="pageColumn">
+                <h2>Здравствуйте, {{user.customer.first_name}} {{user.customer.second_name}}!</h2>
+                <p><a href="/account/">Личный кабинет</a></p>
+                <p><a href="/logout/">Выйти</a></p>
+            </div>
+            {% endif %}
+
             {% comment %}
             <div class="pageColumn">
                 <h2>Поиск</h2>
@@ -83,7 +91,14 @@
 
             <div class="pageColumn">
                 <h2>Корзина</h2>
+                {% if cart_items | length < 1 %}
                 <p class="text-center">В Вашей корзине нет товаров</p>
+                {% else %}
+                    {% for item in cart_items %}
+                        <p>{{item.title}} x {{item.quantity}} рул. = {{item.total}} руб.</p>
+                    {% endfor %}
+                    Итого: {{cart_items_total}} руб.
+                {% endif %}
             </div>
 
             <a href="/order-sample">

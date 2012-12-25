@@ -12,6 +12,12 @@
                 <a href="{{flatpage.url}}">{{flatpage.title}}</a>
                 {% if not forloop.last %} &middot; {% endif %}
             {% endfor %}
+  
+            {% if user.is_authenticated %}
+                <a href="/login">Авторизация</a>
+            {% else %}
+                <a href="/account">Личный кабинет</a>
+            {% endif %}
         </p>
         <p id="publicNote">Цены на данном сайте не являются публичной офертой согласно законодательству РФ</p>
     </div>
