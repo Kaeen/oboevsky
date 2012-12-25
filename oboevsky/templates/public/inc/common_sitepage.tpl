@@ -91,7 +91,7 @@
 
             <div class="pageColumn">
                 <h2>Корзина</h2>
-                {% if cart_items | length < 1 %}
+                {% if cart_items|length < 1 %}
                 <p class="text-center">В Вашей корзине нет товаров</p>
                 {% else %}
                     {% for item in cart_items %}
