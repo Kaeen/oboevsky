@@ -9,6 +9,9 @@
         <h1>Здравствуйте!</h1>
         <p>Пожалуйста, представьтесь. </p>
         <form action="?do" method="post">
+            {% if message %}
+                <p class="red">{{message}}</p>
+            {% endif %}
             {% csrf_token %}
         	<p>
         		Логин: <input name="login" type="text" value="" />
