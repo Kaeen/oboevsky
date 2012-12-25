@@ -9,6 +9,7 @@
         <h1>Здравствуйте!</h1>
         <p>Пожалуйста, представьтесь. </p>
         <form action="?do" method="post">
+            {% csrf_token %}
         	<p>
         		Логин: <input name="login" type="text" value="" />
         	</p>
