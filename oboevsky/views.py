@@ -178,7 +178,7 @@ def register(Request):
 
 def logout(Request):
     from django.contrib.auth import logout
-    logout(request)
+    logout(Request)
     #TODO: Redirect to a success page.
     return home(Request)
 
