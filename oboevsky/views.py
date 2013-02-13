@@ -176,7 +176,7 @@ def register(Request):
     from django.contrib.auth.models import User
     vars = {}
 
-    if Request.GET.get('do', None):
+    if Request.GET.get('do', None) == 'do':
         # Registration attempt
         try:
             vars['first_name']  = Request.POST.get('first_name', None)
