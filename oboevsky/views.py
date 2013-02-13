@@ -216,6 +216,8 @@ def register(Request):
 
             vars['error'] = 'SUCCESS'
             # TODO: обработка успешной регистрации
+        except Exception, e:
+            vars['error'] = e
 
     return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
