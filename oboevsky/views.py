@@ -203,7 +203,6 @@ def register(Request):
             assert vars['pass'] == vars['pass2'], \
                 u'Поля "Пароль" и "Подтверждение пароля" не совпадают.'
 
-
         except AssertionError, e:
             vars['error'] = e
             return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
@@ -212,14 +211,11 @@ def register(Request):
             user = User.objects.create_user(' '.join(vars['first_name'], vars['surname']), vars['email'], vars['pass'])
             user.save()
 
-            customer = Customer.create(user=user, first_name=vars['first_name'], second_name=vars['second_name'], surname=vars['surname'], email=vars['email'], 
-                email_confirmation_hash='', address=vars['address'])
+            customer = Customer.create(user=user, first_name=vars['first_name'], second_name=vars['second_name'], surname=vars['surname'], email=vars['email'], email_confirmation_hash='', address=vars['address'])
             customer.save()
 
             vars['error'] = 'SUCCESS'
-
-
-
+            # TODO: обработка успешной регистрации
 
     return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
