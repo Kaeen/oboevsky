@@ -5,6 +5,7 @@ from models import *
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_list_or_404, get_object_or_404
 from django.contrib.flatpages.models import *
+from django.contrib.auth.models import User
 
 ####################################
 #       Common functionality       # 
@@ -173,8 +174,53 @@ def login(Request):
 
 def register(Request):
     from django.contrib.auth.models import User
-    # TODO
     vars = {}
+
+    if Request.GET.get('do', None):
+        # Registration attempt
+        try:
+            vars['first_name']  = Request.POST.get('first_name', None)
+            # first name validation
+
+            vars['second_name'] = Request.POST.get('second_name', None)
+            # second name validation
+
+            vars['surname']     = Request.POST.get('surname', None)
+            # surname validation
+
+            vars['email']       = Request.POST.get('email', None)
+            # TODO validation
+
+            vars['phone']       = Request.POST.get('phone', None)
+            # TODO validation
+
+            vars['address']     = Request.POST.get('address', None)
+            # TODO validation
+
+            vars['pass']     = Request.POST.get('pass', None)
+            vars['pass2']     = Request.POST.get('pass2', None)
+            # TODO validation
+            assert vars['pass'] == vars['pass2'], \
+                u'Поля "Пароль" и "Подтверждение пароля" не совпадают.'
+
+
+        except AssertionError, e:
+            vars['error'] = e
+            return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+        try:
+            user = User.objects.create_user(' '.join(vars['first_name'], vars['surname']), vars['email'], vars['pass'])
+            user.save()
+
+            customer = Customer.create(user=user, first_name=vars['first_name'], second_name=vars['second_name'], surname=vars['surname'], email=vars['email'], 
+                email_confirmation_hash='', address=vars['address'])
+            customer.save()
+
+            vars['error'] = 'SUCCESS'
+
+
+
+
     return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def logout(Request):
