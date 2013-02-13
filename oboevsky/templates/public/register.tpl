@@ -20,6 +20,9 @@
         {%endif%}
 
         <form action="?do" method="post">
+
+            {% csrf_token %}
+
         	<p>
         		Имя: <input name="first_name" type="text" value="{{first_name}}" />
         	</p>
