@@ -207,7 +207,11 @@ def register(Request):
             vars['user'] = User.objects.create_user( ' '.join( [vars['first_name'], vars['surname']] ), vars['email'], vars['pass'] )
             vars['user'].save()
 
-            customer = Customer.objects.create(**vars)
+            kw = dict()
+            for field in fields:
+                kw[field[0]] = vars[field[0]]
+
+            customer = Customer.objects.create(**kw)
             customer.save()
 
             vars['error'] = 'SUCCESS'
