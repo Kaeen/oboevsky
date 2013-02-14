@@ -179,26 +179,22 @@ def register(Request):
     if Request.GET.get('do', None) is not None:
         # Registration attempt
         try:
-            vars['first_name']  = Request.POST.get('first_name', None)
-            # first name validation
+            fields = (
+                ('first_name', u'Имя'),
+                ('second_name', u'Отчество'),
+                ('surname', u'Фамилия'),
+                ('email', u'Электронная почта'),
+                ('phone', u'Телефон'),
+                ('address', u'Адрес'),
+                ('pass', u'Пароль'),
+                ('pass2', u'Подтверждение пароля'),
+            )
+            for field in fields:
+                vars[field[0]] = Request.POST.get(field[0], None)
+                if field[0] != 'second_name':
+                    assert len(vars[field[0]].strip()) > 0, \
+                        u'Поле "%s" не заполнено!' % field[1]
 
-            vars['second_name'] = Request.POST.get('second_name', None)
-            # second name validation
-
-            vars['surname']     = Request.POST.get('surname', None)
-            # surname validation
-
-            vars['email']       = Request.POST.get('email', None)
-            # TODO validation
-
-            vars['phone']       = Request.POST.get('phone', None)
-            # TODO validation
-
-            vars['address']     = Request.POST.get('address', None)
-            # TODO validation
-
-            vars['pass']     = Request.POST.get('pass', None)
-            vars['pass2']     = Request.POST.get('pass2', None)
             # TODO validation
             assert vars['pass'] == vars['pass2'], \
                 u'Поля "Пароль" и "Подтверждение пароля" не совпадают.'
@@ -211,7 +207,7 @@ def register(Request):
             user = User.objects.create_user( ' '.join( [vars['first_name'], vars['surname']] ), vars['email'], vars['pass'] )
             user.save()
 
-            customer = Customer.create(user=user, first_name=vars['first_name'], second_name=vars['second_name'], surname=vars['surname'], email=vars['email'], email_confirmation_hash='', address=vars['address'])
+            customer = Customer.objects.create(user=user, first_name=vars['first_name'], second_name=vars['second_name'], surname=vars['surname'], email=vars['email'], email_confirmation_hash='', address=vars['address'])
             customer.save()
 
             vars['error'] = 'SUCCESS'
