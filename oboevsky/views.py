@@ -204,10 +204,10 @@ def register(Request):
             return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
         try:
-            user = User.objects.create_user( ' '.join( [vars['first_name'], vars['surname']] ), vars['email'], vars['pass'] )
-            user.save()
+            vars['user'] = User.objects.create_user( ' '.join( [vars['first_name'], vars['surname']] ), vars['email'], vars['pass'] )
+            vars['user'].save()
 
-            customer = Customer.objects.create(user=user, first_name=vars['first_name'], second_name=vars['second_name'], surname=vars['surname'], email=vars['email'], email_confirmation_hash='', address=vars['address'])
+            customer = Customer.objects.create(**vars)
             customer.save()
 
             vars['error'] = 'SUCCESS'
