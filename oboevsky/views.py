@@ -204,6 +204,9 @@ def register(Request):
             return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
         try:
+            assert User.objects.get(email=vars['email'].strip()) == None, \
+                u"Пользователь с таким электронным адресом уже существует!"
+
             vars['user'] = User.objects.create_user( ' '.join( [vars['first_name'], vars['surname']] ), vars['email'], vars['pass'] )
             vars['user'].save()
 
