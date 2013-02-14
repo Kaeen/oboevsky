@@ -776,6 +776,8 @@ class Customer(models.Model):
 
 	address = models.TextField(blank=True, editable=True, verbose_name=u"Адрес")
 
+	#TODO: add phone field! 
+
 	def full_name(self):
 		return u'%s %s %s' % (self.first_name, self.second_name, self.surname)
 
