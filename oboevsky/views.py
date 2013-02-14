@@ -222,7 +222,7 @@ def register(Request):
                 #TODO: confirmation!
                 email_confirmation_cash=''
             )
-            customer.save()
+            #customer.save()
 
             vars['error'] = 'SUCCESS'
             # TODO: обработка успешной регистрации
