@@ -220,7 +220,6 @@ def register(Request):
                 #phone=vars['phone'],
                 address=vars['address'],
                 #TODO: confirmation!
-                email_confirmation_cash=''
             )
             #customer.save()
 
