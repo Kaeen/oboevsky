@@ -779,6 +779,11 @@ class Customer(models.Model):
 	def full_name(self):
 		return u'%s %s %s' % (self.first_name, self.second_name, self.surname)
 
+	@classmethod
+	def create(cls, **kw):
+		customer = cls(**kw)
+		# do something with the book
+		return customer
 
 ########################
 #        Заказ         #
