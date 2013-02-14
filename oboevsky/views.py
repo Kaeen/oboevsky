@@ -6,6 +6,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, get_list_or_404, get_object_or_404
 from django.contrib.flatpages.models import *
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 
 ####################################
 #       Common functionality       # 
