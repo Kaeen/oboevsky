@@ -101,6 +101,8 @@
                     {% if cart_items_total > 0 %}
                     Итого: {{cart_items_total}} руб.
                     {% endif %}
+                    <br />
+                    <a href="/cart/">Подробнее</a> <a href="#">Оформить</a>
                 {% endif %}
             </div>
 
