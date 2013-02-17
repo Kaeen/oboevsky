@@ -6,23 +6,34 @@
             <a href="/">Главная</a> / Авторизация
         </div>
 
-        <h1>Здравствуйте!</h1>
-        <p>Пожалуйста, представьтесь. </p>
+        {%if after_register %}
+
+            <h1>Спасибо! </h1>
+            <p>Процедура регистрации завершена. Попробуем авторизоваться?</p>
+        
+        {%else%}
+
+            <h1>Здравствуйте!</h1>
+            <p>Для того, чтобы мы могли предложить Вам наилучший сервис, пройдите, пожалуйста, процедуру авторизации.</p>
+
+        {%endif%}
+
         <form action="?do" method="post">
-            {% if message %}
-                <p class="red">{{message}}</p>
-            {% endif %}
+
+            {% if error %}<p>{{error}}</p>{% endif %}
+
             {% csrf_token %}
-        	<p>
-        		Логин: <input name="login" type="text" value="" />
-        	</p>
-        	<p>
-        		Пароль: <input name="password" type="password" value="" />
-        	</p>
-        	<p>
-        		<input type="submit" value="Отправить" />
-        		<a href="#">Зарегистрироваться</a>
-        	</p>
+
+            <p>
+                E-mail: <input name="email" type="text" value="{{email}}" />
+            </p>
+            <p>
+                Пароль: <input name="pass" type="text" value="{{pass}}" />
+            </p>
+
+            <p>
+                {% if not after_register %}<a href="/register">Зарегистрироваться</a> {% endif %}<input type="submit" value="ОК" />
+            </p>
         </form>
     </div>
 {% endblock %}

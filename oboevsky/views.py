@@ -230,9 +230,10 @@ def register(Request):
                 address=vars['address'],
                 #TODO: confirmation!
             )
-            #customer.save()
+            customer.save()
 
-            vars['error'] = 'SUCCESS'
+            vars['after_register'] = 'SUCCESS'
+            return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
             # TODO: обработка успешной регистрации
         except Exception, e:
             vars['error'] = e
