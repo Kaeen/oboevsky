@@ -198,7 +198,8 @@ def register(Request):
             assert vars['pass'] == vars['pass2'], \
                 u'Поля "Пароль" и "Подтверждение пароля" не совпадают.'
 
-        except AssertionError, e:
+        #except AssertionError, e:
+        except Exception, e:
             vars['error'] = e
             return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
