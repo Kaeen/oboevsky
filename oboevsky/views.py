@@ -160,7 +160,8 @@ def login(Request):
             if user.is_active:
                 login(Request, user)
                 #TODO: Redirect to a success page.
-                return home(Request)
+                from django.shortcuts import redirect
+                return redirect('/')
             else:
                 vars['error'] = u"Учётная запись заблокирована администратором"
         else:
