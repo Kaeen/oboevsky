@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^account/?$', 'oboevsky.views.account'),
 
 
-    url(r'^put-to-cart/(?P<pk>[\d])+/?$', 'oboevsky.views.add_item_to_cart'),
+    url(r'^put-to-cart/(?P<pk>[\d]+)/?$', 'oboevsky.views.add_item_to_cart'),
 
     # Examples:
     # url(r'^$', 'oboevsky.views.home', name='home'),
