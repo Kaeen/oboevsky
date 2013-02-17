@@ -164,7 +164,7 @@ def login(Request):
 
         user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(Request, user)
-        
+
         from django.shortcuts import redirect
         return redirect('/')
                 
