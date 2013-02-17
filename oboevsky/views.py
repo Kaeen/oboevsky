@@ -52,7 +52,7 @@ def common_context_proc(Request=None):
     user = Request.user
     #if not user.is_anonymous():
     #    user.customer = Customer.objects.get(user=user)
-    cart_items = Request.session.get('cart', []).values()
+    cart_items = Request.session.get('cart', {}).values()
     cart_items_total = Request.session.get('cart_total', 0)
 
     return {
