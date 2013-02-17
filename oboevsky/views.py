@@ -151,7 +151,7 @@ def login(Request):
     from django.contrib.auth import authenticate, login
     vars = {}
 
-    if Request.GET.get('do', None):
+    if Request.GET.get('do', None) is not None:
         email = Request.POST['email']
         password = Request.POST['pass']
         vars['email'] = email
