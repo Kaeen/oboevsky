@@ -63,7 +63,7 @@ class WallpaperSizeAdmin(admin.ModelAdmin):
 	save_as = True
 
 class CustomerAdmin(admin.ModelAdmin):
-    readonly_fields=('first_name', 'second_name', 'surname', 'email', 'address',)
+    readonly_fields=('user', 'first_name', 'second_name', 'surname', 'email', 'address',)
 
 admin.site.register( Producer,   ProducerAdmin )
 admin.site.register( Category,   CategoryAdmin )

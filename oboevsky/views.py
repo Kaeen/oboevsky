@@ -149,11 +149,12 @@ def countries(Request):
 def login(Request):
     from django.contrib.auth.models import User
     from django.contrib.auth import authenticate, login
-    vars = {'message': None,}
+    vars = {}
 
     if Request.GET.get('do', None):
-        username = Request.POST['username']
-        password = Request.POST['password']
+        username = Request.POST['email']
+        password = Request.POST['pass']
+        vars['email'] = username
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
@@ -162,13 +163,13 @@ def login(Request):
                 return home(Request)
             else:
                 vars = {
-                    'message': u"Учётная запись заблокирована администратором",
+                    'error': u"Учётная запись заблокирована администратором",
                 }
         else:
             # Return an 'invalid login' error message.
             #raise Exception, u"Неверные логин/пароль"
             vars = {
-                'message': u'Неверные логин/пароль.',
+                'error': u'Неверные логин/пароль.',
             }
         
     return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
