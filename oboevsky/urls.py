@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^login/?$', 'oboevsky.views.login'),
     url(r'^logout/?$', 'oboevsky.views.logout'),
     url(r'^register/?$', 'oboevsky.views.register'),
+    url(r'^account/?$', 'oboevsky.views.account'),
 
     # Examples:
     # url(r'^$', 'oboevsky.views.home', name='home'),

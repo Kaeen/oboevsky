@@ -231,8 +231,8 @@ def register(Request):
             customer.save()
 
             vars['after_register'] = 'SUCCESS'
+            #TODO: тут должен быть редирект
             return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
-            # TODO: обработка успешной регистрации
         except Exception, e:
             vars['error'] = e
 
@@ -241,8 +241,9 @@ def register(Request):
 def logout(Request):
     from django.contrib.auth import logout
     logout(Request)
-    #TODO: Redirect to a success page.
-    return home(Request)
+    from django.shortcuts import redirect
+    return redirect('/?logout')
+
 
 def account(Request):
-    return home(Request)
+    return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
