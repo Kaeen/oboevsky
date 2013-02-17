@@ -76,7 +76,7 @@
         <div class="pageSidebar right">
             {% if not user.is_anonymous %}
             <div class="pageColumn">
-                <h2>Здравствуйте, {{user.customer__first_name}} {{user.customer__second_name}}!</h2>
+                <h2>Здравствуйте, {{user.customer}}!</h2>
                 <p><a href="/account/">Личный кабинет</a></p>
                 <p><a href="/logout/">Выйти</a></p>
             </div>
