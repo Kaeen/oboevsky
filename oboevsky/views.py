@@ -152,23 +152,19 @@ def login(Request):
     vars = {}
 
     if Request.GET.get('do', None):
-        username = Request.POST['email']
+        email = Request.POST['email']
         password = Request.POST['pass']
-        vars['email'] = username
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(Request, user)
-                #TODO: Redirect to a success page.
-                from django.shortcuts import redirect
-                return redirect('/')
-            else:
-                vars['error'] = u"Учётная запись заблокирована администратором"
-        else:
+        vars['email'] = email
+        user = User.objects.get(email=email)
+        if not user or not user.check_password(password):
             # Return an 'invalid login' error message.
             #raise Exception, u"Неверные логин/пароль"
             vars['error'] = u'Неверные логин/пароль'
-        
+            return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+        login(Request, user)
+        #TODO: Redirect to a success page.
+                
     return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def register(Request):
@@ -212,7 +208,7 @@ def register(Request):
                 assert False, \
                     u"Пользователь с таким электронным адресом уже существует!"
 
-            vars['user'] = User.objects.create_user( ' '.join( [vars['first_name'], vars['surname']] ), vars['email'], vars['pass'] )
+            vars['user'] = User.objects.create_user( vars['email'], vars['email'], vars['pass'] )
             vars['user'].save()
 
             kw = dict()
