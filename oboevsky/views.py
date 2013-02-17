@@ -249,7 +249,7 @@ def account(Request):
     return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def add_item_to_cart(Request, pk):
-    item = Wallpaper.objects.get_object_or_404(pk=pk)
+    item = Wallpaper.objects.get_object_or_404(id=pk)
     cart = Request.session.get('cart', {})
 
     if not cart.get(pk):
