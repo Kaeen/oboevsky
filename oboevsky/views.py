@@ -164,7 +164,7 @@ def login(Request):
 
         user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(Request, user)
-        #TODO: Redirect to a success page.
+        return redirect('/')
                 
     return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
