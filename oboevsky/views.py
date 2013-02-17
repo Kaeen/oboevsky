@@ -250,7 +250,7 @@ def account(Request):
 
 def add_item_to_cart(Request, pk):
     from django.shortcuts import get_object_or_404
-    item = get_or_404(Wallpaper, id=pk)
+    item = get_object_or_404(Wallpaper, id=pk)
     cart = Request.session.get('cart', {})
 
     if not cart.get(pk):
