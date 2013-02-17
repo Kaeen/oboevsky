@@ -162,8 +162,6 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
         }
     }
 
-    AUTHENTICATION_BACKENDS = ('oboevsky.backends.EmailAuthBackend',)
-
     SESSION_COOKIE_DOMAIN = '.oboevsky.ru'
 else:
     DEBUG = True
@@ -323,7 +321,5 @@ else:
             },
         }
     }
-    
-    AUTHENTICATION_BACKENDS = ('oboevsky.backends.EmailAuthBackend',)
 
     SESSION_COOKIE_DOMAIN = '.oboevsky.ru'
