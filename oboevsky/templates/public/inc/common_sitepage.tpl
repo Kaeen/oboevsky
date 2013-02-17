@@ -74,6 +74,7 @@
 
         {% block right_sidebar %}
         <div class="pageSidebar right">
+            {{user}}
             {% if not user.is_anonymous %}
             <div class="pageColumn">
                 <h2>Здравствуйте, {{user.customer}}!</h2>
