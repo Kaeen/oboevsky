@@ -250,22 +250,16 @@ def account(Request):
 
 def add_item_to_cart(Request, pk):
     from django.shortcuts import get_object_or_404
-    item = get_object_or_404(Wallpaper, id=pk)
+    item = get_object_or_404(Wallpaper, pk=pk)
     cart = Request.session.get('cart', {})
 
-    if not cart.get(pk):
-        item.quantity = Request.GET.get('q', 1)
-        if item.price is not None:
-            item.total = item.price * item.quantity
-        else:
-            item.total = None
-    else:
-        item = cart.get(pk)
-        item.quantity += 1
-        item.total = item.price * item.quantity
+    item.quantity = item.quantity + 1 if item.quantity else 1
+    item.total = item.price * item.quantity if item.price else None
 
-    Request.session['cart'][pk] = item
+    cart.update({pk: item})
+    Request.session['cart'] = cart
 
     #TODO: FIX VULNERABILITY HERE:
     from django.shortcuts import redirect
     return redirect(Request.META['HTTP_REFERER'])
+
