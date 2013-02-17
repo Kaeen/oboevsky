@@ -162,15 +162,11 @@ def login(Request):
                 #TODO: Redirect to a success page.
                 return home(Request)
             else:
-                vars = {
-                    'error': u"Учётная запись заблокирована администратором",
-                }
+                vars['error'] = u"Учётная запись заблокирована администратором"
         else:
             # Return an 'invalid login' error message.
             #raise Exception, u"Неверные логин/пароль"
-            vars = {
-                'error': u'Неверные логин/пароль.',
-            }
+            vars['error'] = u'Неверные логин/пароль'
         
     return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
