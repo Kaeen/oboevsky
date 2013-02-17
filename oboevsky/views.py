@@ -261,5 +261,5 @@ def add_item_to_cart(Request, pk):
 
     #TODO: FIX VULNERABILITY HERE:
     from django.shortcuts import redirect
-    return redirect(Request.META['HTTP_REFERER'])
+    return redirect(Request.META.get('HTTP_REFERER', '/cart/'))
 
