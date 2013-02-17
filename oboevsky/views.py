@@ -230,11 +230,9 @@ def register(Request):
             )
             customer.save()
 
-            vars['after_register'] = 'SUCCESS'
-            #TODO: тут должен быть редирект
             from django.shortcuts import redirect
             return redirect('/')
-            #return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
         except Exception, e:
             vars['error'] = e
 
@@ -249,3 +247,21 @@ def logout(Request):
 
 def account(Request):
     return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+def add_item_to_cart(Request, pk):
+    item = Wallpaper.objects.get_object_or_404(pk=pk)
+    cart = Request.session.get('cart', {})
+
+    if not cart.get(pk):
+        item.quantity = Request.GET.get('q', 1)
+        item.total = item.price * item.quantity
+    else:
+        item = cart.get(pk)
+        item.quantity += 1
+        item.total = item.price * item.quantity
+
+    Request.session[cart][pk] = item
+
+    #TODO: FIX VULNERABILITY HERE:
+    from django.shortcuts import redirect
+    return redirect(Request.META['HTTP_REFERER'])

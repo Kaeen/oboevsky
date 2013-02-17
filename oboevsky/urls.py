@@ -19,6 +19,9 @@ urlpatterns = patterns('',
     url(r'^register/?$', 'oboevsky.views.register'),
     url(r'^account/?$', 'oboevsky.views.account'),
 
+
+    url(r'^put-to-cart/?P<Id>[\d]+/?$', 'oboevsky.views.add_item_to_cart'),
+
     # Examples:
     # url(r'^$', 'oboevsky.views.home', name='home'),
     # url(r'^oboevsky/', include('oboevsky.foo.urls')),
