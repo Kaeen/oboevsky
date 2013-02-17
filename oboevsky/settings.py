@@ -161,6 +161,8 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
             },
         }
     }
+
+    SESSION_COOKIE_DOMAIN = '.oboevsky.ru'
 else:
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
@@ -319,3 +321,5 @@ else:
             },
         }
     }
+
+    SESSION_COOKIE_DOMAIN = '.oboevsky.ru'

@@ -44,11 +44,11 @@
         	<p>
         		e-mail: <input name="email" type="text" value="{{email}}" />
         	</p>
-            {*
+            {#
         	<p>
         		Телефон: <input name="phone" type="text" value="{{phone}}" />
         	</p>
-            *}
+            #}
 
 			<p>
         		Адрес доставки: <br />

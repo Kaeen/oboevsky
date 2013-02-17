@@ -233,7 +233,8 @@ def register(Request):
 
             vars['after_register'] = 'SUCCESS'
             #TODO: тут должен быть редирект
-            return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+            return redirect('/')
+            #return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
         except Exception, e:
             vars['error'] = e
 
