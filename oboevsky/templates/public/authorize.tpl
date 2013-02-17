@@ -28,7 +28,7 @@
                 E-mail: <input name="email" type="text" value="{{email}}" />
             </p>
             <p>
-                Пароль: <input name="pass" type="text" value="{{pass}}" />
+                Пароль: <input name="pass" type="password" value="{{pass}}" />
             </p>
 
             <p>

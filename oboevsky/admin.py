@@ -62,6 +62,8 @@ class WallpaperSizeAdmin(admin.ModelAdmin):
 	]
 	save_as = True
 
+CustomerAdmin(admin.ModelAdmin):
+    readonly_fields=('first_name', 'second_name', 'surname', 'email', 'address',)
 
 admin.site.register( Producer,   ProducerAdmin )
 admin.site.register( Category,   CategoryAdmin )
@@ -74,7 +76,7 @@ admin.site.register( Country, 	 CountryAdmin )
 admin.site.register( PromoCampain, 	 PromoCampainAdmin )
 admin.site.register( Wallpaper,  WallpaperAdmin )
 admin.site.register( WallpaperSize,  WallpaperSizeAdmin )
-admin.site.register( Customer )
+admin.site.register( Customer, CustomerAdmin )
 
 from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin as FlatPageAdminOld
