@@ -109,7 +109,9 @@
         </div>
 
         <p>&nbsp;</p>
+
         {{item.long_desc|safe}}
+
         <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
 
     </div>
