@@ -10,7 +10,7 @@
 
             <h1>Ошибка</h1>
             <p>{{error}}</p>
-        
+
         {%else%}
 
             <h1>Здравствуйте!</h1>
@@ -34,7 +34,10 @@
         	</p>
 
             <p>
-                Пароль: <input name="pass" type="password" /> <br/>
+                Пароль: <input name="pass" type="password" />
+            </p>
+
+            <p>
                 Подтвержение пароля: <input name="pass2" type="password" />
             </p>
 
