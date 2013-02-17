@@ -778,8 +778,8 @@ class Customer(models.Model):
 	phone = models.CharField(max_length=18, blank=True, editable=True, verbose_name=u"Телефон")
 
 	class Meta:
-		verbose_name = _(u'инфоблок')
-		verbose_name_plural = _(u'инфоблоки')
+		verbose_name = _(u'клиент')
+		verbose_name_plural = _(u'клиенты')
 
 
 	def full_name(self):
