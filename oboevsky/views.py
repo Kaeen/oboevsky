@@ -264,7 +264,7 @@ def add_item_to_cart(Request, pk):
         item.quantity += 1
         item.total = item.price * item.quantity
 
-    Request.session[cart][pk] = item
+    Request.session['cart'][pk] = item
 
     #TODO: FIX VULNERABILITY HERE:
     from django.shortcuts import redirect
