@@ -188,7 +188,7 @@ def register(Request):
                 ('second_name', u'Отчество'),
                 ('surname', u'Фамилия'),
                 ('email', u'Электронная почта'),
-                #('phone', u'Телефон'),
+                ('phone', u'Телефон'),
                 ('address', u'Адрес'),
                 ('pass', u'Пароль'),
                 ('pass2', u'Подтверждение пароля'),
