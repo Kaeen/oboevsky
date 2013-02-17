@@ -51,7 +51,7 @@ def common_context_proc(Request=None):
     flatpages = FlatPage.objects.all()
     user = Request.user
     cart_items = Request.session.get('cart', []).values()
-    cart_items_total = len(Request.session.get('cart', []).values())
+    cart_items_total = Request.session.get('cart_total', 0)
 
     return {
         'menu_categories': menu_categories,
@@ -257,7 +257,13 @@ def add_item_to_cart(Request, pk):
     item.total = item.price * item.quantity if item.price else None
 
     cart.update({pk: item})
+
+    total = 0
+    for i, item in cart:
+        total += item.total
+
     Request.session['cart'] = cart
+    Request.session['cart_total'] = total
 
     #TODO: FIX VULNERABILITY HERE:
     from django.shortcuts import redirect
