@@ -255,6 +255,7 @@ def add_item_to_cart(Request, pk):
 
     if not cart.get(pk):
         item.quantity = Request.GET.get('q', 1)
+        raise Exception, '%s %s' % item.price, item.quantity
         item.total = item.price * item.quantity
     else:
         item = cart.get(pk)
