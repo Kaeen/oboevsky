@@ -775,8 +775,12 @@ class Customer(models.Model):
 	email_confirmation_hash = models.CharField(max_length=32, blank=True, editable=False, verbose_name=u"Хеш подтверждения")
 
 	address = models.TextField(blank=True, editable=True, verbose_name=u"Адрес")
+	phone = models.CharField(max_length=18, blank=True, editable=True, verbose_name=u"Телефон")
 
-	#TODO: add phone field! 
+	class Meta:
+		verbose_name = _(u'инфоблок')
+		verbose_name_plural = _(u'инфоблоки')
+
 
 	def full_name(self):
 		return u'%s %s %s' % (self.first_name, self.second_name, self.surname)

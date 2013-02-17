@@ -12,6 +12,11 @@ from django.core.exceptions import ObjectDoesNotExist
 #       Common functionality       # 
 ####################################
 
+def generate_hash():
+    from hashlib import md5
+    from random import random
+    return md5(random()).hexdigest()
+
 def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_category(), start_page=0, step=15):
     # Checking for by_attribute
     groups = dict()
@@ -50,8 +55,6 @@ def common_context_proc(Request=None):
     menu_producers = Producer.objects.filter(visible=True)
     flatpages = FlatPage.objects.all()
     user = Request.user
-    #if not user.is_anonymous():
-    #    user.customer = Customer.objects.get(user=user)
     cart_items = Request.session.get('cart', {}).values()
     cart_items_total = Request.session.get('cart_total', 0)
 
@@ -172,6 +175,7 @@ def login(Request):
                 
     return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
+
 def register(Request):
     from django.contrib.auth.models import User
     vars = {}
@@ -226,9 +230,9 @@ def register(Request):
                 second_name=vars['second_name'],
                 surname=vars['surname'],
                 email=vars['email'],
-                #phone=vars['phone'],
+                phone=vars['phone'],
                 address=vars['address'],
-                #TODO: confirmation!
+                #email_confirmation_hash=generate_hash()
             )
             customer.save()
 
@@ -249,6 +253,7 @@ def logout(Request):
 
 def account(Request):
     return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
 
 def add_item_to_cart(Request, pk):
     from django.shortcuts import get_object_or_404
