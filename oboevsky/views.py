@@ -162,7 +162,7 @@ def login(Request):
             vars['error'] = u'Неверные логин/пароль'
             return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
-        authenticate(user.login, user.password)
+        authenticate(user.username, user.password)
         login(Request, user)
         #TODO: Redirect to a success page.
                 
