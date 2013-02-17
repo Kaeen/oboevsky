@@ -97,7 +97,7 @@
                 {% else %}
                     {% for item in cart_items %}
                     {{item}}
-                        <p>{{item.title}} x {{item.quantity}} рул. = {{item.total}} руб.</p>
+                        <p>{{item.title}} x {{item.quantity}} рул.{% if item.total %} = {{item.total}}{% else %} (цену необходимо уточнить){% endif %} руб.</p>
                     {% endfor %}
                     Итого: {{cart_items_total}} руб.
                 {% endif %}
