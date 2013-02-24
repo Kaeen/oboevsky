@@ -251,6 +251,38 @@ def logout(Request):
     return redirect('/?logout')
 
 
+def cart(Request):
+    vars = {}
+    action = Request.GET.get('action', None)
+    item = Request.GET.get('item', None)
+    if action == 'remove' and item is not None:
+        cart = Request.session.get('cart', {})
+        
+        if not item in cart: 
+            # TODO: better handling wrong item index
+            return redirect('/cart/')
+
+        del cart[item]
+        Request.session['cart'] = cart # For some case... :)
+
+    if action == 'update':
+        cart = Request.session.get('cart', {})
+        pk = Request.POST.get('item')
+        quantity = Request.POST.get('quantity')
+
+        if not pk in cart: 
+            #TODO: better handling wrong item index
+            return redirect('/cart/')
+
+        item = cart[pk]
+        item.quantity = quantity
+
+        cart[pk] = item
+        Request.session['cart'] = cart
+
+    return render_to_response('public/cart.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+
 def account(Request):
     return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 

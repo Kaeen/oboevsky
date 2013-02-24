@@ -90,6 +90,8 @@
             </div>
             {% endcomment %}
 
+
+            {% block cart_sidebar %}
             <div class="pageColumn">
                 <h2>Корзина</h2>
                 {% if cart_items|length < 1 %}
@@ -105,6 +107,7 @@
                     <a href="/cart/">Подробнее</a> <a href="#">Оформить</a>
                 {% endif %}
             </div>
+            {% endblock %}
 
             <a href="/order-sample">
             <div class="pageColumn">
