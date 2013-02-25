@@ -160,7 +160,12 @@ def login(Request):
         email = Request.POST['email']
         password = Request.POST['pass']
         vars['email'] = email
-        user = User.objects.get(email=email)
+        try:
+            user = User.objects.get(email=email)
+        except Exception, e:
+            # TODO: remove after debug is finished!
+            vars['error'] = e
+            return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
         if not user or not user.check_password(password):
             # Return an 'invalid login' error message.
             #raise Exception, u"Неверные логин/пароль"
