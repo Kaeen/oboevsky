@@ -10,7 +10,8 @@
         <p><a href="/">Главная</a> &middot;
             {% for flatpage in flatpages %}
                 <a href="{{flatpage.url}}">{{flatpage.title}}</a>
-                {% if not forloop.last %} &middot; {% endif %}
+                {#{% if not forloop.last %} &middot; {% endif %}#}
+                &middot;
             {% endfor %}
   
             {% if user.is_authenticated %}
