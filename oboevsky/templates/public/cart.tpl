@@ -15,7 +15,7 @@
 
             {% csrf_token %}
 
-            {{item.title}}, <input name="quantity" type="text" /> рулонов {% if item.total %}по {{item.price}} рублей каждый{% endif %} 
+            {{item.title}}, <input name="quantity" type="text" /> рулонов {% if item.total %}по {{item.price}} рублей каждый {% endif %} 
             <input type='submit' value='Пересчитать' /> <input type='button' value='Удалить' onclick="document.location.href='/cart?action=remove&item={{item.id}}'" />
 
         </form></p>
