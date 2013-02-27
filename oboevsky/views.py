@@ -159,13 +159,13 @@ def login(Request):
     if Request.GET.get('do', None) is not None:
         email = Request.POST['email']
         password = Request.POST['pass']
-        vars['registered'] = True if Request.GET.get('registered') is not None else False
+        vars['registered'] = True if Request.GET.get('registered', None) is not None else False
         vars['email'] = email
         try:
             user = User.objects.get(email=email)
         except Exception, e:
             # TODO: remove after debug is finished!
-            vars['error'] = e
+            vars['error'] = u'Ошибка' + unicode(e)
             return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
         if not user or not user.check_password(password):
             # Return an 'invalid login' error message.
