@@ -153,7 +153,7 @@ class Wallpaper(models.Model):
 	def get_first_category_breadcrumps(self):
 		""" Возвращает самую приоритетную категорию.
 		"""
-		return self.categories.order_by('-parents_num')[0].get_breadcrumps()
+		return self.categories.order_by('-parents_num')[0].get_breadcrumps() if len(self.categories.order_by('-parents_num'))>0 else None
 	get_first_category_breadcrumps.short_description = u'Категория с наивысшим приоритетом'
 
 	def __unicode__(self):
