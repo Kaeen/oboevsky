@@ -211,7 +211,7 @@ def register(Request):
 
         #except AssertionError, e:
         except Exception, e:
-            vars['error'] = 'Ошибка: '+str(e)
+            vars['error'] = 'Ошибка: '+unicode(e)
             return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
         try:
@@ -246,7 +246,7 @@ def register(Request):
             return redirect('/login/?registered')
 
         except Exception, e:
-            vars['error'] = 'Ошибка: '+str(e)
+            vars['error'] = 'Ошибка: '+unicode(e)
 
     return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
