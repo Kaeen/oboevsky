@@ -159,6 +159,7 @@ def login(Request):
     if Request.GET.get('do', None) is not None:
         email = Request.POST['email']
         password = Request.POST['pass']
+        vars['registered'] = True if Request.GET.get('registered') else False
         vars['email'] = email
         try:
             user = User.objects.get(email=email)
@@ -242,7 +243,7 @@ def register(Request):
             customer.save()
 
             from django.shortcuts import redirect
-            return redirect('/')
+            return redirect('/login?registered')
 
         except Exception, e:
             vars['error'] = e
