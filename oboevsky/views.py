@@ -159,7 +159,7 @@ def login(Request):
     if Request.GET.get('do', None) is not None:
         email = Request.POST['email']
         password = Request.POST['pass']
-        vars['registered'] = True if Request.GET.get('registered') else False
+        vars['registered'] = True if Request.GET.get('registered') is not None else False
         vars['email'] = email
         try:
             user = User.objects.get(email=email)
@@ -211,7 +211,7 @@ def register(Request):
 
         #except AssertionError, e:
         except Exception, e:
-            vars['error'] = e
+            vars['error'] = 'Ошибка: '+str(e)
             return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
         try:
@@ -243,10 +243,10 @@ def register(Request):
             customer.save()
 
             from django.shortcuts import redirect
-            return redirect('/login?registered')
+            return redirect('/login/?registered')
 
         except Exception, e:
-            vars['error'] = e
+            vars['error'] = 'Ошибка: '+str(e)
 
     return render_to_response('public/register.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 

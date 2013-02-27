@@ -32,7 +32,7 @@
             </p>
 
             <p>
-                {% if not after_register %}<a href="/register">Зарегистрироваться</a> {% endif %}<input type="submit" value="ОК" />
+                {% if not registered %}<a href="/register">Зарегистрироваться</a> {% endif %}<input type="submit" value="ОК" />
             </p>
         </form>
     </div>
