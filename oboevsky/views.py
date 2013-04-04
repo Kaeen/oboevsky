@@ -305,7 +305,7 @@ def add_item_to_cart(Request, pk):
 
     total = 0
     for i, item in cart:
-        total += item.total
+        if item.total: total += item.total
 
     Request.session['cart'] = cart
     Request.session['cart_total'] = total
