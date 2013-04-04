@@ -290,7 +290,7 @@ class Country(models.Model):
 	# Якорь:
 	url = models.SlugField(max_length=100, null=True, unique=True, verbose_name=_(u'якорь'))
 	# Пиктограмма страны: 
-	pic = models.ImageWithThumbsField(upload_to='countries/', verbose_name=_(u'пиктограмма страны'), sizes=flag_sizes)
+	pic = ImageWithThumbsField(upload_to='countries/', verbose_name=_(u'пиктограмма страны'), sizes=flag_sizes)
 	# Код:
 	code = models.SlugField(max_length=3, null=False, verbose_name=_(u'кодовое обозначение'))
 	# Шаблон: 
