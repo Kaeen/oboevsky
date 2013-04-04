@@ -13,6 +13,7 @@ from .thumbs import ImageWithThumbsField
 
 thumbnails_sizes = ((284, 185), (170, 111))
 textures_sizes = ((28,28), (128,128))
+flag_sizes = ((13,20),)
 
 ############################
 #           Обои           #
@@ -31,7 +32,7 @@ class Wallpaper(models.Model):
 	# Полное описание: 
 	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Цена:
-	price = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True, verbose_name=_(u'цена'))
+	price = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True, blank=False, verbose_name=_(u'цена'))
 
 	# Категории товара: 
 	categories = models.ManyToManyField(
@@ -289,7 +290,7 @@ class Country(models.Model):
 	# Якорь:
 	url = models.SlugField(max_length=100, null=True, unique=True, verbose_name=_(u'якорь'))
 	# Пиктограмма страны: 
-	pic = models.ImageField(upload_to='countries/', verbose_name=_(u'пиктограмма страны'))
+	pic = models.ImageWithThumbsField(upload_to='countries/', verbose_name=_(u'пиктограмма страны'), sizes=flag_sizes)
 	# Код:
 	code = models.SlugField(max_length=3, null=False, verbose_name=_(u'кодовое обозначение'))
 	# Шаблон: 
