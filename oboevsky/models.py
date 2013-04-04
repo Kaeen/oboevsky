@@ -32,7 +32,7 @@ class Wallpaper(models.Model):
 	# Полное описание: 
 	long_desc = WYSIWYGField(null=True, verbose_name=_(u'длинное описание'))
 	# Цена:
-	price = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True, blank=False, verbose_name=_(u'цена'))
+	price = models.DecimalField(max_digits=12, decimal_places=2, blank=False, null=True, verbose_name=_(u'цена'))
 
 	# Категории товара: 
 	categories = models.ManyToManyField(
