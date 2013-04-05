@@ -273,7 +273,7 @@ def cart(Request):
 
     if action == 'update':
         cart = Request.session.get('cart', {})
-        pk = Request.POST.get('item')
+        pk = Request.GET.get('item')
         quantity = Request.POST.get('quantity')
 
         if not pk in cart: 
