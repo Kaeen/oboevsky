@@ -283,8 +283,12 @@ def cart(Request):
 
         item = cart[pk]
         item.quantity = quantity
+        item.total = item.quantity * item.price
 
-        cart[pk] = item
+        if not item.quantity is 0:
+            cart[pk] = item
+        else:
+            del cart[pk]
 
         # this code should be refactored: 
         # Recalculating totals:    
