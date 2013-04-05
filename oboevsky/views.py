@@ -278,6 +278,7 @@ def cart(Request):
 
         if not pk in cart: 
             #TODO: better handling wrong item index
+            from django.shortcuts import redirect
             return redirect('/cart/')
 
         item = cart[pk]
