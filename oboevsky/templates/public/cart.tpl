@@ -24,6 +24,8 @@
 
         {% if cart_items_total > 0 %}
         Итого: {{cart_items_total}} руб.
+        {% else %}
+        В Вашей корзине пока нет товаров. 
         {% endif %}
 
 
