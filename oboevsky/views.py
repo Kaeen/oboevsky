@@ -291,7 +291,7 @@ def cart(Request):
             return redirect('/cart/')
 
         item = cart[pk]
-        item.quantity = quantity
+        item.quantity = int(quantity)
         item.total = item.quantity * item.price
 
         if not item.quantity is 0:
