@@ -274,7 +274,7 @@ def cart(Request):
     if action == 'update':
         cart = Request.session.get('cart', {})
         pk = Request.GET.get('item')
-        quantity = Request.POST.get('quantity')
+        quantity = Request.POST.get('quantity', 1)
 
         if not pk in cart: 
             #TODO: better handling wrong item index
@@ -285,7 +285,15 @@ def cart(Request):
         item.quantity = quantity
 
         cart[pk] = item
+
+        # this code should be refactored: 
+        # Recalculating totals:    
+        total = 0
+        for i in cart:
+            total += cart[i].total
+
         Request.session['cart'] = cart
+        Request.session['cart_total'] = total
 
     return render_to_response('public/cart.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
