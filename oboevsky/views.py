@@ -266,10 +266,19 @@ def cart(Request):
         
         if not item in cart: 
             # TODO: better handling wrong item index
+            from django.shortcuts import redirect
             return redirect('/cart/')
 
         del cart[item]
-        Request.session['cart'] = cart # For some case... :)
+
+        # this code should be refactored: 
+        # Recalculating totals:    
+        total = 0
+        for i in cart:
+            total += cart[i].total
+
+        Request.session['cart'] = cart
+        Request.session['cart_total'] = total
 
     if action == 'update':
         cart = Request.session.get('cart', {})
