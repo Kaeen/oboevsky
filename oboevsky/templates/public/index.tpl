@@ -17,7 +17,7 @@
                             {% endif %}
                             <p>{{item.title}}</p>
                             <p>&nbsp;</p>
-                            <p><a href="#">В корзину</a></p>
+                            <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
                         </div>
 
                             {% if forloop.counter|divisibleby:"3" %}
@@ -43,7 +43,7 @@
                             {% endif %}
                             <p>{{item.title}}</p>
                             <p>&nbsp;</p>
-                            <p><a href="#">В корзину</a></p>
+                            <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
                         </div>
 
                         {% if forloop.counter|divisibleby:"3" %}
