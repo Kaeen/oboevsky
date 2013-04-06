@@ -11,16 +11,16 @@
 
 
         {% if cart_items_total > 0 %}
-        <p>Итого: {{cart_items_total}} руб.</p>
+
+        {% if error %}
+            <p class="red">{{error}}</p>
+        {% endif %}
+
+        {# <p>Итого: {{cart_items_total}} руб.</p> #}
 
         <form action="/place-order" method="post">
 
             {% csrf_token %}
-
-            {% if error %}
-                <p class="red">{{error}}</p>
-            {% endif %}
-
             <p>
                 * Имя: <input name="first_name" type="text" value="{{first_name}}" />
             </p>
