@@ -374,7 +374,7 @@ def place_order(Request):
         )
         order.save()
 
-        from django.shortcuts import redirect
+        Request.session.set('cart', {})
 
     except Exception, e:
         vars['error'] = unicode(e)
