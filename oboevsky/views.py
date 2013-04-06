@@ -374,7 +374,7 @@ def place_order(Request):
         )
         order.save()
 
-        Request.session.set('cart', {})
+        Request.session['cart'] = {}
 
     except Exception, e:
         vars['error'] = unicode(e)
