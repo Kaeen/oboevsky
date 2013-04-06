@@ -78,6 +78,7 @@ admin.site.register( PromoCampain, 	 PromoCampainAdmin )
 admin.site.register( Wallpaper,  WallpaperAdmin )
 admin.site.register( WallpaperSize,  WallpaperSizeAdmin )
 admin.site.register( Customer, CustomerAdmin )
+admin.site.register( Order )
 
 from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin as FlatPageAdminOld
