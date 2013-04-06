@@ -336,3 +336,8 @@ def add_item_to_cart(Request, pk):
     from django.shortcuts import redirect
     return redirect(Request.META.get('HTTP_REFERER', '/cart/'))
 
+def order(Request):
+    
+    
+    return render_to_response('public/order.tpl', vars, RequestContext(Request, processors[common_context_proc,]))
+

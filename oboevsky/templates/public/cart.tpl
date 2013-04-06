@@ -4,7 +4,7 @@
     <div class="contentBlockNoBorder">
 
         <div id="breadcrumps">
-            <a href="/">Главная</a> / Авторизация
+            <a href="/">Главная</a> / Корзина
         </div>
 
         <h1>Корзина</h1>
@@ -23,7 +23,8 @@
         {% endfor %}
 
         {% if cart_items_total > 0 %}
-        Итого: {{cart_items_total}} руб.
+        <p>Итого: {{cart_items_total}} руб.</p>
+        <p><a href="/order">Оформить</a> заказ? </p>
         {% else %}
         В Вашей корзине пока нет товаров. 
         {% endif %}
