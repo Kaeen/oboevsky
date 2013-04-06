@@ -337,7 +337,7 @@ def add_item_to_cart(Request, pk):
     return redirect(Request.META.get('HTTP_REFERER', '/cart/'))
 
 def order(Request):
-    
-    
-    return render_to_response('public/order.tpl', vars, RequestContext(Request, processors[common_context_proc,]))
+
+
+    return render_to_response('public/order.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
