@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     url(r'^register/?$', 'oboevsky.views.register'),
     url(r'^account/?$', 'oboevsky.views.account'),
     url(r'^cart/?$', 'oboevsky.views.cart'),
+    url(r'^order/?$', 'oboevsky.views.order'),
 
 
     url(r'^put-to-cart/(?P<pk>[\d]+)/?$', 'oboevsky.views.add_item_to_cart'),
