@@ -831,4 +831,4 @@ class Order(models.Model):
 		verbose_name_plural = _(u'заказы')
 
 	def __unicode__(self):
-		pass
+		return u"%s %s" % (created, state)

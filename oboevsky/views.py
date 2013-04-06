@@ -365,11 +365,26 @@ def place_order(Request):
 
         cart = pickle.dumps(cart)
 
+
         order = Order.objects.create(
             state=u'Не обработан',
             visible=True,
             dump=cart,
-            comments=u"",
+            comments=u"""
+            first_name: %s,
+            second_name: %s,
+            surname: %s,
+            email: %s,
+            phone: %s,
+            address: %s
+            """ % (
+                Request.session.get('first_name'),
+                Request.session.get('second_name'),
+                Request.session.get('surname'),
+                Request.session.get('email'),
+                Request.session.get('phone'),
+                Request.session.get('address'),
+                ),
             customer=None, #TODO! 
         )
         order.save()
