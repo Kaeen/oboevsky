@@ -338,6 +338,46 @@ def add_item_to_cart(Request, pk):
 
 def order(Request):
     vars = {}
-
     return render_to_response('public/order.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
+def place_order(Request):
+
+    vars = {}
+
+    try:
+        fields = (
+            ('first_name', u'Имя'),
+            ('second_name', u'Отчество'),
+            ('surname', u'Фамилия'),
+            ('email', u'Электронная почта'),
+            ('phone', u'Телефон'),
+            ('address', u'Адрес'),
+        )
+        for field in fields:
+            vars[field[0]] = Request.POST.get(field[0], None)
+            if field[0] not in ('second_name', 'surname', 'email'):
+                assert len(vars[field[0]].strip()) > 0, \
+                    u'Пожалуйста, заполните поле "%s".' % field[1]
+
+
+        cart = Request.session.get('cart')
+        import pickle
+
+        cart = pickle.dumps(cart)
+
+        order = Order.objects.create(
+            state=u'Не обработан',
+            visible=True,
+            dump=cart,
+            comments=u"",
+            customer=None, #TODO! 
+        )
+        order.save()
+
+        from django.shortcuts import redirect
+
+    except Exception, e:
+        vars['error'] = unicode(e)
+        return render_to_response('public/order.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+    return render_to_response('public/order-placed.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
