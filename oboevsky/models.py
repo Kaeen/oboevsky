@@ -824,7 +824,7 @@ class Order(models.Model):
 
 	comments = models.TextField(blank=True, editable=True, verbose_name=u"Комментарий")
 
-	customer = models.OneToOneField(Customer, blank=True, verbose_name=u"Заказчик")
+	customer = models.OneToOneField(Customer, blank=True, null=True, verbose_name=u"Заказчик")
 
 	class Meta:
 		verbose_name = _(u'заказ')
