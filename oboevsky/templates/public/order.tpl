@@ -9,6 +9,21 @@
 
         <h1>Оформление заказа</h1>
 
+        <style type="text/css">
+            #order-form-table input {
+                height: 18px;
+            }
+
+            #order-form-table input,
+            #order-form-table textarea {
+                border: 1px solid #ccc;
+                width: 300px;
+                padding: 0 2px 2px 2px;
+                margin: 0px;
+                font-size: 13px;
+            }
+        </style>
+
 
         {% if cart_items_total > 0 %}
 
@@ -21,10 +36,10 @@
         <form action="/place-order" method="post">
 
             {% csrf_token %}
-            <table>
+            <table id="order-form-table">
 
                 <tr>
-                    <td>* Имя: </td>
+                    <td width="100">* Имя: </td>
                     <td><input name="first_name" type="text" value="{{first_name}}" /></td>
                 </tr>
 
