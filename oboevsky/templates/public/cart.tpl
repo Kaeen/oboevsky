@@ -31,7 +31,12 @@
             }
 
             #cart-form .controls-col {
-                width: 100%;
+                width: auto;
+            }
+
+            #cart-form .controls-col input {
+                width: 120px;
+                height: 25px;
             }
         </style>
 
@@ -52,6 +57,7 @@
             <tr class="form-line">
                 <td class="title-col">
                     <a href="{{item.get_absolute_url}}">
+                        {{item.title}}
                         <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
                     </a>
                 </td>
@@ -59,7 +65,7 @@
                     <input class="quantity-input" name="quantity" type="text" value="{{item.quantity}}" /> рулонов {% if item.total %}по {{item.price}} рублей каждый {% endif %}
                 </td>
                 <td class="controls-col">
-                    <input type='submit' value='Пересчитать' />
+                    <input type='submit' value='Пересчитать' /><br />
                     <input type='button' value='Удалить' onclick="document.location.href='/cart?action=remove&item={{item.id}}'" />
                 </td>
             </tr>
