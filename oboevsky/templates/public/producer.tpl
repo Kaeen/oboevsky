@@ -34,7 +34,7 @@
                             <div class="item">
                                 {% if item.get_first_image %}
                                     <a href="{{item.get_absolute_url}}">
-                                        <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
+                                        <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
                                     </a>
                                 {% endif %}
                                 <p>{{item.title}}</p>
@@ -64,7 +64,7 @@
                     {% for item in items %}
                         <div class="item">
                             <a href="{{item.get_absolute_url}}">
-                                <img src="{{item.get_first_image.image.url}}" alt="{{item.short_desc}}" />
+                                <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
                             </a>
                             <p>{{item.title}}</p>
                             {% if item.price %}

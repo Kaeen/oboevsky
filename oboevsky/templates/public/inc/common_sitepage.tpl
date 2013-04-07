@@ -101,7 +101,7 @@
                         <p>{{item.title}} x {{item.quantity}} рул.{% if item.total %} = {{item.total}} руб.{% else %} (цену необходимо уточнить){% endif %}</p>
                     {% endfor %}
                     {% if cart_items_total > 0 %}
-                    Итого: {{cart_items_total}} руб.
+                    <p>Итого: {{cart_items_total}} руб.</p>
                     {% endif %}
                     <br />
                     <a href="/cart/">Подробнее</a> <a href="#">Оформить</a>

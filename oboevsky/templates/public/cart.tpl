@@ -9,16 +9,63 @@
 
         <h1>Корзина</h1>
 
+        <style type="text/css">
+            .form-line .quantity-input {
+                border: 1px solid #ccc;
+                width: 50px;
+                height: 18px;
+                padding: 2px;
+                margin: 0px;
+            }
+
+            #cart-form {
+                width: 100%;
+            }
+
+            #cart-form .title-col {
+                width: 120px;
+            }
+
+            #cart-form .quantity-col {
+                width: 200px;
+            }
+
+            #cart-form .controls-col {
+                width: 100%;
+            }
+        </style>
+
+        <table id="cart-form" width="100%">
+
+            <tr>
+                <td class="title-col">Товар</td>
+                <td class="quantity-col">Количество</td>
+                <td class="controls-col">Управление</td>
+            </tr>
+
         {% for item in cart_items %}
 
-        <p><form action="?action=update&item={{item.id}}" method="post">
+        <form action="?action=update&item={{item.id}}" method="post">
 
             {% csrf_token %}
 
-            {{item.title}}, <input name="quantity" type="text" value="{{item.quantity}}" /> рулонов {% if item.total %}по {{item.price}} рублей каждый {% endif %}
-            <input type='submit' value='Пересчитать' /> <input type='button' value='Удалить' onclick="document.location.href='/cart?action=remove&item={{item.id}}'" />
+            <tr class="form-line">
+                <td class="title-col">
+                    <a href="{{item.get_absolute_url}}">
+                        <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
+                    </a>
+                </td>
+                <td class="quantity-col">
+                    <input class="quantity-input" name="quantity" type="text" value="{{item.quantity}}" /> рулонов {% if item.total %}по {{item.price}} рублей каждый {% endif %}
+                </td>
+                <td class="controls-col">
+                    <input type='submit' value='Пересчитать' />
+                    <input type='button' value='Удалить' onclick="document.location.href='/cart?action=remove&item={{item.id}}'" />
+                </td>
+            </tr>
+        </form>
 
-        </form></p>
+        </table>
 
         {% endfor %}
 
