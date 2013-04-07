@@ -35,7 +35,7 @@
             }
 
             .field-caption-wrapper {
-                width: 100px;
+                width: 120px;
                 font-size: 14px;
             }
 
