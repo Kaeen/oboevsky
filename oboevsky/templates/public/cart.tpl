@@ -30,8 +30,10 @@
             }
 
             #cart-form .cart-item-title {
-                height: 0;
-                line-height: 0;
+                display: block;
+                height: 111px;
+                width: 170px;
+                line-height: 18px;
             }
 
             #cart-form .title-col {
@@ -64,8 +66,7 @@
             <tr class="form-line">
                 <td class="title-col">
                     <a href="{{item.get_absolute_url}}">
-                        <p class="cart-item-title">{{item.title}}</p>
-                        <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
+                        <div class="cart-item-title" style="background: url('{{item.get_first_image.image.url_170x111}}') no-repeat">{{item.title}}</div>
                     </a>
                 </td>
                 <td class="quantity-col">
