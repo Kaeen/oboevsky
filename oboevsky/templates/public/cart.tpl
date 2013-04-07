@@ -14,9 +14,10 @@
                 border: 1px solid #ccc;
                 width: 25px;
                 height: 18px;
-                padding: 2px;
+                padding: 0 2px 2px 2px;
                 margin: 0px;
                 text-align: center;
+                font-size: 15px;
             }
 
             .form-line {
@@ -57,6 +58,7 @@
             #cart-form .quantity-col {
                 width: auto;
                 line-height: 24px;
+                font-size: 13px;
             }
 
             #cart-form .controls-col {
