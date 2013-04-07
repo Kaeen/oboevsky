@@ -68,6 +68,10 @@
                 height: 25px;
                 margin: 1px;
             }
+
+            .big-font {
+                font-size: 25px;
+            }
         </style>
 
         <table id="cart-form" width="100%">
@@ -102,8 +106,8 @@
         </table>
 
         {% if cart_items_total > 0 %}
-        <p>Итого: {{cart_items_total}} руб.</p>
-        <p><a href="/order">Оформить</a> заказ? </p>
+        <p class="big-font">Итого: {{cart_items_total}} руб.</p>
+        <p class="big-font"><a href="/order">Оформить</a> заказ? </p>
         {% else %}
         <p>В Вашей корзине пока нет товаров. </p>
         {% endif %}
