@@ -17,6 +17,14 @@
                 height: 40px;
             }
 
+            #order-form-table {
+                margin-top: 10px;
+            }
+
+            #order-form-table td {
+                vertical-align: top;
+            }
+
             #order-form-table input,
             #order-form-table textarea {
                 border: 1px solid #ccc;
@@ -67,7 +75,7 @@
                 </tr>
 
                 <tr>
-                    <td class="field-caption-wrapper">e-mail: </td>
+                    <td class="field-caption-wrapper">E-mail: </td>
                     <td><input name="email" type="text" value="{{email}}" /></td>
                 </tr>
 
