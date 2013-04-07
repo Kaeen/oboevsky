@@ -28,11 +28,11 @@
             }
 
             #cart-form .quantity-col {
-                width: 200px;
+                width: auto;
             }
 
             #cart-form .controls-col {
-                width: auto;
+                width: 130px;
             }
 
             #cart-form .controls-col input {
@@ -43,12 +43,6 @@
         </style>
 
         <table id="cart-form" width="100%">
-
-            <tr>
-                <td class="title-col">Товар</td>
-                <td class="quantity-col">Количество</td>
-                <td class="controls-col">Управление</td>
-            </tr>
 
         {% for item in cart_items %}
 
@@ -71,6 +65,7 @@
                     <input type='button' value='Удалить' onclick="document.location.href='/cart?action=remove&item={{item.id}}'" />
                 </td>
             </tr>
+
         </form>
 
         </table>
