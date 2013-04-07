@@ -10,13 +10,19 @@
         <h1>Корзина</h1>
 
         <style type="text/css">
-            .form-line .quantity-input {
+            .quantity-input {
                 border: 1px solid #ccc;
                 width: 25px;
                 height: 18px;
                 padding: 2px;
                 margin: 0px;
                 text-align: center;
+            }
+
+            .form-line {
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+                border-bottom: 1px solid #ccc;
             }
 
             #cart-form {
