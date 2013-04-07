@@ -36,6 +36,11 @@
                 line-height: 18px;
             }
 
+            #cart-form .cart-item-title p {
+                background: rgba(50, 0, 0, 0);
+                line-height: 18px;
+            }
+
             #cart-form .title-col {
                 width: 120px;
             }
@@ -66,7 +71,9 @@
             <tr class="form-line">
                 <td class="title-col">
                     <a href="{{item.get_absolute_url}}">
-                        <div class="cart-item-title" style="background: url('{{item.get_first_image.image.url_170x111}}') no-repeat">{{item.title}}</div>
+                        <div class="cart-item-title" style="background: url('{{item.get_first_image.image.url_170x111}}') no-repeat">
+                            <p>{{item.title}}</p>
+                        </div>
                     </a>
                 </td>
                 <td class="quantity-col">
