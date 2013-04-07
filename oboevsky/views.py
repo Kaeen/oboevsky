@@ -357,10 +357,10 @@ def place_order(Request):
             ('address', u'Адрес'),
         )
         for field in fields:
-            vars[field[0]] = Request.POST.get(field[0], None)
             if field[0] not in ('second_name', 'surname', 'email'):
-                assert len(vars[field[0]].strip()) > 0, \
+                assert len(Request.POST.get(field[0], '').strip()) > 0, \
                     u'Пожалуйста, заполните поле "%s".' % field[1]
+            vars[field[0]] = Request.POST.get(field[0], None)
 
 
         cart = Request.session.get('cart')
