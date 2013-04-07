@@ -69,9 +69,9 @@
                 margin: 1px;
             }
 
-            #cart-total-wrapper > *,
-            #cart-total-wrapper > a {
-                font-size: 25px;
+            #cart-total-wrapper p,
+            #cart-total-wrapper p a {
+                font-size: 17px;
             }
         </style>
 
