@@ -12,10 +12,11 @@
         <style type="text/css">
             .form-line .quantity-input {
                 border: 1px solid #ccc;
-                width: 50px;
+                width: 25px;
                 height: 18px;
                 padding: 2px;
                 margin: 0px;
+                text-align: center;
             }
 
             #cart-form {
@@ -37,6 +38,7 @@
             #cart-form .controls-col input {
                 width: 120px;
                 height: 25px;
+                margin: 1px;
             }
         </style>
 
