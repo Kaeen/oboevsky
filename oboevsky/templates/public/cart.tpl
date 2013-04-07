@@ -34,7 +34,6 @@
                 height: 111px;
                 width: 170px;
                 line-height: 18px;
-                padding: 93px 0 0 0;
             }
 
             #cart-form .cart-item-title p {
@@ -42,6 +41,7 @@
                 line-height: 20px;
                 height: 20px;
                 padding: 0;
+                margin: 1px;
                 text-indent: 5px;
                 color: #fef2ca;
             }
