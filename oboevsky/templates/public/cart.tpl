@@ -56,6 +56,7 @@
 
             #cart-form .quantity-col {
                 width: auto;
+                line-height: 24px;
             }
 
             #cart-form .controls-col {
