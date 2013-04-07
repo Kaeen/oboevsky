@@ -69,7 +69,8 @@
                 margin: 1px;
             }
 
-            #cart-total-wrapper {
+            #cart-total-wrapper > *,
+            #cart-total-wrapper > a {
                 font-size: 25px;
             }
         </style>
