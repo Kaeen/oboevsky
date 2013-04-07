@@ -22,6 +22,10 @@
                 margin: 0px;
                 font-size: 13px;
             }
+
+            .field-caption-wrapper {
+                width: 100px;
+            }
         </style>
 
 
@@ -39,32 +43,32 @@
             <table id="order-form-table">
 
                 <tr>
-                    <td width="100">* Имя: </td>
+                    <td class="field-caption-wrapper red">Имя: </td>
                     <td><input name="first_name" type="text" value="{{first_name}}" /></td>
                 </tr>
 
                 <tr>
-                    <td>Отчество: </td>
+                    <td class="field-caption-wrapper">Отчество: </td>
                     <td><input name="second_name" type="text" value="{{second_name}}" /></td>
                 </tr>
 
                 <tr>
-                    <td>Фамилия: </td>
+                    <td class="field-caption-wrapper">Фамилия: </td>
                     <td><input name="surname" type="text" value="{{surname}}" /></td>
                 </tr>
 
                 <tr>
-                    <td>e-mail: </td>
+                    <td class="field-caption-wrapper">e-mail: </td>
                     <td><input name="email" type="text" value="{{email}}" /></td>
                 </tr>
 
                 <tr>
-                    <td>* Телефон: </td>
+                    <td class="field-caption-wrapper red">Телефон: </td>
                     <td><input name="phone" type="text" value="{{phone}}" /></td>
                 </tr>
 
                 <tr>
-                    <td>* Адрес доставки: </td>
+                    <td class="field-caption-wrapper red">Адрес доставки: </td>
                     <td><textarea name="address">{{address}}</textarea></td>
                 </tr>
 
