@@ -200,10 +200,10 @@ def register(Request):
                 ('pass2', u'Подтверждение пароля'),
             )
             for field in fields:
-                vars[field[0]] = Request.POST.get(field[0], None)
                 if field[0] != 'second_name':
-                    assert len(vars[field[0]].strip()) > 0, \
+                    assert len(Request.POST.get(field[0], '').strip()) > 0, \
                         u'Поле "%s" не заполнено!' % field[1]
+                vars[field[0]] = Request.POST.get(field[0], None)
 
             # TODO validation
             assert vars['pass'] == vars['pass2'], \

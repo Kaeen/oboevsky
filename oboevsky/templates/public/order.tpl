@@ -36,6 +36,7 @@
 
             .field-caption-wrapper {
                 width: 100px;
+                font-size: 14px;
             }
 
             #order-form .red {
