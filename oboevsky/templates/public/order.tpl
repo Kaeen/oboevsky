@@ -21,28 +21,39 @@
         <form action="/place-order" method="post">
 
             {% csrf_token %}
-            <p>
-                * Имя: <input name="first_name" type="text" value="{{first_name}}" />
-            </p>
-            <p>
-                Отчество: <input name="second_name" type="text" value="{{second_name}}" />
-            </p>
-            <p>
-                Фамилия: <input name="surname" type="text" value="{{surname}}" />
-            </p>
+            <table>
 
-            <p>
-                e-mail: <input name="email" type="text" value="{{email}}" />
-            </p>
+                <tr>
+                    <td>* Имя: </td>
+                    <td><input name="first_name" type="text" value="{{first_name}}" /></td>
+                </tr>
 
-            <p>
-                * Телефон: <input name="phone" type="text" value="{{phone}}" />
-            </p>
+                <tr>
+                    <td>Отчество: </td>
+                    <td><input name="second_name" type="text" value="{{second_name}}" /></td>
+                </tr>
 
-            <p>
-                * Адрес доставки: <br />
-                <textarea name="address">{{address}}</textarea>
-            </p>
+                <tr>
+                    <td>Фамилия: </td>
+                    <td><input name="surname" type="text" value="{{surname}}" /></td>
+                </tr>
+
+                <tr>
+                    <td>e-mail: </td>
+                    <td><input name="email" type="text" value="{{email}}" /></td>
+                </tr>
+
+                <tr>
+                    <td>* Телефон: </td>
+                    <td><input name="phone" type="text" value="{{phone}}" /></td>
+                </tr>
+
+                <tr>
+                    <td>* Адрес доставки: </td>
+                    <td><textarea name="address">{{address}}</textarea></td>
+                </tr>
+
+            </table>
 
 
             <p><input type='submit' value='Оформить!' /></p>
