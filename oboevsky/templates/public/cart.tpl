@@ -34,11 +34,9 @@
                 height: 111px;
                 width: 170px;
                 line-height: 18px;
+                padding: 94px 0 0 0;
             }
 
-            #cart-form .cart-item-title div {
-                padding: 100px 0 0 0;
-            }
             #cart-form .cart-item-title p {
                 background: rgba(0, 0, 0, 0.5);
                 line-height: 20px;
