@@ -321,7 +321,10 @@ def add_item_to_cart(Request, pk):
     cart = Request.session.get('cart', {})
 
     item.quantity = item.quantity + 1 if item.quantity else 1
-    item.total = item.price * item.quantity if item.price else None
+
+    assert item.price is not None, \
+        u"ПИЗДЕЦ! У ТОВАРА ЦЕНЫ НЕТ, БЛЯТЬ!"
+    item.total = item.price * item.quantity
 
     cart.update({pk: item})
 
