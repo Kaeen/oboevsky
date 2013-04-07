@@ -68,9 +68,9 @@
 
         </form>
 
-        </table>
-
         {% endfor %}
+
+        </table>
 
         {% if cart_items_total > 0 %}
         <p>Итого: {{cart_items_total}} руб.</p>
