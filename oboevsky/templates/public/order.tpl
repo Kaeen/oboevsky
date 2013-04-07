@@ -38,8 +38,12 @@
                 width: 100px;
             }
 
-            #order-form-table .red {
+            #order-form .red {
                 color: #C00;
+            }
+
+            #order-form p {
+                padding-bottom: 10px;
             }
         </style>
 
@@ -48,9 +52,11 @@
 
         {# <p>Итого: {{cart_items_total}} руб.</p> #}
 
-        <form action="/place-order" method="post">
+        <form id="order-form" action="/place-order" method="post">
 
-            <p>Пожалуйста, заполните форму ниже, чтобы мы знали, как с Вами связаться и куда доставить товар. Поля, подсвеченные красным — обязательны для заполнения.</p>
+            <p>Пожалуйста, заполните форму ниже, чтобы мы знали, как с Вами связаться и куда доставить товар. <p>
+
+            <p>Поля, подсвеченные красным — обязательные для заполнения.</p>
 
             {% if error %}
                 <p class="red">{{error}}</p>
