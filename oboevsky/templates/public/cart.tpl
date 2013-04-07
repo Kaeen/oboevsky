@@ -29,6 +29,10 @@
                 width: 100%;
             }
 
+            #cart-form td {
+                vertical-align: top;
+            }
+
             #cart-form .cart-item-title {
                 display: block;
                 height: 111px;
