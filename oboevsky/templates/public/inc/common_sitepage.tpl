@@ -104,7 +104,7 @@
                     <p>Итого: {{cart_items_total}} руб.</p>
                     {% endif %}
                     <br />
-                    <a href="/cart/">Подробнее</a> <a href="#">Оформить</a>
+                    <a href="/cart/">Подробнее</a> <a href="/order">Оформить</a>
                 {% endif %}
             </div>
             {% endblock %}
