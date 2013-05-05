@@ -8,7 +8,7 @@
         }
     </style>
     <script type="text/javascript">
-        function thumbnail_preview(s, image_url, image_shortdesc) {
+        function thumbnail_preview(s, image_url, image_shortdesc, full_url) {
             i = $('#itemPreview').get(0);
             $('.thumbsWrapper > img').removeClass( 'selected_thumb' );
             $( s ).addClass('selected_thumb');
@@ -16,7 +16,15 @@
             i.alt = image_shortdesc;
             $(i).removeAttr( 'width' );
             $(i).removeAttr( 'height' );
+            $(i).removeAttr('onclick');
+            $(i).click( function() {
+                _blank(full_url);
+            } );
             $(i).css({width: "270px"});
+        }
+
+        function _blank(url) {
+            window.open(url, '_blank');
         }
 
         (function($){
@@ -48,13 +56,13 @@
             {% if item.images.all %}
                 <div id="itemPreviewWrapper" class="right">
                     <img id="itemPreview" src="{{item.images.all.0.image.url_284x185}}" alt="{{item.images.all.0.short_desc}}"
-                     width="270px" />
+                     width="270px" onclick="javascript:_blank('{{item.images.all.0.image.url}}')" />
                     {% if item.images.all|length > 1 %}
                     <div class="itemThumbs" class="clear">
                         <div class="thumbsWrapper">
                         {% for thumb in item.images.all %}
                             <img {% if forloop.first %}class="selected_thumb"{% endif %} alt="{{thumb.short_desc}}" src="{{thumb.image.url_170x111}}" height="70px"{# width="" #} 
-                             onclick="javascript:thumbnail_preview( this, '{{thumb.image.url_284x185}}', '{{thumb.short_desc}}');" />
+                             onclick="javascript:thumbnail_preview( this, '{{thumb.image.url_284x185}}', '{{thumb.short_desc}}', '{{item.image.url}}');" />
                         {% endfor %}
                         </div>
                     </div>
