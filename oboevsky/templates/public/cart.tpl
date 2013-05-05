@@ -88,7 +88,7 @@
             <tr class="form-line">
                 <td class="title-col">
                     <a href="{{item.get_absolute_url}}">
-                        <div class="cart-item-title" style="background: url('{{item.get_first_image.image.url_170x111}}') no-repeat">
+                        <div class="cart-item-title" style="background: url('{{item.get_first_image.image.url_170x111}}') repeat-x;">
                             <p>{{item.title}}</p>
                         </div>
                     </a>
