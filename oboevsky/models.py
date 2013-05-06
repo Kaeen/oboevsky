@@ -835,7 +835,7 @@ class Order(models.Model):
 
 	def items(self):
 		import pickle
-		items = pickle.load(self.dump)
+		items = pickle.load(str(self.dump))
 		return items
 
 
