@@ -62,9 +62,17 @@ class WallpaperSizeAdmin(admin.ModelAdmin):
 	]
 	save_as = True
 
+
 class CustomerAdmin(admin.ModelAdmin):
     readonly_fields=('user', 'first_name', 'second_name', 'surname', 'email',)
     # TODO: fieldsets
+
+
+class OrderAdmin(admin.ModelAdmin):
+	list_display = ['__unicode__', 'url', 'visible', 'priority']
+	readonly_fields = ('created', 'modified', 'customer', 'items')
+	fields = ['state', 'created', 'modified', 'visible', 'dump', 'comments', 'customer', 'items']
+		
 
 admin.site.register( Producer,   ProducerAdmin )
 admin.site.register( Category,   CategoryAdmin )
@@ -78,7 +86,7 @@ admin.site.register( PromoCampain, 	 PromoCampainAdmin )
 admin.site.register( Wallpaper,  WallpaperAdmin )
 admin.site.register( WallpaperSize,  WallpaperSizeAdmin )
 admin.site.register( Customer, CustomerAdmin )
-admin.site.register( Order )
+admin.site.register( Order, OrderAdmin )
 
 from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin as FlatPageAdminOld

@@ -832,3 +832,10 @@ class Order(models.Model):
 
 	def __unicode__(self):
 		return u"%s %s" % (self.created, self.state)
+
+	def items(self):
+		import pickle
+		items = pickle.load(self.dump)
+		return items
+
+
