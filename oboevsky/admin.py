@@ -69,7 +69,7 @@ class CustomerAdmin(admin.ModelAdmin):
 
 
 class OrderAdmin(admin.ModelAdmin):
-	list_display = ['__unicode__', 'url', 'visible', 'priority']
+	list_display = ['created', 'customer', 'state']
 	readonly_fields = ('created', 'modified', 'customer', 'items')
 	fields = ['state', 'created', 'modified', 'visible', 'comments', 'customer', 'items']
 		
