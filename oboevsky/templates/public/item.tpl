@@ -8,6 +8,12 @@
         }
     </style>
     <script type="text/javascript">
+        function full_view(image_url) {
+            $('body').append('
+                <div id="fullView"><img src="' + image_url + '" onclick="javascript:$(\'#fullView\').get(0).remove();" /></div>
+                ')
+        }
+
         function thumbnail_preview(s, image_url, image_shortdesc, full_url) {
             i = $('#itemPreview').get(0);
             $('.thumbsWrapper > img').removeClass( 'selected_thumb' );
@@ -17,11 +23,14 @@
             $(i).removeAttr( 'width' );
             $(i).removeAttr( 'height' );
             $(i).removeAttr('onclick');
-            $(i).click( function() {
-                _blank(full_url);
-            } );
+            t = function() {full_view(full_url);}
+            $( i ).click(t);
+//            $(i).click( function() {
+//                _blank(full_url);
+//            } );
             $(i).css({width: "270px"});
         }
+
 
         function _blank(url) {
             window.open(url, '_blank');
