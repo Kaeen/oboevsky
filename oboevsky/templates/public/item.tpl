@@ -36,9 +36,6 @@
             $(i).removeAttr('onclick');
             t = function () {view(full_url);}
             $( i ).click( t );
-//            $(i).click( function() {
-//                _blank(full_url);
-//            } );
             $(i).css({width: "270px"});
         }
 
