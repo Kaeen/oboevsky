@@ -3,6 +3,7 @@
 {% block content %}
     <style type="text/css">
         #fullView {
+            background-color: #FFF;
             display: block;
             position: absolute;
             width: 100%;
@@ -18,6 +19,7 @@
     <script type="text/javascript">
         function view(image_url) {
             $('body').append('<div id="fullView"><img src="' + image_url + '" onclick="javascript:$(\'#fullView\').remove();" /></div>');
+            $('#fullView').css({'height': $('body').height()});
         }
 
         function thumbnail_preview(s, image_url, image_shortdesc, full_url) {
