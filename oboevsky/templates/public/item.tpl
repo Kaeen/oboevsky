@@ -13,6 +13,7 @@
                 <div id="fullView"><img src="' + image_url + '" onclick="javascript:$(\'#fullView\').get(0).remove();" /></div>
                 ');
         }
+        alert(1);
 
         function thumbnail_preview(s, image_url, image_shortdesc, full_url) {
             i = $('#itemPreview').get(0);
