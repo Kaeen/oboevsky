@@ -8,12 +8,11 @@
         }
     </style>
     <script type="text/javascript">
-        function full_view(image_url) {
-            $('body').append('
-                <div id="fullView"><img src="' + image_url + '" onclick="javascript:$(\'#fullView\').get(0).remove();" /></div>
-                ');
-        }
         alert(1);
+        function view(image_url) {
+            $('body').append('<div id="fullView"><img src="' + image_url + '" onclick="javascript:$(\'#fullView\').get(0).remove();" /></div>');
+        }
+        alert(2);
 
         function thumbnail_preview(s, image_url, image_shortdesc, full_url) {
             i = $('#itemPreview').get(0);
@@ -24,8 +23,8 @@
             $(i).removeAttr( 'width' );
             $(i).removeAttr( 'height' );
             $(i).removeAttr('onclick');
-            t = function() {full_view(full_url);}
-            $( i ).click(t);
+            t = function () {view(full_url);}
+            $( i ).click( t );
 //            $(i).click( function() {
 //                _blank(full_url);
 //            } );
@@ -54,6 +53,8 @@
                 });
             });
         })(jQuery);
+
+        alert(3);
     </script>
 
     <div class="contentBlockNoBorder">
@@ -66,7 +67,7 @@
             {% if item.images.all %}
                 <div id="itemPreviewWrapper" class="right">
                     <img id="itemPreview" src="{{item.images.all.0.image.url_284x185}}" alt="{{item.images.all.0.short_desc}}"
-                     width="270px" style="cursor:pointer;" onclick="javascript:full_view('{{item.images.all.0.image.url}}');" />
+                     width="270px" style="cursor:pointer;" onclick="javascript:view('{{item.images.all.0.image.url}}');" />
                     {% if item.images.all|length > 1 %}
                     <div class="itemThumbs" class="clear">
                         <div class="thumbsWrapper">
