@@ -8,11 +8,9 @@
         }
     </style>
     <script type="text/javascript">
-        alert(1);
         function view(image_url) {
-            $('body').append('<div id="fullView"><img src="' + image_url + '" onclick="javascript:$(\'#fullView\').get(0).remove();" /></div>');
+            $('body').append('<div id="fullView"><img src="' + image_url + '" onclick="javascript:$(\'#fullView\').remove();" /></div>');
         }
-        alert(2);
 
         function thumbnail_preview(s, image_url, image_shortdesc, full_url) {
             i = $('#itemPreview').get(0);
@@ -53,8 +51,6 @@
                 });
             });
         })(jQuery);
-
-        alert(3);
     </script>
 
     <div class="contentBlockNoBorder">
