@@ -2,6 +2,14 @@
 
 {% block content %}
     <style type="text/css">
+        #fullView {
+            display: block;
+            position: absolute;
+            width: 100%;
+            padding: 40px 0 0 100px;
+            text-align: center;
+        }
+
         .selected_thumb {
             opacity: 0.5;
             cursor: default;
