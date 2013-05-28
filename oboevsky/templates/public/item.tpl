@@ -7,7 +7,9 @@
             display: block;
             position: absolute;
             width: 100%;
-            padding: 40px 0 0 100px;
+            top: 0;
+            left: 0;
+            width: 100%;
             text-align: center;
         }
 
