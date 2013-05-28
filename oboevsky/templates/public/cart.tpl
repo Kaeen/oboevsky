@@ -81,7 +81,7 @@
 
         {% for item in cart_items %}
 
-        <form action="?action=update&item={{item.id}}" method="post">
+        <form id="item{{item.id}}" action="?action=update&item={{item.id}}" method="post">
 
             {% csrf_token %}
 
@@ -94,7 +94,7 @@
                     </a>
                 </td>
                 <td class="quantity-col">
-                    <input class="quantity-input" name="quantity" type="text" value="{{item.quantity}}" onChange="javascript:$('#cart-form form').submit();" /> рулонов {% if item.total %}по {{item.price}} рублей каждый {% endif %}
+                    <input class="quantity-input" name="quantity" type="text" value="{{item.quantity}}" onChange="javascript:$('#item{{item.id}}').submit();" /> рулонов {% if item.total %}по {{item.price}} рублей каждый {% endif %}
                 </td>
                 <td class="controls-col">
                     <input type='submit' value='Пересчитать' /><br />
