@@ -11,7 +11,7 @@
         function full_view(image_url) {
             $('body').append('
                 <div id="fullView"><img src="' + image_url + '" onclick="javascript:$(\'#fullView\').get(0).remove();" /></div>
-                ')
+                ');
         }
 
         function thumbnail_preview(s, image_url, image_shortdesc, full_url) {
