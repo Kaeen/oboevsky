@@ -7,6 +7,7 @@
             display: block;
             position: absolute;
             width: 100%;
+            padding-top: 50px;
             top: 0;
             left: 0;
             width: 100%;
@@ -20,7 +21,7 @@
     </style>
     <script type="text/javascript">
         function view(image_url) {
-            $('body').append('<div id="fullView"><img src="' + image_url + '" onclick="javascript:$(\'#fullView\').remove();" /></div>');
+            $('body').append('<div id="fullView" onclick="javascript:$(\'#fullView\').remove();"><img src="' + image_url + '"/></div>');
             $('#fullView').css({'height': $('body').height()});
         }
 
