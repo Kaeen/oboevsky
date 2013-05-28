@@ -291,7 +291,11 @@ def cart(Request):
             return redirect('/cart/')
 
         item = cart[pk]
-        item.quantity = int(quantity)
+        try:
+            item.quantity = int(quantity)
+        except ValueError, e: 
+            # When user suddenly inputs space or letter, we won't change anything
+            pass
         item.total = item.quantity * item.price
 
         if not item.quantity is 0:
