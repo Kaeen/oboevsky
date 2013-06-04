@@ -16,6 +16,8 @@
 
         #fullView img {
             border: 5px solid #847171;
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.5);
         }
 
         .selected_thumb {
