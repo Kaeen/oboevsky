@@ -3,7 +3,7 @@
 {% block content %}
     <style type="text/css">
         #fullView {
-            background-color: #FFF;
+            background-color: rgba(195, 195, 195, 0.7);
             display: block;
             position: absolute;
             width: 100%;
@@ -12,6 +12,10 @@
             left: 0;
             width: 100%;
             text-align: center;
+        }
+
+        #fullView img {
+            border: 5px solid #847171;
         }
 
         .selected_thumb {
