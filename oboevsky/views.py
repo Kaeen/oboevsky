@@ -40,7 +40,10 @@ def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_
     else:
         wallpapers = []
         for x in groups:
-            wallpapers.append( (x.title, x.get_absolute_url(), groups[x]) )
+            try: 
+                wallpapers.append( (x.title, x.get_absolute_url(), groups[x]) )
+            except Exception, e:
+                pass
 
         vars['items_display_mode'] = 'grouped'
         vars['items'] = wallpapers
