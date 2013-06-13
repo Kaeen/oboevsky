@@ -3,7 +3,7 @@
         <a href="/"><img alt="Обоевский" title="" src="/static/images/oboevsky.png" /></a>
     </div>
     <div id="phoneWrapper" class="left">
-        <h2>+7 (495) 666-13-13</h2>
+        <h2>8(495) 201-38-68</h2>
         <p>
             пн-пт с 9:00 до 20:00<br />
             сб-вс с 10:00 до 18:00
