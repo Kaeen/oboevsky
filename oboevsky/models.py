@@ -841,5 +841,6 @@ class Order(models.Model):
 			i = items[i]
 			strings += "<p>[%s] <b>%s</b> x%s @ %s</p>" % (i.sku, i.title, str(i.quantity), str(i.price))
 		return strings
+	items.allow_tags = True
 
 
