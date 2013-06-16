@@ -838,6 +838,7 @@ class Order(models.Model):
 		items = pickle.loads(str(self.dump))
 		strings = ''
 		for i in items:	
+			i = items[i]
 			strings += "<p>[%s] <b>%s</b> x%s @ %s</p>" % i.sku, i.title, i.quantity, i.price
 		return strings
 
