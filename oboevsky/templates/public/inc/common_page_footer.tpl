@@ -2,7 +2,7 @@
     <div id="copyrightWrapper" class="left">
         <p><strong>&copy; Обоевский 2012г.</strong></p>
         <p>
-            +7 495 666-13-13<br />
+            +7-495-201-38-68<br />
             skype: oboevsky
         </p>
     </div>
