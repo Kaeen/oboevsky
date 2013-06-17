@@ -347,7 +347,18 @@ def add_item_to_cart(Request, pk):
     return redirect(Request.META.get('HTTP_REFERER', '/cart/'))
 
 def order(Request):
-    vars = {}
+    vars = {}   
+    if Request.user.is_authenticated():
+        from oboevsky.models import Customer
+        cust = Customer.objects.get(user=Request.user)
+
+        vars['first_name'] = cust.first_name
+        vars['second_name'] = cust.second_name
+        vars['surname'] = cust.surname
+        vars['email'] = cust.email
+        vars['phone'] = cust.phone
+        vars['address'] = cust.address
+
     return render_to_response('public/order.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def place_order(Request):
@@ -367,6 +378,17 @@ def place_order(Request):
             if field[0] not in ('second_name', 'surname', 'email'):
                 assert len(Request.POST.get(field[0], '').strip()) > 0, \
                     u'Пожалуйста, заполните поле "%s".' % field[1]
+
+            if field[0] == 'email':
+                import re
+                assert re.match(r"^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$", field[1]), \
+                    u'Пожалуйста, введите правильный адрес электронной почты.'
+
+            if field[0] == 'phone':
+                import re
+                assert re.match(r"^((8|0|\+\d{1,2})[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$", field[1]), \
+                    u'Пожалуйста, введите правильный телефонный номер, чтобы мы смогли с Вами связаться.'
+
             vars[field[0]] = Request.POST.get(field[0], None)
 
 
@@ -374,7 +396,6 @@ def place_order(Request):
         import pickle
 
         cart = pickle.dumps(cart)
-
 
         order = Order.objects.create(
             state=u'Не обработан',
@@ -396,7 +417,7 @@ def place_order(Request):
                 Request.session.get('phone'),
                 Request.session.get('address'),
                 ),
-            customer=None, #TODO! 
+            customer=None if not Request.user.is_authenticated() else Customer.object.get(user=Request.user),  
         )
         order.save()
 

@@ -63,6 +63,10 @@
                 <p class="red">{{error}}</p>
             {% endif %}
 
+            {% if recognized %}
+                <p>Мы правильно всё угадали? :)</p>
+            {% endif %}
+
             {% csrf_token %}
             <table id="order-form-table">
 
