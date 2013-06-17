@@ -821,10 +821,11 @@ class Order(models.Model):
 	visible    = models.BooleanField(default=False , verbose_name=u'видимость')
 
 	dump = models.TextField(blank=True, editable=False) #...
+	total = models.IntegerField(blank=True, editable=False, verbose_name=u'стоимость')
 
-	comments = models.TextField(blank=True, editable=True, verbose_name=u"Комментарий")
+	comments = models.TextField(blank=True, editable=True, verbose_name=u"комментарий")
 
-	customer = models.OneToOneField(Customer, blank=True, null=True, verbose_name=u"Заказчик")
+	customer = models.OneToOneField(Customer, blank=True, null=True, verbose_name=u"заказчик")
 
 	class Meta:
 		verbose_name = _(u'заказ')
@@ -833,14 +834,47 @@ class Order(models.Model):
 	def __unicode__(self):
 		return u"%s %s" % (self.created, self.state)
 
-	def items(self):
+	def customer_or_unregistered(self):
+		if self.customer: 
+			# TODO: return not just an object but a link to the admin page w/customer
+			return self.customer
+		return u"Пользователь не зарегистрирован"
+
+	def fetch_items(self):
 		import pickle
-		items = pickle.loads(str(self.dump))
+		return pickle.loads(str(self.dump)).values()
+
+	def print_html(self):
+		html = u"""<b>Заказчик: {customer}</b>
+
+		<p>{comments}</p>
+
+		{items}
+
+		<hr />
+		<p>Итого: {total}</p>"""
+		items = fetch_items
 		strings = str()
 		for i in items:	
-			i = items[i]
-			strings += "<p>[%s] <b>%s</b> x%s @ %s</p>" % (i.sku, i.title, str(i.quantity), str(i.price))
-		return strings
-	items.allow_tags = True
+			strings += u"<p>[%s] <b>%s</b> x%s @ %s</p>" % (i.sku, i.title, str(i.quantity), str(i.price))
+		return html.format( customer=self.customer_or_unregistered(), comments=self.comments, items=strings, total=self.total )
+	print_html.allow_tags = True
+
+	def print_text(self):
+		text = u"""Заказчик: {customer}
+
+		{comments}
+
+		Товары: 
+		{items}
+
+		-----
+		Итого: {total}"""
+		items = fetch_items
+		strings = str()
+		for i in items:	
+			strings += u"[%s] %s x%s @ %s\n\r" % (i.sku, i.title, str(i.quantity), str(i.price))
+		return text.format( customer=self.customer_or_unregistered(), comments=self.comments, items=strings, total=self.total )
+
 
 

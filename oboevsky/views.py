@@ -380,6 +380,7 @@ def place_order(Request):
             state=u'Не обработан',
             visible=True,
             dump=cart,
+            total=Request.session['cart_total'],
             comments=u"""
             first_name: %s,
             second_name: %s,

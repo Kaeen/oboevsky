@@ -70,8 +70,8 @@ class CustomerAdmin(admin.ModelAdmin):
 
 class OrderAdmin(admin.ModelAdmin):
 	list_display = ['created', 'customer', 'state']
-	readonly_fields = ('created', 'modified', 'customer', 'items')
-	fields = ['state', 'created', 'modified', 'visible', 'comments', 'customer', 'items']
+	readonly_fields = ('created', 'modified', 'customer_or_unregistered', 'print_html')
+	fields = ['state', 'created', 'modified', 'visible', 'comments', 'customer_or_unregistered', 'print_html']
 		
 
 admin.site.register( Producer,   ProducerAdmin )
