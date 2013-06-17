@@ -349,15 +349,17 @@ def add_item_to_cart(Request, pk):
 def order(Request):
     vars = {}   
     if Request.user.is_authenticated():
-        from oboevsky.models import Customer
-        cust = Customer.objects.get(user=Request.user)
+        try:
+            cust = Customer.objects.get(user=Request.user)
 
-        vars['first_name'] = cust.first_name
-        vars['second_name'] = cust.second_name
-        vars['surname'] = cust.surname
-        vars['email'] = cust.email
-        vars['phone'] = cust.phone
-        vars['address'] = cust.address
+            vars['first_name'] = cust.first_name
+            vars['second_name'] = cust.second_name
+            vars['surname'] = cust.surname
+            vars['email'] = cust.email
+            vars['phone'] = cust.phone
+            vars['address'] = cust.address
+        except Exception, e:
+            pass #TODO: examine, wtf
 
     return render_to_response('public/order.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
