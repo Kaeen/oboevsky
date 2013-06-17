@@ -853,7 +853,7 @@ class Order(models.Model):
 
 		<hr />
 		<p>Итого: {total}</p>"""
-		items = fetch_items
+		items = self.fetch_items()
 		strings = str()
 		for i in items:	
 			strings += u"<p>[%s] <b>%s</b> x%s @ %s</p>" % (i.sku, i.title, str(i.quantity), str(i.price))
@@ -870,7 +870,7 @@ class Order(models.Model):
 
 		-----
 		Итого: {total}"""
-		items = fetch_items
+		items = self.fetch_items()
 		strings = str()
 		for i in items:	
 			strings += u"[%s] %s x%s @ %s\n\r" % (i.sku, i.title, str(i.quantity), str(i.price))
