@@ -148,7 +148,7 @@ class Wallpaper(models.Model):
 	def get_first_category(self):
 		""" Возвращает самую приоритетную категорию.
 		"""
-		return self.categories.order_by('-parents_num')[0]
+		return self.categories.order_by('-parents_num')[0] if len(self.categories.all())>0 else None
 	get_first_category.short_description = u'Категория с наивысшим приоритетом'
 
 	def get_first_category_breadcrumps(self):
