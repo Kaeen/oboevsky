@@ -1,6 +1,6 @@
 <div id="headerWrapper" class="clear">
     <div id="logoWrapper" class="left">
-        <a href="/"><img alt="Обоевский" title="" src="/static/images/oboevsky.png" /></a>
+        <a href="http://oboevsky.ru/"><img alt="Обоевский" title="" src="/static/images/oboevsky.png" /></a>
     </div>
     <div id="phoneWrapper" class="left">
         <h2>+7-495-201-38-68</h2>
