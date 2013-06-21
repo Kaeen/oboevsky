@@ -100,6 +100,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
+        'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
         # Uncomment the next line for simple clickjacking propagatetection:
         # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     )
@@ -128,6 +129,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
         # Uncomment the next line to enable the admin:
         'django.contrib.admin',
         'django.contrib.flatpages',
+        'django.contrib.redirects',
         # Uncomment the next line to enable admin documentation:
         # 'django.contrib.admindocs',
         'oboevsky',
@@ -261,6 +263,7 @@ else:
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
+        'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
         # Uncomment the next line for simple clickjacking protection:
         # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     )
@@ -290,6 +293,7 @@ else:
         'oboevsky',
         # Uncomment the next line to enable the admin:
         'django.contrib.admin',
+        'django.contrib.redirects',
         # Uncomment the next line to enable admin documentation:
         # 'django.contrib.admindocs',
     )
