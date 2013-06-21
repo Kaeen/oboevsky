@@ -7,7 +7,7 @@
         </p>
     </div>
     <div id="bottomMenu" class="left">
-        <p><a href="/">Главная</a> &middot;
+        <p><a href="http://oboevsky.ru/">Главная</a> &middot;
             {% for flatpage in flatpages %}
                 <a href="{{flatpage.url}}">{{flatpage.title}}</a>
                 {#{% if not forloop.last %} &middot; {% endif %}#}
