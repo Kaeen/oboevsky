@@ -7,6 +7,7 @@
     <meta name="content-type" content="text/html;encoding=utf-8" />
     <meta name="description" content="{% block meta_description %}{% endblock %}" />
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
+    <meta name='yandex-verification' content='6eae11a050283af2' />
     {% block extra_meta %}{% endblock %}
 
     <link media="all" rel="stylesheet" href="/static/css/common.css" />
