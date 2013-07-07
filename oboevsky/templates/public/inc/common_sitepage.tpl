@@ -109,12 +109,14 @@
             </div>
             {% endblock %}
 
+            {% comment %}
             <a href="/order-sample">
             <div class="pageColumn">
                 <br />
                 <h2>Заказать образец</h2>
             </div>
             </a>
+            {% endcomment %}
         </div>
         {% endblock %}
 
