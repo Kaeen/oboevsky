@@ -1,4 +1,7 @@
 User-Agent: *
 Disallow: /login
 Disallow: /cart
+Disallow: /put-to-cart
+Disallow: /put-to-cart*
+Disallow: /register
 Host: oboevsky.ru
