@@ -41,7 +41,10 @@
             $(i).removeAttr( 'width' );
             $(i).removeAttr( 'height' );
             $(i).removeAttr('onclick');
-            $( i ).click( function () {view(full_url);} );
+            $( i ).click( function () {
+                alery(full_url);
+                view(full_url);
+            } );
             $(i).css({width: "270px"});
         }
 
