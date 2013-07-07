@@ -18,18 +18,64 @@
 
         {%endif%}
 
+
+        <style type="text/css">
+            #order-form-table input {
+                height: 18px;
+            }
+            #order-form-table textarea {
+                height: 40px;
+            }
+
+            #order-form-table {
+                margin-top: 10px;
+            }
+
+            #order-form-table td {
+                vertical-align: top;
+            }
+
+            #order-form-table input,
+            #order-form-table textarea {
+                border: 1px solid #ccc;
+                width: 300px;
+                padding: 0 2px 2px 2px;
+                margin: 0px;
+                font-size: 13px;
+            }
+
+            .field-caption-wrapper {
+                width: 120px;
+                font-size: 14px;
+            }
+
+            #order-form .red {
+                color: #C00;
+            }
+
+            #order-form p {
+                padding-bottom: 10px;
+            }
+        </style>
+
         <form action="?do" method="post">
 
             {% if error %}<p>{{error}}</p>{% endif %}
 
             {% csrf_token %}
+            <table id="order-form-table">
 
-            <p>
-                E-mail: <input name="email" type="text" value="{{email}}" />
-            </p>
-            <p>
-                Пароль: <input name="pass" type="password" />
-            </p>
+                <tr>
+                    <td class="field-caption-wrapper red">E-mail:</td>
+                    <td><input name="email" type="text" value="{{email}}" /></td>
+                </tr>
+
+                <tr>
+                    <td class="field-caption-wrapper red">Пароль:</td>
+                    <td><input name="pass" type="password" /></td>
+                </tr>
+
+            </table>
 
             <p>
                 {% if not registered %}<a href="/register">Зарегистрироваться</a> {% endif %}<input type="submit" value="ОК" />
