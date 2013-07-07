@@ -27,7 +27,8 @@
     </style>
     <script type="text/javascript">
         function view(image_url) {
-            $('body').append('<div id="fullView" onclick="javascript:$.remove(\'#fullView\');"><img src="' + image_url + '"/></div>');
+            alert(image_url);
+            $('body').append('<div id="fullView" onclick="javascript:$(\'#fullView\').remove();"><img src="' + image_url + '"/></div>');
             $('#fullView').css({'height': $('body').height()});
         }
 
