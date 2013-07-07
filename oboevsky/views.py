@@ -436,7 +436,7 @@ def place_order(Request):
                 Request.POST.get('email'),
                 Request.POST.get('phone'),
                 Request.POST.get('address'),
-                Request.POST.get('comment')
+                Request.POST.get('comment'),
                 str(Request.POST.dict())
                 ),
             customer=None if not Request.user.is_authenticated() else Customer.objects.get(user=Request.user),  
