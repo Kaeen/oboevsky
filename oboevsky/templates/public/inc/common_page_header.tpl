@@ -12,14 +12,16 @@
             skype: oboevsky
         </h3>
     </div>
+    {%comment%}
     <div id="bannersWrapper" class="right">
         <a{# href="#"#}><img class="right" alt="" src="/static/images/sample_banner1.jpg" /></a>
         <a{# href="#"#}><img class="right" alt="" src="/static/images/sample_banner2.jpg" /></a>
     </div>
+    {%endcomment%}
 </div>
 <div id="menuWrapper">
     <a href="/">Главная</a>
-    <a href="/catalog/">Каталог обоев</a>
+    {#<a href="/catalog/">Каталог обоев</a>#}
     {% for flatpage in flatpages %}
         <a href="{{flatpage.url}}">{{flatpage.title}}</a>
     {% endfor %}
