@@ -42,7 +42,7 @@
             $(i).removeAttr( 'height' );
             $(i).removeAttr('onclick');
             $( i ).click( function () {
-                alery(full_url);
+                alert(full_url);
                 view(full_url);
             } );
             $(i).css({width: "270px"});
