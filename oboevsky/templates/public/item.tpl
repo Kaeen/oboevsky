@@ -27,8 +27,18 @@
     </style>
     <script type="text/javascript">
         function view(image_url) {
-            $('body').append('<div id="fullView" onclick="javascript:$(\'#fullView\').remove();"><img src="' + image_url + '"/></div>');
-            $('#fullView').css({'height': $('body').height()});
+            fv = $('div', {
+                id: 'fullView',
+                click: function() {
+                    $('#fullView').empty().remove();
+                },
+                height: $('body'.height())
+            });
+            img = $('img', {
+                src: image_url
+            });
+            $(fv).append(img);
+            $('body').append(fv);
         }
 
         function thumbnail_preview(s, image_url, image_shortdesc, full_url) {
