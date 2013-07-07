@@ -60,7 +60,7 @@
 
         <form action="?do" method="post">
 
-            {% if error %}<p>{{error}}</p>{% endif %}
+            {% if error %}<p>Ошибка: неправильные e-mail и/или пароль.</p>{% endif %}
 
             {% csrf_token %}
             <table id="order-form-table">
@@ -78,7 +78,7 @@
             </table>
 
             <p>
-                {% if not registered %}<a href="/register">Зарегистрироваться</a> {% endif %}<input type="submit" value="ОК" />
+                {% if not registered %}<a href="/register">Зарегистрироваться</a> {% endif %}<input type="submit" value="Войти" />
             </p>
         </form>
     </div>
