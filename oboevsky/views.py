@@ -206,6 +206,18 @@ def register(Request):
                 if field[0] != 'second_name':
                     assert len(Request.POST.get(field[0], '').strip()) > 0, \
                         u'Поле "%s" не заполнено!' % field[1]
+
+                if field[0] == 'email':
+                    import re
+                    assert re.match(r"^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(ru|aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$", Request.POST.get(field[0], '')) is not None, \
+                        u'Пожалуйста, введите правильный адрес электронной почты.'
+
+                if field[0] == 'phone':
+                    import re
+                    assert re.match(r"^((8|0|\+\d{1,2})[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$", Request.POST.get(field[0])), \
+                        u'Пожалуйста, введите правильный телефонный номер, чтобы мы смогли с Вами связаться.'
+
+
                 vars[field[0]] = Request.POST.get(field[0], None)
 
             # TODO validation
@@ -383,12 +395,12 @@ def place_order(Request):
 
             if field[0] == 'email':
                 import re
-                assert re.match(r"^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(ru|aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$", field[1]) is not None, \
-                    u'Пожалуйста, введите правильный адрес электронной почты, %s.' % unicode(field[1])
+                assert re.match(r"^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(ru|aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$", Request.POST.get(field[0], '')) is not None, \
+                    u'Пожалуйста, введите правильный адрес электронной почты.'
 
             if field[0] == 'phone':
                 import re
-                assert re.match(r"^((8|0|\+\d{1,2})[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$", field[1]), \
+                assert re.match(r"^((8|0|\+\d{1,2})[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$", Request.POST.get(field[0])), \
                     u'Пожалуйста, введите правильный телефонный номер, чтобы мы смогли с Вами связаться.'
 
             vars[field[0]] = Request.POST.get(field[0], None)
