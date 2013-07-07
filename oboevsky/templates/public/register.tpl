@@ -50,11 +50,11 @@
                 font-size: 14px;
             }
 
-            #order-form .red {
+            #order-form-table .red {
                 color: #C00;
             }
 
-            #order-form p {
+            #order-form-table p {
                 padding-bottom: 10px;
             }
         </style>

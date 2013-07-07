@@ -86,7 +86,7 @@
                 </tr>
 
                 <tr>
-                    <td class="field-caption-wrapper">E-mail: </td>
+                    <td class="field-caption-wrapper red">E-mail: </td>
                     <td><input name="email" type="text" value="{{email}}" /></td>
                 </tr>
 
