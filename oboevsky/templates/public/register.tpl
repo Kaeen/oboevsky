@@ -85,22 +85,22 @@
 
 
                 <tr>
-                    <td class="field-caption-wrapper">Пароль: </td>
+                    <td class="field-caption-wrapper red">Пароль: </td>
                     <td><input name="pass" type="password" /></td>
                 </tr>
 
                 <tr>
-                    <td class="field-caption-wrapper">Подтверждение пароля: </td>
+                    <td class="field-caption-wrapper red">Подтверждение пароля: </td>
                     <td><input name="pass2" type="password" /></td>
                 </tr>
 
                 <tr>
-                    <td class="field-caption-wrapper">e-mail: </td>
+                    <td class="field-caption-wrapper red">e-mail: </td>
                     <td><input name="email" type="text" value="{{email}}" /></td>
                 </tr>
 
                 <tr>
-                    <td class="field-caption-wrapper">Телефон: </td>
+                    <td class="field-caption-wrapper red">Телефон: </td>
                     <td><input name="phone" type="text" value="{{phone}}" /></td>
                 </tr>
 
