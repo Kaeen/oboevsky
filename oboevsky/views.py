@@ -384,7 +384,7 @@ def place_order(Request):
             if field[0] == 'email':
                 import re
                 assert re.match(r"^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(ru|aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$", field[1]) is not None, \
-                    u'Пожалуйста, введите правильный адрес электронной почты.'
+                    u'Пожалуйста, введите правильный адрес электронной почты, %s.' % unicode(field[1])
 
             if field[0] == 'phone':
                 import re
