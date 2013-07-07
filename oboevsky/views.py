@@ -431,7 +431,7 @@ def place_order(Request):
                 Request.session.get('phone'),
                 Request.session.get('address'),
                 ),
-            customer=None if not Request.user.is_authenticated() else Customer.object.get(user=Request.user),  
+            customer=None if not Request.user.is_authenticated() else Customer.objects.get(user=Request.user),  
         )
         order.save()
 
