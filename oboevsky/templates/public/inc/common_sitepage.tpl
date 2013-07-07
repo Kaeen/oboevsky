@@ -78,7 +78,7 @@
             {% if not user.is_anonymous %}
             <div class="pageColumn">
                 <h2>Здравствуйте, {{user.customer.first_name}} {{user.customer.second_name}}!</h2>
-                <p><a href="/account/">Личный кабинет</a></p>
+                {#<p><a href="/account/">Личный кабинет</a></p>#}
                 <p><a href="/logout/">Выйти</a></p>
             </div>
             {% endif %}

@@ -25,7 +25,7 @@
     {% endfor %}
 
     {% if user.is_authenticated %}
-        {#<!--<a href="/account">Личный кабинет</a>-->#}
+        {#<a href="/account">Личный кабинет</a>#}
     {% else %}
         <a href="/login">Авторизация</a>
     {% endif %}
