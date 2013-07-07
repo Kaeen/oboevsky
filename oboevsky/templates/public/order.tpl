@@ -100,6 +100,11 @@
                     <td><textarea name="address">{{address}}</textarea></td>
                 </tr>
 
+                <tr>
+                    <td class="field-caption-wrapper">Комментарий: </td>
+                    <td><textarea name="address">{{comment}}</textarea></td>
+                </tr>
+
             </table>
 
 
