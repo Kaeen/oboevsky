@@ -19,44 +19,101 @@
 
         {%endif%}
 
+
+        <style type="text/css">
+            #order-form-table input {
+                height: 18px;
+            }
+            #order-form-table textarea {
+                height: 40px;
+            }
+
+            #order-form-table {
+                margin-top: 10px;
+            }
+
+            #order-form-table td {
+                vertical-align: top;
+            }
+
+            #order-form-table input,
+            #order-form-table textarea {
+                border: 1px solid #ccc;
+                width: 300px;
+                padding: 0 2px 2px 2px;
+                margin: 0px;
+                font-size: 13px;
+            }
+
+            .field-caption-wrapper {
+                width: 120px;
+                font-size: 14px;
+            }
+
+            #order-form .red {
+                color: #C00;
+            }
+
+            #order-form p {
+                padding-bottom: 10px;
+            }
+        </style>
+
+
         <form action="?do" method="post">
 
             {% csrf_token %}
 
-        	<p>
-        		Имя: <input name="first_name" type="text" value="{{first_name}}" />
-        	</p>
-        	<p>
-        		Отчество: <input name="second_name" type="text" value="{{second_name}}" />
-        	</p>
-        	<p>
-        		Фамилия: <input name="surname" type="text" value="{{surname}}" />
-        	</p>
 
-            <p>
-                Пароль: <input name="pass" type="password" />
-            </p>
+            <table id="order-form-table">
 
-            <p>
-                Подтвержение пароля: <input name="pass2" type="password" />
-            </p>
+                <tr>
+                    <td class="field-caption-wrapper red">Имя: </td>
+                    <td><input name="first_name" type="text" value="{{first_name}}" /></td>
+                </tr>
 
-        	<p>
-        		e-mail: <input name="email" type="text" value="{{email}}" />
-        	</p>
 
-        	<p>
-        		Телефон: <input name="phone" type="text" value="{{phone}}" />
-        	</p>
+                <tr>
+                    <td class="field-caption-wrapper">Отчество: </td>
+                    <td><input name="second_name" type="text" value="{{second_name}}" /></td>
+                </tr>
 
-			<p>
-        		Адрес доставки: <br />
-        		<textarea name="address">{{address}}</textarea>
-        	</p>
+                <tr>
+                    <td class="field-caption-wrapper">Фамилия: </td>
+                    <td><input name="surname" type="text" value="{{surname}}" /></td>
+                </tr>
 
-        	<p>
-        		<input type="submit" value="Далее" />
-        	</p>
+
+                <tr>
+                    <td class="field-caption-wrapper">Пароль: </td>
+                    <td><input name="pass" type="password" /></td>
+                </tr>
+
+                <tr>
+                    <td class="field-caption-wrapper">Подтверждение пароля: </td>
+                    <td><input name="pass2" type="password" /></td>
+                </tr>
+
+                <tr>
+                    <td class="field-caption-wrapper">e-mail: </td>
+                    <td><input name="email" type="text" value="{{email}}" /></td>
+                </tr>
+
+                <tr>
+                    <td class="field-caption-wrapper">Телефон: </td>
+                    <td><input name="phone" type="text" value="{{phone}}" /></td>
+                </tr>
+
+                <tr>
+                    <td class="field-caption-wrapper red">Адрес доставки: </td>
+                    <td><textarea name="address">{{address}}</textarea></td>
+                </tr>
+
+            </table>
+
+
+            <p><input type='submit' value='Оформить!' /></p>
+
         </form>
     </div>
 {% endblock %}
