@@ -32,7 +32,7 @@
                 click: function() {
                     $('#fullView').empty().remove();
                 },
-                height: $('body'.height())
+                height: $('body').height())
             });
             img = $('img', {
                 src: image_url
