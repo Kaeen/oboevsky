@@ -27,7 +27,6 @@
     </style>
     <script type="text/javascript">
         function view(image_url) {
-            alert(image_url);
             $('body').append('<div id="fullView" onclick="javascript:$(\'#fullView\').remove();"><img src="' + image_url + '"/></div>');
             $('#fullView').css({'height': $('body').height()});
         }
@@ -42,7 +41,6 @@
             $(i).removeAttr( 'height' );
             $(i).removeAttr('onclick');
             $( i ).click( function () {
-                alert(full_url);
                 view(full_url);
             } );
             $(i).css({width: "270px"});
@@ -88,7 +86,7 @@
                         <div class="thumbsWrapper">
                         {% for thumb in item.images.all %}
                             <img {% if forloop.first %}class="selected_thumb"{% endif %} alt="{{thumb.short_desc}}" src="{{thumb.image.url_170x111}}" height="70px"{# width="" #} 
-                             onclick="javascript:thumbnail_preview( this, '{{thumb.image.url_284x185}}', '{{thumb.short_desc}}', '{{item.image.url}}');" />
+                             onclick="javascript:thumbnail_preview( this, '{{thumb.image.url_284x185}}', '{{thumb.short_desc}}', '{{thumb.image.url}}');" />
                         {% endfor %}
                         </div>
                     </div>
