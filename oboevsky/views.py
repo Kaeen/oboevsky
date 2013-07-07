@@ -423,13 +423,16 @@ def place_order(Request):
             email: %s,
             phone: %s,
             address: %s
+
+            %s
             """ % (
-                Request.session.get('first_name'),
-                Request.session.get('second_name'),
-                Request.session.get('surname'),
-                Request.session.get('email'),
-                Request.session.get('phone'),
-                Request.session.get('address'),
+                Request.POST.get('first_name'),
+                Request.POST.get('second_name'),
+                Request.POST.get('surname'),
+                Request.POST.get('email'),
+                Request.POST.get('phone'),
+                Request.POST.get('address'),
+                str(Request.POST.dict())
                 ),
             customer=None if not Request.user.is_authenticated() else Customer.objects.get(user=Request.user),  
         )
