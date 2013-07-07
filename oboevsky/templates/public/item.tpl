@@ -27,14 +27,14 @@
     </style>
     <script type="text/javascript">
         function view(image_url) {
-            fv = $('div', {
+            var fv = $('div', {
                 id: 'fullView',
                 click: function() {
                     $('#fullView').empty().remove();
                 },
                 height: $('body').height()
             });
-            img = $('img', {
+            var img = $('img', {
                 src: image_url
             });
             $(fv).append(img);
