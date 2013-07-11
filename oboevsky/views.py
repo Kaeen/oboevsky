@@ -23,7 +23,7 @@ def send_mail(rcv, subject, text):
     s = SMTP()
     s.connect('smtp.webfaction.com')
     s.login('oboevsky','qwerty321')
-    s.sendmail('oboevsky@oboevsky.ru', [snd,], text.as_string())
+    s.sendmail('oboevsky@oboevsky.ru', [rcv,], text.as_string())
 
 def generate_hash():
     from hashlib import md5
