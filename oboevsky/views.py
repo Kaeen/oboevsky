@@ -15,7 +15,7 @@ from django.core.exceptions import ObjectDoesNotExist
 def send_mail(rcv, subject, text):
     from smtplib import SMTP
     from email.mime.text import MIMEText
-    text = MIMEText(text)
+    text = MIMEText(text.encode('ISO-1251'))
     text['Subject'] = subject
     text['From'] = 'oboevsky@oboevsky.ru'
     text['To'] = rcv
