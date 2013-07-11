@@ -12,6 +12,19 @@ from django.core.exceptions import ObjectDoesNotExist
 #       Common functionality       # 
 ####################################
 
+def send_mail(rcv, subject, text):
+    from smtplib import SMTP
+    from email.mime.text import MIMEText
+    text = MIMEText(text)
+    text['Subject'] = subject
+    text['From'] = 'oboevsky@oboevsky.ru'
+    text['To'] = rcv
+
+    s = SMTP()
+    s.connect('smtp.webfaction.com')
+    s.login('oboevsky','qwerty321')
+    s.sendmail('oboevsky@oboevsky.ru', [snd,], text.as_string())
+
 def generate_hash():
     from hashlib import md5
     from random import random
