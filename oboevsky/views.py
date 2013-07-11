@@ -19,6 +19,7 @@ def send_mail(rcv, subject, text):
     text['Subject'] = subject
     text['From'] = 'oboevsky@oboevsky.ru'
     text['To'] = rcv
+    text.set_charset('utf-8')
 
     s = SMTP()
     s.connect('smtp.webfaction.com')
