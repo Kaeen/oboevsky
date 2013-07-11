@@ -189,12 +189,23 @@ def login(Request):
             vars['error'] = u'Неверные логин/пароль'
             return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
+        if not Customer.objects.get(user=User, email_confirmation_hash=''):
+            vars['error'] = u'Пожалуйста, подтвердите адрес электронной почты'
+            return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
         user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(Request, user)
 
         from django.shortcuts import redirect
         return redirect('/')
                 
+    return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+
+def confirm_email(Request, hash):
+    customer = Customer.objects.get_object_or_404(email_confirmation_hash=hash)
+    customer.email_confirmation_hash = ''
+
     return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 
@@ -258,6 +269,8 @@ def register(Request):
             for field in fields:
                 kw[field[0]] = vars[field[0]]
 
+            hash = generate_hash()
+
             customer = Customer.objects.create(
                 user=vars['user'],
                 first_name=vars['first_name'],
@@ -266,9 +279,20 @@ def register(Request):
                 email=vars['email'],
                 phone=vars['phone'],
                 address=vars['address'],
-                #email_confirmation_hash=generate_hash()
+                email_confirmation_hash=hash
             )
             customer.save()
+
+            send_mail(vars['email'], u'Регистрация на oboevsky.ru', u'''
+
+                Здравствуйте. 
+
+                Кто-то, возможно, Вы, ...
+
+                http://oboevsky.ru/confirm-email/%s
+
+                Tnx
+                ''' % hash)
 
             from django.shortcuts import redirect
             return redirect('/login/?registered')
