@@ -28,7 +28,7 @@ def send_mail(rcv, subject, text):
 def generate_hash():
     from hashlib import md5
     from random import random
-    return md5(random()).hexdigest()
+    return md5(str(random())).hexdigest()
 
 def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_category(), start_page=0, step=15):
     # Checking for by_attribute
