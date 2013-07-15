@@ -190,7 +190,7 @@ def login(Request):
             vars['error'] = u'Неверные логин/пароль'
             return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
-        if not Customer.objects.get(user=User, email_confirmation_hash=''):
+        if not Customer.objects.get(user=User, email_confirmation_hash=u''):
             vars['error'] = u'Пожалуйста, подтвердите адрес электронной почты'
             return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
@@ -205,9 +205,9 @@ def login(Request):
 
 def confirm_email(Request, hash):
     vars = {}
-    
+
     customer = get_object_or_404(Customer, email_confirmation_hash=hash)
-    customer.email_confirmation_hash = ''
+    customer.email_confirmation_hash = u''
     customer.save()
 
     return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
@@ -297,6 +297,8 @@ def register(Request):
 
                 Tnx
                 ''' % hash)
+
+            # TODO: EXTRA TEMPLATE FOR THIS SHIT IS REQUIRED!!!!! 
 
             from django.shortcuts import redirect
             return redirect('/login/?registered')

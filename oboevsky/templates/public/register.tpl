@@ -79,7 +79,7 @@
                 </tr>
 
                 <tr>
-                    <td class="field-caption-wrapper">Фамилия: </td>
+                    <td class="field-caption-wrapper red">Фамилия: </td>
                     <td><input name="surname" type="text" value="{{surname}}" /></td>
                 </tr>
 
