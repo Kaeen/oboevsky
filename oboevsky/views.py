@@ -190,7 +190,7 @@ def login(Request):
             vars['error'] = u'Неверные логин/пароль'
             return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
-        if not Customer.objects.get(user=User, email_confirmation_hash__len=0):
+        if not Customer.objects.get(user=User, email_confirmation_hash=None):
             vars['error'] = u'Пожалуйста, подтвердите адрес электронной почты'
             return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
