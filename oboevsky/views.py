@@ -207,7 +207,7 @@ def confirm_email(Request, hash):
     vars = {}
 
     customer = get_object_or_404(Customer, email_confirmation_hash=hash)
-    customer.email_confirmation_hash = u''
+    customer.email_confirmation_hash = None
     customer.save()
 
     return render_to_response('public/authorize.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))

@@ -773,7 +773,7 @@ class Customer(models.Model):
 	surname = models.CharField(max_length=32, blank=False, editable=False, verbose_name=u"Фамилия")
 
 	email = models.CharField(max_length=32, blank=False, editable=False, verbose_name=u"Электропочта")
-	email_confirmation_hash = models.CharField(max_length=32, blank=True, editable=False, verbose_name=u"Хеш подтверждения")
+	email_confirmation_hash = models.CharField(max_length=32, blank=True, null=True, editable=False, verbose_name=u"Хеш подтверждения")
 
 	address = models.TextField(blank=True, editable=True, verbose_name=u"Адрес")
 	phone = models.CharField(max_length=18, blank=True, editable=True, verbose_name=u"Телефон")
