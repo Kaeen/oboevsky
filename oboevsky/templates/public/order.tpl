@@ -102,7 +102,7 @@
 
                 <tr>
                     <td class="field-caption-wrapper">Комментарий: </td>
-                    <td><textarea name="address">{{comment}}</textarea></td>
+                    <td><textarea name="comment">{{comment}}</textarea></td>
                 </tr>
 
             </table>
