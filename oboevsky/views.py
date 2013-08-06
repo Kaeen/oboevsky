@@ -289,13 +289,11 @@ def register(Request):
 
             send_mail(vars['email'], u'Регистрация на oboevsky.ru', u'''
 
-                Здравствуйте. 
-
-                Кто-то, возможно, Вы, ...
+                Благодарим за регистрацию! Перейдите по указанной ниже ссылке, чтобы подтвердить Вашу учётную запись.
 
                 http://oboevsky.ru/confirm-email/%s
 
-                Tnx
+                С уважением, Обоевский.
                 ''' % hash)
 
             # TODO: EXTRA TEMPLATE FOR THIS SHIT IS REQUIRED!!!!! 
