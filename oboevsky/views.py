@@ -375,6 +375,10 @@ def account(Request):
     return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 
+def order_history(Request):
+    return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+
 def add_item_to_cart(Request, pk):
     from django.shortcuts import get_object_or_404
     item = get_object_or_404(Wallpaper, pk=pk)
