@@ -21,13 +21,14 @@
 
 
 
-            
-            <a href="/">Главная</a> / <a href="/account/">Личный кабинет</a> / Мои личные данные
 
 
 
-            <p> //TODO// </p>
 
+
+            <a href="/">Главная</a> / <a href="/account/">Личный кабинет</a> / Смена пароля
+
+            <p>//TODO//</p>
 
             <style type="text/css">
                 #order-form-table input {
@@ -68,52 +69,40 @@
                 }
             </style>
 
-
             <form action="?do" method="post">
-
-                {%if error %}
-                    <p>{{error}}</p>
-                {%endif%}
 
                 {% csrf_token %}
 
+
                 <table id="order-form-table">
 
+                    {%if error %}
+                        <p>{{error}}</p>
+                    {%endif%}
+
                     <tr>
-                        <td class="field-caption-wrapper">Имя: </td>
-                        <td><input name="first_name" type="text" value="{{first_name}}" /></td>
+                        <td class="field-caption-wrapper red">Старый пароль: </td>
+                        <td><input name="old-pass" type="password" /></td>
                     </tr>
 
 
                     <tr>
-                        <td class="field-caption-wrapper">Отчество: </td>
-                        <td><input name="second_name" type="text" value="{{second_name}}" /></td>
+                        <td class="field-caption-wrapper red">Новый пароль: </td>
+                        <td><input name="pass" type="password" /></td>
                     </tr>
 
-                    <tr>
-                        <td class="field-caption-wrapper">Фамилия: </td>
-                        <td><input name="surname" type="text" value="{{surname}}" /></td>
-                    </tr>
 
                     <tr>
-                        <td class="field-caption-wrapper">e-mail: </td>
-                        <td><input name="email" type="text" value="{{email}}" /></td>
-                    </tr>
-
-                    <tr>
-                        <td class="field-caption-wrapper">Телефон: </td>
-                        <td><input name="phone" type="text" value="{{phone}}" /></td>
-                    </tr>
-
-                    <tr>
-                        <td class="field-caption-wrapper">Адрес доставки: </td>
-                        <td><textarea name="address">{{address}}</textarea></td>
+                        <td class="field-caption-wrapper red">Подтверждение нового пароля: </td>
+                        <td><input name="pass2" type="password" /></td>
                     </tr>
 
                 </table>
 
                 <p><input type='submit' value='Оформить!' /></p>
+
             </form>
+
 
 
 

@@ -375,8 +375,12 @@ def account(Request):
     return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 
+def change_password(Request):
+    return render_to_response('public/change-password.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+
 def order_history(Request):
-    return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+    return render_to_response('public/order-history.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 
 def add_item_to_cart(Request, pk):
