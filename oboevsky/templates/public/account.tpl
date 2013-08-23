@@ -108,7 +108,7 @@
 
                 </table>
 
-                <p><input type='submit' value='Оформить!' /></p>
+                <p><input type='submit' value='Сохранить' /></p>
             </form>
 
         </div>
