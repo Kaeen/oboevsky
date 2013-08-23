@@ -26,6 +26,15 @@
 
             <table id="cart-form" width="100%">
 
+                <tr class="form-line">
+                    <td class="title-col">
+                        Товар
+                    </td>
+                    <td class="quantity-col">
+                        Количество
+                    </td>
+                </tr>
+
                 {% for item in order.items %}
 
                 <tr class="form-line">
@@ -37,7 +46,7 @@
                         </a>
                     </td>
                     <td class="quantity-col">
-                        <input class="quantity-input" name="quantity" type="text" value="{{item.quantity}}" onChange="javascript:$('#item{{item.id}}').submit();" /> рулонов {% if item.total %}sпо {{item.price}} рублей каждый {% endif %}
+                        {{item.quantity}} рулонов {% if item.total %}sпо {{item.price}} рублей каждый {% endif %}
                     </td>
                 </tr>
 
