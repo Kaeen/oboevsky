@@ -6,7 +6,7 @@
             <h2>Личный кабинет</h2>
             <ul class="no-list">
             	{# TODO: selection #}
-                <li><a href="/account/">Мои личные данные</a></li>
+                <li><a href="/account/">Личные данные</a></li>
                 <li><a href="/account/change-password/">Смена пароля</a></li>
                 <li><a href="/account/order-history/">Мои заказы</a></li>
             </ul>
@@ -19,6 +19,8 @@
         <div id="breadcrumps">
 
             <a href="/">Главная</a> / <a href="/account/">Личный кабинет</a> / Мои заказы
+
+            <p></p>
 
             <p>//TODO//</p>
 
