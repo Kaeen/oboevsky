@@ -372,14 +372,17 @@ def cart(Request):
 
 
 def account(Request):
+    vars = {}   
     return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 
 def change_password(Request):
+    vars = {}   
     return render_to_response('public/change-password.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 
 def order_history(Request):
+    vars = {}   
     return render_to_response('public/order-history.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 
