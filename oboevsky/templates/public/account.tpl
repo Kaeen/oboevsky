@@ -76,6 +76,15 @@
                 <table id="order-form-table">
 
                     <tr>
+                        <td class="field-caption-wrapper red">Пароль: </td>
+                        <td><input name="old-pass" type="password" /></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"><br /></td>
+                    </tr>
+
+                    <tr>
                         <td class="field-caption-wrapper">Имя: </td>
                         <td><input name="first_name" type="text" value="{{first_name}}" /></td>
                     </tr>

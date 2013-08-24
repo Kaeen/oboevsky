@@ -67,12 +67,12 @@
 
                 {% csrf_token %}
 
+                {%if error %}
+                    <p>{{error}}</p>
+                {%endif%}
+
 
                 <table id="order-form-table">
-
-                    {%if error %}
-                        <p>{{error}}</p>
-                    {%endif%}
 
                     <tr>
                         <td class="field-caption-wrapper red">Старый пароль: </td>

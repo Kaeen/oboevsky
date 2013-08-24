@@ -372,18 +372,46 @@ def cart(Request):
 
 
 def account(Request):
-    vars = {}   
+    vars = {}
+    user = Request.user
+    if not user: 
+        return redirect('/login/')
+
     return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 
 def change_password(Request):
-    vars = {}   
+    vars = {}
+    user = Request.user
+    if not user: 
+        return redirect('/login/')
+
+    if Request.GET.get('do', None) is not None:
+        if not user.check_password(Request.POST.get('old-pass')):
+            vars['error'] = u'Неверно введён старый пароль'
+        else:
+            if not Request.POST.get('pass') == Request.POST.get('pass2'):
+                vars['error'] = u'Введённые пароли не совпадают'
+            else:
+                user.set_password(Request.POST.get('pass'))
+                user.save()
+                vars['error'] = u'Новый пароль успешно сохранён'
+
     return render_to_response('public/change-password.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 
 def order_history(Request):
-    vars = {}   
+    vars = {}
+    user = Request.user
+    if not user: 
+        return redirect('/login/')
+
+    cust = Customer.objects.get(user=Request.user)
+    orders = Order.objects.filter(customer=cust)
+
+    vars['orders_history'] = orders
     return render_to_response('public/order-history.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
 
 
 def add_item_to_cart(Request, pk):

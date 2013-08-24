@@ -37,7 +37,7 @@
                     </td>
                 </tr>
 
-                {% for item in order.items %}
+                {% for item in order.fetch_items %}
 
                 <tr class="form-line">
                     <td class="title-col">
