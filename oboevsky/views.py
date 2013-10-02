@@ -383,6 +383,7 @@ def account(Request):
     vars['surname'] = customer.surname
     vars['email'] = customer.email
     vars['address'] = customer.address
+    vars['phone'] = customer.phone
 
     if Request.GET.get('do', None) is not None:
         if not user.check_password(Request.POST.get('old-pass')):    
