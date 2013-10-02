@@ -376,12 +376,18 @@ def account(Request):
     user = Request.user
     if not user: 
         return redirect('/login/')
+    customer = Customer.objects.get(user=user)
+
+    vars['first_name'] = customer.first_name
+    vars['second_name'] = customer.second_name
+    vars['surname'] = customer.surname
+    vars['email'] = customer.email
+    vars['address'] = customer.address
 
     if Request.GET.get('do', None) is not None:
         if not user.check_password(Request.POST.get('old-pass')):    
             vars['error'] = u'Неверно введён старый пароль'
         else:
-            customer = Customer.objects.get(user=user)
 
             if len(Request.POST.get(u'first_name').strip()) > 0:
                 customer.first_name = Request.POST.get(u'first_name')
