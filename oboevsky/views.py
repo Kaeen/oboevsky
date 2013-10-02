@@ -378,12 +378,14 @@ def account(Request):
         return redirect('/login/')
     customer = Customer.objects.get(user=user)
 
-    vars['first_name'] = customer.first_name
-    vars['second_name'] = customer.second_name
-    vars['surname'] = customer.surname
-    vars['email'] = customer.email
-    vars['address'] = customer.address
-    vars['phone'] = customer.phone
+    def update_vars():
+        vars['first_name'] = customer.first_name
+        vars['second_name'] = customer.second_name
+        vars['surname'] = customer.surname
+        vars['email'] = customer.email
+        vars['address'] = customer.address
+        vars['phone'] = customer.phone
+    update_vars()
 
     if Request.GET.get('do', None) is not None:
         if not user.check_password(Request.POST.get('old-pass')):    
@@ -401,6 +403,7 @@ def account(Request):
             if len(Request.POST.get('address').strip()) > 0:
                 customer.address = Request.POST.get('address')
             customer.save()
+            update_vars()
 
             vars['error'] = u'Изменения успешно сохранены'
 
