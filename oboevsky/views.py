@@ -400,6 +400,7 @@ def account(Request):
                 customer.email = Request.POST.get('email')
             if len(Request.POST.get('address').strip()) > 0:
                 customer.address = Request.POST.get('address')
+            customer.save()
 
             vars['error'] = u'Изменения успешно сохранены'
 
