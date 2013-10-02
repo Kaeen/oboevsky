@@ -76,6 +76,15 @@
 
 
                     <tr>
+                        <td class="field-caption-wrapper red">Старый пароль: </td>
+                        <td><input name="old-pass" type="password" /></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"><br /></td>
+                    </tr>
+
+                    <tr>
                         <td class="field-caption-wrapper red">Новый пароль: </td>
                         <td><input name="pass" type="password" /></td>
                     </tr>
