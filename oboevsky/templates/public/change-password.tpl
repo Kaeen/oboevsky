@@ -74,11 +74,6 @@
 
                 <table id="order-form-table">
 
-                    <tr>
-                        <td class="field-caption-wrapper red">Старый пароль: </td>
-                        <td><input name="old-pass" type="password" /></td>
-                    </tr>
-
 
                     <tr>
                         <td class="field-caption-wrapper red">Новый пароль: </td>

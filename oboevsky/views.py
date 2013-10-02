@@ -377,6 +377,26 @@ def account(Request):
     if not user: 
         return redirect('/login/')
 
+    if Request.GET.get('do', None) is not None:
+        if not user.check_password(Request.POST.get('old-pass')):    
+            vars['error'] = u'Введённые пароли не совпадают'
+        else:
+            customer = Customer.objects.get(user=user)
+
+            if len(Request.POST.get(u'first_name').strip()) > 0:
+                customer.first_name = Request.POST.get(u'first_name')
+            if len(Request.POST.get(u'second_name').strip()) > 0:
+                customer.second_name = Request.POST.get(u'second_name')
+            if len(Request.POST.get(u'surname').strip()) > 0:
+                customer.surname = Request.POST.get(u'surname')
+            if len(Request.POST.get(u'email').strip()) > 0:
+                customer.email = Request.POST.get(u'email')
+            if len(Request.POST.get(u'address').strip()) > 0:
+                customer.address = Request.POST.get(u'address')
+
+            vars['error'] = u'Изменения успешно сохранены'
+
+
     return render_to_response('public/account.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 
