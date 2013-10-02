@@ -390,16 +390,16 @@ def account(Request):
             vars['error'] = u'Неверно введён старый пароль'
         else:
 
-            if len(Request.POST.get(u'first_name').strip()) > 0:
-                customer.first_name = Request.POST.get(u'first_name')
-            if len(Request.POST.get(u'second_name').strip()) > 0:
-                customer.second_name = Request.POST.get(u'second_name')
-            if len(Request.POST.get(u'surname').strip()) > 0:
-                customer.surname = Request.POST.get(u'surname')
-            if len(Request.POST.get(u'email').strip()) > 0:
-                customer.email = Request.POST.get(u'email')
-            if len(Request.POST.get(u'address').strip()) > 0:
-                customer.address = Request.POST.get(u'address')
+            if len(Request.POST.get('first_name').strip()) > 0:
+                customer.first_name = Request.POST.get('first_name')
+            if len(Request.POST.get('second_name').strip()) > 0:
+                customer.second_name = Request.POST.get('second_name')
+            if len(Request.POST.get('surname').strip()) > 0:
+                customer.surname = Request.POST.get('surname')
+            if len(Request.POST.get('email').strip()) > 0:
+                customer.email = Request.POST.get('email')
+            if len(Request.POST.get('address').strip()) > 0:
+                customer.address = Request.POST.get('address')
 
             vars['error'] = u'Изменения успешно сохранены'
 
