@@ -379,7 +379,7 @@ def account(Request):
 
     if Request.GET.get('do', None) is not None:
         if not user.check_password(Request.POST.get('old-pass')):    
-            vars['error'] = u'Введённые пароли не совпадают'
+            vars['error'] = u'Неверно введён старый пароль'
         else:
             customer = Customer.objects.get(user=user)
 
