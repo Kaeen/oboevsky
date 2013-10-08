@@ -33,19 +33,22 @@
                     <a href="{{group.1}}"><h2>{{group.0}}</h2></a>
                     <div class="items clear">
                         {% for item in group.2 %}
-                            <div class="item">
+
+                            <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}');">
                                 {% if item.get_first_image %}
                                     <a href="{{item.get_absolute_url}}">
                                         <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
                                     </a>
                                 {% endif %}
-                                <p>{{item.title}}</p>
-                                <p>&nbsp;</p>
+                                <p class="title-container">
+                                    {{item.title}}<br />
+                                    {{item.price}} руб.
+                                </p>
                                 <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
                             </div>
 
-                            {% if forloop.counter|divisibleby:"3" %}
-                                <div class="spacer"></div>
+                                {% if forloop.counter|divisibleby:"3" %}
+                                    <div class="spacer"></div>
                             {% endif %}
                         {% endfor %}
 
@@ -62,16 +65,22 @@
 
                 <div class="items clear">
                     {% for item in items %}
-                        <div class="item">
-                            <a href="{{item.get_absolute_url}}">
-                                <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
-                            </a>
-                            <p>{{item.title}}</p>
-                            {% if item.price %}
-                                <p>{{item.price}} руб</p>
+                        <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}');">
+                            {% if item.get_first_image %}
+                                <a href="{{item.get_absolute_url}}">
+                                    <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
+                                </a>
                             {% endif %}
+                            <p class="title-container">
+                                {{item.title}}<br />
+                                {{item.price}} руб.
+                            </p>
                             <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
                         </div>
+
+                        {% if forloop.counter|divisibleby:"3" %}
+                            <div class="spacer"></div>
+                        {% endif %}
                     {% endfor %}
                 </div>
 
