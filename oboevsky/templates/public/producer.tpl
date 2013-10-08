@@ -38,8 +38,8 @@
                                     </a>
                                 {% endif %}
                                 <p class="title-container">
-                                    {{item.title}}<br />
-                                    {{item.price}} руб.
+                                    <b>{{item.title}}</b><br />
+                                    {{item.price|floatformat:"-3"}} руб.
                                 </p>
                                 <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
                             </div>
@@ -71,8 +71,8 @@
                                 </a>
                             {% endif %}
                             <p class="title-container">
-                                {{item.title}}<br />
-                                {{item.price}} руб.
+                                <b>{{item.title}}</b><br />
+                                {{item.price|floatformat:"-3"}} руб.
                             </p>
                             <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
                         </div>
