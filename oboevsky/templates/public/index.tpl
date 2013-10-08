@@ -9,14 +9,16 @@
                 <a{# href="#"#}><h2>Новинки</h2></a>
                 <div class="items clear">
                     {% for item in new_items %}
-                        <div class="item">
+                        <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}');">
                             {% if item.get_first_image %}
                                 <a href="{{item.get_absolute_url}}">
                                     <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
                                 </a>
                             {% endif %}
-                            <p>{{item.title}}</p>
-                            <p>&nbsp;</p>
+                            <p class="title-container">
+                                {{item.title}}<br />
+                                {{item.price}} руб.
+                            </p>
                             <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
                         </div>
 
