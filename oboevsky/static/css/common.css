@@ -282,20 +282,20 @@ html, body {
     margin-bottom: 0px;
 }
 
-.item.new-look p.title-container {
-    padding-bottom: 0;
-}
-
-.item.new-look p {
-    padding: .5em;
-    background-color: rgba(255,255,255,0.5);
-    color: #333;
-}
-
 .items .spacer {
     float: left;
     width: 520px;
     height: 20px;
+}
+
+.items .item.new-look p.title-container {
+    padding-bottom: 0; 
+}
+
+.items .item.new-look p {
+    padding: .5em;
+    background-color: rgba(255,255,255,0.5);
+    color: #333;
 }
 
 .items .item p {
