@@ -3,8 +3,12 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin, flatpages
 from oboevsky import settings
 from oboevsky.views import *
+from django.conf.urls.defaults import handler404, handler500
 
 admin.autodiscover()
+
+handler404 = error
+handler500 = error
 
 urlpatterns = patterns('',
     url(r'^$', 'oboevsky.views.home'),

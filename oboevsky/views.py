@@ -26,6 +26,7 @@ def send_mail(rcv, subject, text):
     s.login('oboevsky','qwerty321')
     s.sendmail('oboevsky@oboevsky.ru', [rcv,], text.as_string())
 
+
 def generate_hash():
     from hashlib import md5
     from random import random
@@ -91,6 +92,11 @@ def common_context_proc(Request=None):
 #              Views               # 
 ####################################
 
+def error(Request):
+    vars = {}
+    return render_to_response('public/error.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
+
 def home(Request):
     vars = {
         'top_sells_items': Wallpaper.objects.filter(top_sells=True, visible=True),
@@ -100,6 +106,7 @@ def home(Request):
 
     return render_to_response('public/index.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
+
 def wallpaper(Request, Url):
     item = get_object_or_404(Wallpaper, url=Url, visible=True)
 
@@ -108,6 +115,7 @@ def wallpaper(Request, Url):
     }
 
     return render_to_response('public/item.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
 
 def country(Request, Url):
     country = get_object_or_404(Country, url=Url, visible=True)
@@ -121,6 +129,7 @@ def country(Request, Url):
     build_items_var(wallpapers, vars, lambda x: x.get_first_category()) #start_page, step...)
 
     return render_to_response('public/country.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
 
 def producer(Request, Url):
     producer = get_object_or_404(Producer, url=Url, visible=True)

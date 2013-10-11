@@ -21,7 +21,7 @@
 </div>
 <div id="menuWrapper">
     {% if no_homepage_link %}
-
+        <a href="#">Главная</a>
     {% else %}
         <a href="/">Главная</a>
     {% endif %}
