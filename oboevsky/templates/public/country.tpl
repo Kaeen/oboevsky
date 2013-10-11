@@ -45,7 +45,7 @@
                                         $('#items-group-{{item.id}}').show();
                                     }
                                 </script>
-                                <a id="trigger-{{item.id}}" href="javascript:trigger_{{item.id}}();" style="width:109px; height:109px; line-height: 100px; text-align:center; display:block; float: left;">Показать остальные</a>
+                                <a id="trigger-{{item.id}}" href="javascript:trigger_{{item.id}}();" style="width:169px; height:169px; line-height: 100px; text-align:center; display:block; float: left;">Показать&nbsp;остальные</a>
                                 <div style="display:none" id="items-group-{{item.id}}">
                             {% endif %}
 
