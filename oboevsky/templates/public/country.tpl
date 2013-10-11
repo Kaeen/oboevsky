@@ -38,11 +38,23 @@
                     <div class="items clear">
                         {% for item in group.2 %}
 
+                            {% if forloop.counter == 9 %}
+                                <a href="javascript:$('items-group-{{item.sku}}').show();">Показать больше</a>
+                                <div style="display:none" id="items-group-{{item.sku}}">
+                            {% endif %}
+
                             {% include "public/inc/wallpapers_list_item.tpl" %}
 
                             {% if forloop.counter|divisibleby:"3" %}
                                 <div class="spacer"></div>
                             {% endif %}
+
+                            {% if forloop.counter > 9 %}
+                                {% if forloop.last %}
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+
                         {% endfor %}
 
                     </div>
