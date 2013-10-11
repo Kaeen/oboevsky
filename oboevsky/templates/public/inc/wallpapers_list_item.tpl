@@ -8,5 +8,5 @@
         <a href="{{item.get_absolute_url}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
         {{item.price|floatformat:"-3"}} руб.
     </p>
-    <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
+    <p><a href="/put-to-cart/{{item.pk}}">Купить</a></p>
 </div>
