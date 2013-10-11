@@ -31,18 +31,8 @@
                     <a href="{{group.1}}"><h2>{{group.0}}</h2></a>
                     <div class="items clear">
                         {% for item in group.2 %}
-                            <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}');">
-                                {% if item.get_first_image %}
-                                    <a href="{{item.get_absolute_url}}">
-                                        <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
-                                    </a>
-                                {% endif %}
-                                <p class="title-container">
-                                    <b>{{item.title}}</b><br />
-                                    {{item.price|floatformat:"-3"}} руб.
-                                </p>
-                                <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
-                            </div>
+
+                            {% include "wallpapers_list_item.tpl" %}
 
                             {% if forloop.counter|divisibleby:"3" %}
                                 <div class="spacer"></div>
@@ -64,18 +54,8 @@
 
                 <div class="items clear">
                     {% for item in items %}
-                        <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}');">
-                            {% if item.get_first_image %}
-                                <a href="{{item.get_absolute_url}}">
-                                    <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
-                                </a>
-                            {% endif %}
-                            <p class="title-container">
-                                <b>{{item.title}}</b><br />
-                                {{item.price|floatformat:"-3"}} руб.
-                            </p>
-                            <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
-                        </div>
+
+                        {% include "wallpapers_list_item.tpl" %}
 
                         {% if forloop.counter|divisibleby:"3" %}
                             <div class="spacer"></div>
