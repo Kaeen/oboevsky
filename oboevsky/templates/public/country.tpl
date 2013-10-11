@@ -39,7 +39,13 @@
                         {% for item in group.2 %}
 
                             {% if forloop.counter == 9 %}
-                                <a href="javascript:$('#items-group-{{item.sku}}').show();">Показать больше</a>
+                                <script>
+                                    function trigger_{{item.sku}}() {
+                                        $('trigger-{{item.sku}}').hide();
+                                        $('#items-group-{{item.sku}}').show();
+                                    }
+                                </script>
+                                <a id="trigger-{{item.sku}}" href="javascript:trigger_{{item.sku}}();">Показать больше</a>
                                 <div style="display:none" id="items-group-{{item.sku}}">
                             {% endif %}
 
