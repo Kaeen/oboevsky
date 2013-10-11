@@ -20,7 +20,11 @@
 
 </div>
 <div id="menuWrapper">
-    <a href="/">Главная</a>
+    {% if no_homepage_link %}
+
+    {% else %}
+        <a href="/">Главная</a>
+    {% endif %}
     {#<a href="/catalog/">Каталог обоев</a>#}
     {% for flatpage in flatpages %}
         <a href="{{flatpage.url}}">{{flatpage.title}}</a>
