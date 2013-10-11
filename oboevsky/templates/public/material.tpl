@@ -33,11 +33,29 @@
                     <div class="items clear">
                         {% for item in group.2 %}
 
+                            {% if forloop.counter == 9 %}
+                                <script>
+                                    function trigger_{{item.id}}() {
+                                        $('#trigger-{{item.id}}').hide();
+                                        $('#items-group-{{item.id}}').show();
+                                    }
+                                </script>
+                                <a id="trigger-{{item.id}}" href="javascript:trigger_{{item.id}}();" style="width:169px; height:169px; line-height: 160px; text-align:center; display:block; float: left;">Показать&nbsp;остальные</a>
+                                <div style="display:none" id="items-group-{{item.id}}">
+                            {% endif %}
+
                             {% include "public/inc/wallpapers_list_item.tpl" %}
 
                             {% if forloop.counter|divisibleby:"3" %}
                                 <div class="spacer"></div>
                             {% endif %}
+
+                            {% if forloop.counter > 9 %}
+                                {% if forloop.last %}
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+
                         {% endfor %}
 
                     </div>
@@ -56,11 +74,29 @@
                 <div class="items clear">
                     {% for item in items %}
 
+                        {% if forloop.counter == 9 %}
+                            <script>
+                                function trigger_{{item.id}}() {
+                                    $('#trigger-{{item.id}}').hide();
+                                    $('#items-group-{{item.id}}').show();
+                                }
+                            </script>
+                            <a id="trigger-{{item.id}}" href="javascript:trigger_{{item.id}}();" style="width:169px; height:169px; line-height: 160px; text-align:center; display:block; float: left;">Показать&nbsp;остальные</a>
+                            <div style="display:none" id="items-group-{{item.id}}">
+                        {% endif %}
+
                         {% include "public/inc/wallpapers_list_item.tpl" %}
 
                         {% if forloop.counter|divisibleby:"3" %}
                             <div class="spacer"></div>
                         {% endif %}
+
+                        {% if forloop.counter > 9 %}
+                            {% if forloop.last %}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
                     {% endfor %}
                 </div>
 
