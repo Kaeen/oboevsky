@@ -40,13 +40,13 @@
 
                             {% if forloop.counter == 9 %}
                                 <script>
-                                    function trigger_{{item.sku}}() {
-                                        $('#trigger-{{item.sku}}').hide();
-                                        $('#items-group-{{item.sku}}').show();
+                                    function trigger_{{item.id}}() {
+                                        $('#trigger-{{item.id}}').hide();
+                                        $('#items-group-{{item.id}}').show();
                                     }
                                 </script>
-                                <a id="trigger-{{item.sku}}" href="javascript:trigger_{{item.sku}}();">Показать больше</a>
-                                <div style="display:none" id="items-group-{{item.sku}}">
+                                <a id="trigger-{{item.id}}" href="javascript:trigger_{{item.id}}();">Показать больше</a>
+                                <div style="display:none" id="items-group-{{item.id}}">
                             {% endif %}
 
                             {% include "public/inc/wallpapers_list_item.tpl" %}
