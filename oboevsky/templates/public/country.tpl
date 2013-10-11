@@ -41,7 +41,7 @@
                             {% if forloop.counter == 9 %}
                                 <script>
                                     function trigger_{{item.sku}}() {
-                                        $('trigger-{{item.sku}}').hide();
+                                        $('#trigger-{{item.sku}}').hide();
                                         $('#items-group-{{item.sku}}').show();
                                     }
                                 </script>
