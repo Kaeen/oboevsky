@@ -38,7 +38,7 @@
                     <div class="items clear">
                         {% for item in group.2 %}
 
-                            {% include "wallpapers_list_item.tpl" %}
+                            {% include "public/inc/wallpapers_list_item.tpl" %}
 
                             {% if forloop.counter|divisibleby:"3" %}
                                 <div class="spacer"></div>
@@ -61,7 +61,7 @@
                 <div class="items clear">
                     {% for item in items %}
 
-                        {% include "wallpapers_list_item.tpl" %}
+                        {% include "public/inc/wallpapers_list_item.tpl" %}
 
                         {% if forloop.counter|divisibleby:"3" %}
                             <div class="spacer"></div>
