@@ -2,7 +2,7 @@
 import os
 
 if os.environ.get("OBOEVSKY_SERVER") == 'stage':
-    DEBUG = True
+    DEBUG = False
     TEMPLATE_DEBUG = DEBUG
 
     ADMINS = (
@@ -167,7 +167,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
     SESSION_COOKIE_DOMAIN = '.oboevsky.ru'
 
 else:
-    DEBUG = True
+    DEBUG = False
     TEMPLATE_DEBUG = DEBUG
 
     ADMINS = (
