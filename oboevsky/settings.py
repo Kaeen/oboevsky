@@ -178,7 +178,7 @@ else:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
             'NAME': 'oboevsky',              # Or path to database file if using sqlite3.
             'USER': 'oboevsky',              # Not used with sqlite3.
             'PASSWORD': 'oboevsky',          # Not used with sqlite3.
