@@ -94,7 +94,17 @@ def common_context_proc(Request=None):
 def get_items_collection(Request, query):
 
     query = query.split(',')
-    objects = Wallpaper.objects.filter(pk__in=query, visible=True)
+    db = Wallpaper.objects.filter(pk__in=query, visible=True)
+    objects = []
+    for t in db:
+        objects.append({
+                'image': t.get_first_image().image.url_170x111,
+                'url': t.get_absolute_url(),
+                'shortdesc': t.shortdesc,
+                'title': t.title,
+                'price': t.price,
+                'pk': t.pk
+            })
     import json
     json = json.dumps(objects)
 
