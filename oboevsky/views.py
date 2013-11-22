@@ -87,10 +87,26 @@ def common_context_proc(Request=None):
         'cart_items_total': cart_items_total,
     }
 
+####################################
+#               Ajax               #
+####################################
+
+def get_items_collection(Request, query):
+
+    query = query.split(',')
+    objects = Wallpaper.objects.filter(pk__in=query, visible=True)
+    import simplejson
+    json = simplejson.dumps(objects)
+
+    return HttpResponse(json, mimetype="application/javascript")
+
+
 
 ####################################
 #              Views               # 
 ####################################
+
+
 
 def error(Request):
     vars = {}

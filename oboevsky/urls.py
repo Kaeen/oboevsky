@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^cart/?$', 'oboevsky.views.cart'),
     url(r'^order/?$', 'oboevsky.views.order'),
     url(r'^place-order/?$', 'oboevsky.views.place_order'),
+    url(r'^get-items-collection/(?P<query>.+)/?$', 'oboevsky.views.get_items_collection'),
 
 
     url(r'^put-to-cart/(?P<pk>[\d]+)/?$', 'oboevsky.views.add_item_to_cart'),
