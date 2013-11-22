@@ -40,6 +40,21 @@
 
                             {% if forloop.counter == 9 %}
                                 <script>
+                                    function fetch_items_{{item.id}}() {
+                                        $('#trigger-{{item.id}}').hide();
+                                        $.getJSON('http://oboevsky.ru/get-items-collection/{{item.id}}{% for t in group.2|slice:"9:" %},{{t.id}}{% endfor %}/',
+                                            function(data) {
+                                                $.each(data, function(k, v) {
+                                                    $('#items-group-{{item.id}}').append(
+                                                        $('<div class="item new-look" style="background:url(\''+v['image']+'\'); cursor:pointer;" onClick="javascript:document.location.href="'+v['url']+'"><a href="'+v['url']+'"><img src="'+v['image']+'" alt="'+v['shortdesc']+'" /></a><p class="title-container"><a href="'+v['url']+'"><b style="text-decoration:none;">'+v['title']+'</b></a><br />'+v['price']+' руб.</p><p><a href="/put-to-cart/'+v['pk']+'">Купить</a></p></div>')
+                                                    );
+                                                    if( (k + 3) % 3 == 0) {$('#items-group-{{item.id}}}').append('<div class="spacer"></div>');}
+                                                });
+                                            });
+
+                                        $('#items-group-{{item.id}}').show();
+                                    }
+
                                     function trigger_{{item.id}}() {
                                         $('#trigger-{{item.id}}').hide();
                                         $('#items-group-{{item.id}}').show();
@@ -49,7 +64,9 @@
                                 <div style="display:none" id="items-group-{{item.id}}">
                             {% endif %}
 
-                            {% include "public/inc/wallpapers_list_item.tpl" %}
+                            {% if forloop.counter < 9 %}
+                                {% include "public/inc/wallpapers_list_item.tpl" %}
+                            {% endif %}
 
                             {% if forloop.counter|divisibleby:"3" %}
                                 <div class="spacer"></div>
