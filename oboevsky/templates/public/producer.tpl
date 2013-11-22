@@ -77,8 +77,6 @@
         <div class="contentBlock">
             <div>
                 <h2>Обои торговой марки "{{producer.title}}"</h2>
-                {# PAGINATION #}
-                {#<p><a href="#">1</a>, <a href="#">2</a>, <a href="#">3</a></p>#}
 
                 <div class="items clear">
                     {% for item in items %}
@@ -119,6 +117,7 @@
 
                     {% endfor %}
                 </div>
+
 
             </div>
         </div>
