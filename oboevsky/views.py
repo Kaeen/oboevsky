@@ -93,6 +93,8 @@ def common_context_proc(Request=None):
 
 def get_items_collection(Request, query):
 
+    from django.core.serializers.json import DjangoJSONEncoder
+
     query = query.split(',')
     db = Wallpaper.objects.filter(pk__in=query, visible=True)
     objects = []
@@ -106,7 +108,7 @@ def get_items_collection(Request, query):
                 'pk': t.pk
             })
     import json
-    json = json.dumps(objects)
+    json = json.dumps(objects, cls=DjangoJSONEncoder)
 
     return HttpResponse(json, mimetype="application/javascript")
 
