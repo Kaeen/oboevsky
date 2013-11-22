@@ -95,8 +95,8 @@ def get_items_collection(Request, query):
 
     query = query.split(',')
     objects = Wallpaper.objects.filter(pk__in=query, visible=True)
-    import simplejson
-    json = simplejson.dumps(objects)
+    import json
+    json = json.dumps(objects)
 
     return HttpResponse(json, mimetype="application/javascript")
 
