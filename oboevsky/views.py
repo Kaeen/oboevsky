@@ -100,7 +100,7 @@ def get_items_collection(Request, query):
         objects.append({
                 'image': t.get_first_image().image.url_170x111,
                 'url': t.get_absolute_url(),
-                'shortdesc': t.shortdesc,
+                'shortdesc': t.short_desc,
                 'title': t.title,
                 'price': t.price,
                 'pk': t.pk
