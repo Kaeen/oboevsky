@@ -108,7 +108,7 @@
             {% if item.images.all %}
                 <div id="itemPreviewWrapper" class="right">
                     <img id="itemPreview" src="{{item.images.all.0.image.url_284x185}}" alt="{{item.images.all.0.short_desc}}"
-                     width="270px" style="cursor:pointer;" onclick="javascript:view('{{item.images.all.0.image.url}}');" />
+                     {#width="270px"#} style="cursor:pointer; max-width:270px;" onclick="javascript:view('{{item.images.all.0.image.url}}');" />
                     {% if item.images.all|length > 1 %}
                     <div class="itemThumbs" class="clear">
                         <div class="thumbsWrapper">
