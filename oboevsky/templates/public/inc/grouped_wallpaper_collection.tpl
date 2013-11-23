@@ -8,7 +8,8 @@
                         {% if forloop.counter == 9 %}
                             <script>
                             function hide_items_{{item.id}}() {
-                            	$('#trigger-{{item.id}}').text('Показать').attr('href', 'javascript: show_items_{{item.id}}();').before('#items-group-{{item.id}}');
+                            	$('#trigger-{{item.id}}').text('Показать').attr('href', 'javascript: show_items_{{item.id}}();');
+                            	$('#items-group-{{item.id}}').before($('#trigger-{{item.id}}'));
                                 $('#items-group-{{item.id}}').hide();
 
                             }
