@@ -138,7 +138,7 @@ def home(Request):
 def wallpaper(Request, Url):
     item = get_object_or_404(Wallpaper, url=Url, visible=True)
 
-    q = Request.POST.get('q', [])
+    q = Request.GET.get('q', str(item.id))
     collection = q.split(',')
 
     i = 0
