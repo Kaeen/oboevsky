@@ -25,7 +25,7 @@
 
     {% if items_display_mode == 'grouped' %}
 
-        {% include "public/inc/grouped_wallpapers_collection.tpl" %}
+        {% include "public/inc/grouped_wallpaper_collection.tpl" %}
 
     {% else %}
 
