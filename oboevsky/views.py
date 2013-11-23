@@ -155,7 +155,8 @@ def wallpaper(Request, Url):
         'collection': collection,
         'q': q,
         'previous': p,
-        'next': n
+        'next': n,
+        'no_breadcrumps': p or n or False,
     }
 
     return render_to_response('public/item.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))

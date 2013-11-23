@@ -72,22 +72,27 @@
     </script>
 
     <div class="contentBlockNoBorder">
-        <div id="breadcrumps">
-            <a href="/">Главная</a> / {{item.title}}
-        </div>
         <style type="text/css">
             #collection-nav-container {
-                height: 1em; 
-                padding: .3em; 
-                margin: .7em 0; 
-                background-color: #eee;
+                height: 2em;
+                padding: .3em;
+                margin: .7em 0;
             }
 
             .left-collection-nav, 
             .right-collection-nav {
                 height: 1em;
+                margin: .3em;
+                display: block;
             }
         </style>
+
+        {% if no_breadcrumps %}
+            <div id="breadcrumps">
+                <a href="/">Главная</a> / {{item.title}}
+            </div>
+        {% endif %}
+
         <div id="collection-nav-container" class="clear">
             {% if previous %}
                 <div class="left left-collection-nav"><a href="{{previous.get_absolute_url}}?q={{q}}">&larr; {{previous.title}}</a></div>
