@@ -44,7 +44,7 @@
             $( i ).click( function () {
                 view(full_url);
             } );
-            $(i).css({width: "270px"});
+            $(i).css({"max-width": "270px"});
         }
 
 
