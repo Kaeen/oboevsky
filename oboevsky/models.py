@@ -177,7 +177,7 @@ class Wallpaper(models.Model):
 				('WALLPAPER_PRICE', self.price),
 			):
 				formula.replace( k, v )
-			if actual_price > eval(formula)
+			if actual_price > eval(formula):
 				actual_price = eval(formula)
 
 		return actual_price
