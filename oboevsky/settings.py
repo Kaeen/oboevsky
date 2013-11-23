@@ -167,7 +167,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
     SESSION_COOKIE_DOMAIN = '.oboevsky.ru'
 
 else:
-    DEBUG = False
+    DEBUG = True
     TEMPLATE_DEBUG = DEBUG
 
     ADMINS = (
