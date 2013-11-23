@@ -2,7 +2,7 @@
 import os
 
 if os.environ.get("OBOEVSKY_SERVER") == 'stage':
-    DEBUG = False
+    DEBUG = True
     TEMPLATE_DEBUG = True
 
     ADMINS = (
