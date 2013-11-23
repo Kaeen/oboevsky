@@ -88,21 +88,20 @@
         </style>
 
         {% if no_breadcrumps %}
-            
+            <div id="collection-nav-container" class="clear">
+                {% if previous %}
+                    <div class="left left-collection-nav"><a href="{{previous.get_absolute_url}}?q={{q}}">&larr; {{previous.title}}</a></div>
+                {% endif %}
+                {% if next %}
+                    <div class="right right-collection-nav"><a href="{{next.get_absolute_url}}?q={{q}}">{{next.title}} &rarr;</a></div>
+                {% endif %}
+            </div>
         {% else %}
             <div id="breadcrumps">
                 <a href="/">Главная</a> / {{item.title}}
             </div>
         {% endif %}
 
-        <div id="collection-nav-container" class="clear">
-            {% if previous %}
-                <div class="left left-collection-nav"><a href="{{previous.get_absolute_url}}?q={{q}}">&larr; {{previous.title}}</a></div>
-            {% endif %}
-            {% if next %}
-                <div class="right right-collection-nav"><a href="{{next.get_absolute_url}}?q={{q}}">{{next.title}} &rarr;</a></div>
-            {% endif %}
-        </div>
         <div id="itemInfo" class="clear">
             <h1>{{item.title}}</h1>
 
