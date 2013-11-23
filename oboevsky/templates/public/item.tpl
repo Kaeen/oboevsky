@@ -75,7 +75,7 @@
         <div id="breadcrumps">
             <a href="/">Главная</a> / {{item.title}}
         </div>
-        <div style="height: 1em; padding: .3em;" class="clear">
+        <div style="height: 1em; padding: .3em; margin: .7em 0; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;" class="clear">
             {% if previous %}
                 <div class="left"><a href="{{previous.get_absolute_url}}?q={{q}}">&larr; {{previous.title}}</a></div>
             {% endif %}
