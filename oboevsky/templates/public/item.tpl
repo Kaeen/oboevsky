@@ -75,6 +75,14 @@
         <div id="breadcrumps">
             <a href="/">Главная</a> / {{item.title}}
         </div>
+        <div class="clear">
+            {% if previous %}
+                <div class="left"><a href="{{previous.get_absolute_url}}?q={{q}}">&larr;</a></div>
+            {% endif %}
+            {% if previous %}
+                <div class="right"><a href="{{next.get_absolute_url}}?q={{q}}">&rarr;</a></div>
+            {% endif %}
+        </div>
         <div id="itemInfo" class="clear">
             <h1>{{item.title}}</h1>
 
