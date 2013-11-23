@@ -1,7 +1,7 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
 {% block content %}
-    {#<a href="#">#}<img alt="" src="/static/images/sample_moneyshot.jpg" />{#</a>#}
+    {#<a href="#"><img alt="" src="/static/images/sample_moneyshot.jpg" /></a>#}
 
     {% if new_items|length > 0 %}
         <div class="contentBlock">
