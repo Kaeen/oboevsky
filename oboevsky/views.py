@@ -150,13 +150,15 @@ def wallpaper(Request, Url):
             break
         i += 1
 
+    no_breadcrumps = True if p or n else False
+
     vars = {
         'item': item,
         'collection': collection,
         'q': q,
         'previous': p,
         'next': n,
-        'no_breadcrumps': p or n or False,
+        'no_breadcrumps': no_breadcrumps,
     }
 
     return render_to_response('public/item.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
