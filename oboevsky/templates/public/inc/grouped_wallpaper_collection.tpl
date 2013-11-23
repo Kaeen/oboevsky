@@ -6,10 +6,8 @@
                     {% for item in group.2 %}
 
                         {% if forloop.counter == 9 %}
-                        	{% if forloop.last %}
-                        		{% include "public/inc/wallpapers_list_item.tpl" %}
-                        		<div class="spacer"></div>
-                        	{% else %}
+
+                        	
                             <script>
                             function hide_items_{{item.id}}() {
                             	$('#trigger-{{item.id}}').text('Показать').attr('href', 'javascript: show_items_{{item.id}}();');
@@ -51,9 +49,6 @@
                             {% if group.2|slice:"8:"|length < 2 %}
                                 </div>
                             {% endif %}
-
-                            {% endif % }
-
                         {% endif %}
 
                         {% if forloop.counter < 9 %}
