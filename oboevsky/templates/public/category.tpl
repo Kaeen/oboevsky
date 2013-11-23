@@ -4,7 +4,7 @@
 
     <div class="contentBlockNoBorder">
         <div id="breadcrumps">
-            <a href="/">Главная</a> / <a href="/catalog/">Каталог</a> / 
+            <a href="/">Главная</a> {#/ <a href="/catalog/">Каталог</a> #}/ 
             {% for breadcrump in category.get_breadcrumps_list %}
                 {{breadcrump.title}}
             {% endfor %}
