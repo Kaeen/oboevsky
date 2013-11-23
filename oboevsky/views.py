@@ -152,6 +152,7 @@ def wallpaper(Request, Url):
 
     vars = {
         'item': item,
+        'collection': collection,
         'q': q,
         'previous': p,
         'next': n
