@@ -166,6 +166,22 @@ class Wallpaper(models.Model):
 	def get_first_image(self):
 		return self.images.all()[0] if self.images.all() else None
 
+	def actual_price(self):
+		campains = self.promo_campains
+		# Выбираем самую низкую цену из всех промок:
+		actual_price = self.price
+		for c in campains:
+			formula = c.wallpaper_price_formula
+			for k,v in (
+				# ПЕРЕМЕННЫЕ, ДОСТУПНЫЕ В ФОРМУЛАХ
+				('WALLPAPER_PRICE', self.price),
+			):
+				formula.replace( k, v )
+			if actual_price > eval(formula)
+				actual_price = eval(formula)
+
+		return actual_price
+
 	class Meta:
 		verbose_name = _(u'обои')
 		verbose_name_plural = _(u'обои')
@@ -729,7 +745,7 @@ class PromoCampain(models.Model):
 	# Обои:
 	wallpapers = models.ManyToManyField(
 		'Wallpaper',
-		related_name='wallpapers',
+		related_name='promo_campains',
 		null=True,
 		blank=True,
 		default=None,
