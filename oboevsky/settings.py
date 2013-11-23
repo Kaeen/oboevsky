@@ -3,7 +3,7 @@ import os
 
 if os.environ.get("OBOEVSKY_SERVER") == 'stage':
     DEBUG = False
-    TEMPLATE_DEBUG = False
+    TEMPLATE_DEBUG = True
 
     ADMINS = (
         ('Pavel', 'pavel.daynyak@gmail.com'),
