@@ -7,6 +7,17 @@
 
                         {% if forloop.counter == 9 %}
                             <script>
+                            function hide_items_{{item.id}}() {
+                            	$('#trigger-{{item.id}}').text('Показать').attr('href', 'javascript: show_items_{{item.id}}();').before('#items-group-{{item.id}}');
+                                $('#items-group-{{item.id}}').hide();
+
+                            }
+
+                            function show_items_{{item.id}}() {
+                            	$('#trigger-{{item.id}}').text('Свернуть').attr('href', 'javascript: hide_items_{{item.id}}();').appendTo('#items-group-{{item.id}}');
+                                $('#items-group-{{item.id}}').show();
+                            }
+
                             function fetch_items_{{item.id}}() {
                                 $('#trigger-{{item.id}}').text('Секундочку...');
                                 $.getJSON('http://oboevsky.ru/get-items-collection/{{item.id}}{% for t in group.2|slice:"8:" %},{{t.id}}{% endfor %}/',
@@ -20,8 +31,7 @@
                                         });
                                     })
 									.done(function() {
-										$('#trigger-{{item.id}}').hide();
-                                		$('#items-group-{{item.id}}').show();
+										show_items_{{item.id}}();
 									})
 									.fail(function() {
 										alert('Произошла ошибка при попытке загрузки коллекции обоев. Пожалуйста, попробуйте обновить страницу и загрузить их снова, а также проверьте соединение с интернетом. ');
