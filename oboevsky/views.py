@@ -138,8 +138,22 @@ def home(Request):
 def wallpaper(Request, Url):
     item = get_object_or_404(Wallpaper, url=Url, visible=True)
 
+    q = Request.POST['q']
+    collection = q.split(',')
+
+    i = 0
+    for t in collection:
+        if item.id == t:
+            p = collection[i-1] if i>0 else None
+            n = collection[i+1] if i<len(collection) else None
+            break
+        i += 1
+
     vars = {
-        'item': item
+        'item': item,
+        'q': q,
+        'previous': p,
+        'next': n
     }
 
     return render_to_response('public/item.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
