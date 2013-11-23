@@ -142,6 +142,7 @@ def wallpaper(Request, Url):
     collection = q.split(',')
 
     i = 0
+    p = n = None
     for t in collection:
         if item.id == t:
             p = collection[i-1] if i>0 else None
