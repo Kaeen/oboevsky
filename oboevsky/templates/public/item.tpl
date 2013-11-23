@@ -76,13 +76,11 @@
             <a href="/">Главная</a> / {{item.title}}
         </div>
         <div class="clear">
-            collection: {{collection}}
-            {{item.id}} | {{previous}} | {{next}}
             {% if previous %}
-                <div class="left"><a href="{{previous.get_absolute_url}}?q={{q}}">&larr;</a></div>
+                <div class="left"><a href="{{previous.get_absolute_url}}?q={{q}}">&larr; {{previous.title}}</a></div>
             {% endif %}
             {% if next %}
-                <div class="right"><a href="{{next.get_absolute_url}}?q={{q}}">&rarr;</a></div>
+                <div class="right"><a href="{{next.get_absolute_url}}?q={{q}}">{{next.title}} &rarr;</a></div>
             {% endif %}
         </div>
         <div id="itemInfo" class="clear">
