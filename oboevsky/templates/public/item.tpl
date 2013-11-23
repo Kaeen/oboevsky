@@ -88,11 +88,11 @@
         </style>
 
         {% if no_breadcrumps %}
+            <div id="breadcrumps">Навигация по коллекции:</div>
+        {% else %}
             <div id="breadcrumps">
                 <a href="/">Главная</a> / {{item.title}}
             </div>
-        {% else %}
-            <div id="breadcrumps">Навигация по коллекции:</div>
         {% endif %}
 
         <div id="collection-nav-container" class="clear">
