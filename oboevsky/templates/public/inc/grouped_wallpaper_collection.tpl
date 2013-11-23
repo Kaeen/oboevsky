@@ -31,7 +31,7 @@
                         {% endif %}
 
                         {% if forloop.counter < 9 %}
-                            {% include "wallpapers_list_item.tpl" %}
+                            {% include "public/inc/wallpapers_list_item.tpl" %}
                             {% if forloop.counter|divisibleby:"3" %}
                                 <div class="spacer"></div>
                             {% endif %}
