@@ -144,7 +144,7 @@ def wallpaper(Request, Url):
     i = 0
     p = n = None
     for t in collection:
-        if item.id == t:
+        if unicode(item.id) == t:
             p = Wallpaper.objects.get_object_or_404(pk=collection[i-1]) if i>0 else None
             n = Wallpaper.objects.get_object_or_404(pk=collection[i+1]) if i<len(collection) else None
             break
