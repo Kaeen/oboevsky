@@ -250,6 +250,9 @@ html, body {
 .contentBlockNoBorder {
     margin-top: 20px;
 }
+.contentBlockNoBorder:first {
+    margin-top: 0;
+}
 .contentBlockNoBorder h1 {
     text-indent: 15px;
     font-size: 16px;
