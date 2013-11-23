@@ -15,7 +15,7 @@
                         	{% else %}
 	                            <script>
 	                            function hide_items_{{item.id}}() {
-	                            	$('#trigger-{{item.id}}').text('Показать').attr('href', 'javascript: show_items_{{item.id}}();');
+	                            	$('#trigger-{{item.id}}').text('Показать ({{group.2|slice:"8:"|length}})').attr('href', 'javascript: show_items_{{item.id}}();');
 	                            	$('#items-group-{{item.id}}').before($('#trigger-{{item.id}}'));
 	                                $('#items-group-{{item.id}}').hide();
 
