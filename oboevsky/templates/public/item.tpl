@@ -88,6 +88,7 @@
         </style>
 
         {% if no_breadcrumps %}
+            <h1>{{item.title}}</h1>
             <div id="collection-nav-container" class="clear">
                 {% if previous %}
                     <div class="left left-collection-nav"><a href="{{previous.get_absolute_url}}?q={{q}}">&larr; {{previous.title}}</a></div>
@@ -103,7 +104,9 @@
         {% endif %}
 
         <div id="itemInfo" class="clear">
+            {%  if not no_breadcrumps %}
             <h1>{{item.title}}</h1>
+            {% endif %}
 
             {% if item.images.all %}
                 <div id="itemPreviewWrapper" class="right">
