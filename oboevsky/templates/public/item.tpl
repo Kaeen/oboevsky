@@ -76,7 +76,7 @@
             #collection-nav-container {
                 height: 2em;
                 padding: .3em;
-                margin: .7em 0;
+                margin: .7em 0 1em;
             }
 
             .left-collection-nav, 
@@ -109,7 +109,7 @@
             {% endif %}
 
             {% if item.images.all %}
-                <div id="itemPreviewWrapper" class="right">
+                <div id="itemPreviewWrapper" class="right" {% if no_breadcrumps %}style="margin-top:0px;"{% endif %}>
                     <img id="itemPreview" src="{{item.images.all.0.image.url_284x185}}" alt="{{item.images.all.0.short_desc}}"
                      {#width="270px"#} style="cursor:pointer; max-width:270px;" onclick="javascript:view('{{item.images.all.0.image.url}}');" />
                     {% if item.images.all|length > 1 %}
