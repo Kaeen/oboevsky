@@ -98,10 +98,6 @@ html, body {
     float: left;
 }
 
-#breadcrumps {
-    margin-top: -20px;
-}
-
 #itemPreviewWrapper:before {
     content: '';
     display: block;
