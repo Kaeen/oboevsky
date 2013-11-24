@@ -250,7 +250,7 @@ html, body {
 .contentBlockNoBorder {
     margin-top: 20px;
 }
-.contentBlockNoBorder:first {
+.contentBlockNoBorder:first-child {
     margin-top: 0 !important;
 }
 .contentBlockNoBorder h1 {
