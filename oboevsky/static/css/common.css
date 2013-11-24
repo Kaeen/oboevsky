@@ -233,7 +233,7 @@ html, body {
     background: url('../images/content_block_top.png') top left no-repeat;
     width: 581px; 
     height: 9px;
-    /* margin-top: 10px; */
+    /* margin-top: 10px; NOTE: after-going element now have bottom margin instead*/
 }
 .contentBlock:after {
     content: " ";
@@ -242,6 +242,7 @@ html, body {
     background: url('../images/content_block_bottom.png') top left no-repeat;
     width: 581px;
     height: 9px;
+    margin-bottom: 10px;
 }
 .contentBlock > div {
     width: 550px;
