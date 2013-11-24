@@ -267,8 +267,11 @@ html, body {
     margin-left: 10px;
 }
 
-.items {
-
+.redBoldLink {
+    color: #D00;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+    text-decoration: none;
 }
 
 .items .item {

@@ -98,7 +98,7 @@
                 <p class="text-center">В Вашей корзине нет товаров</p>
                 {% else %}
                     {% for item in cart_items %}
-                        <p>{{item.title}} x {{item.quantity}} рул.{% if item.total %} = {{item.total}} руб.{% else %} (цену необходимо уточнить){% endif %}</p>
+                        <p><a href="/cart?action=remove&item={{item.id}}" class="redBoldLink">X</a> {{item.title}} x {{item.quantity}} рул.{% if item.total %} = {{item.total}} руб.{% else %} (цену необходимо уточнить){% endif %}</p>
                     {% endfor %}
                     {% if cart_items_total > 0 %}
                     <p>Итого: {{cart_items_total}} руб.</p>
