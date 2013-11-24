@@ -233,7 +233,7 @@ html, body {
     background: url('../images/content_block_top.png') top left no-repeat;
     width: 581px; 
     height: 9px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 .contentBlock:after {
     content: " ";
