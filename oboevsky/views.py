@@ -136,7 +136,7 @@ def home(Request):
         'top_sells_items': top_sells,
         'top_sells_q': top_sells_q,
         'new_items': new_items,
-        'new_items_q': new_sells_q,
+        'new_items_q': new_items_q,
         'no_homepage_link': True,
     }
 
