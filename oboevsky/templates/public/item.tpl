@@ -74,7 +74,7 @@
     <div class="contentBlockNoBorder">
         <style type="text/css">
             #content .contentBlockNoBorder {
-                border-top: 0px;
+                margin-top: 0px;
             }
 
             #collection-nav-container {
