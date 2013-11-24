@@ -10,7 +10,18 @@
                 <div class="items clear">
                     {% for item in new_items %}
 
-                        {% include "public/inc/wallpapers_list_item.tpl" %}
+                        <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}'); cursor:pointer;" onClick="javascript:document.location.href='{{item.get_absolute_url}}?q={{new_items_q}}';">
+                            {% if item.get_first_image %}
+                                <a href="{{item.get_absolute_url}}?q={{new_items_q}}">
+                                    <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
+                                </a>
+                            {% endif %}
+                            <p class="title-container">
+                                <a href="{{item.get_absolute_url}}?q={{new_items_q}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
+                                {{item.price|floatformat:"-3"}} руб.
+                            </p>
+                            <p><a href="/put-to-cart/{{item.pk}}">Купить</a></p>
+                        </div>
 
                         {% if forloop.counter|divisibleby:"3" %}
                             <div class="spacer"></div>
@@ -28,7 +39,18 @@
                 <div class="items clear">
                     {% for item in top_sells_items %}
 
-                        {% include "public/inc/wallpapers_list_item.tpl" %}
+                        <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}'); cursor:pointer;" onClick="javascript:document.location.href='{{item.get_absolute_url}}?q={{top_sells_q}}';">
+                            {% if item.get_first_image %}
+                                <a href="{{item.get_absolute_url}}?q={{top_sells_q}}">
+                                    <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
+                                </a>
+                            {% endif %}
+                            <p class="title-container">
+                                <a href="{{item.get_absolute_url}}?q={{top_sells_q}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
+                                {{item.price|floatformat:"-3"}} руб.
+                            </p>
+                            <p><a href="/put-to-cart/{{item.pk}}">Купить</a></p>
+                        </div>
 
                         {% if forloop.counter|divisibleby:"3" %}
                             <div class="spacer"></div>

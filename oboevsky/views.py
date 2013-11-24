@@ -126,9 +126,17 @@ def error(Request):
 
 
 def home(Request):
+    top_sells = Wallpaper.objects.filter(top_sells=True, visible=True)
+    new_items = Wallpaper.objects.filter(new=True, visible=True)
+    top_sells_q = new_items_q = ''
+    for t in top_sells: top_sells_q += str(t.id) if top_sells_q == '' else ','+str(t.id)
+    for t in new_items: new_items_q += str(t.id) if new_items_q == '' else ','+str(t.id)
+
     vars = {
-        'top_sells_items': Wallpaper.objects.filter(top_sells=True, visible=True),
-        'new_items': Wallpaper.objects.filter(new=True, visible=True),
+        'top_sells_items': top_sells,
+        'top_sells_q': top_sells_q,
+        'new_items': new_items,
+        'new_items_q': new_sells_q,
         'no_homepage_link': True,
     }
 
