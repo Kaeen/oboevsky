@@ -251,7 +251,7 @@ html, body {
     margin-top: 20px;
 }
 .contentBlockNoBorder:first {
-    margin-top: 0;
+    margin-top: 0 !important;
 }
 .contentBlockNoBorder h1 {
     text-indent: 15px;
