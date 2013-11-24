@@ -248,7 +248,7 @@ html, body {
     margin: 0 auto;
 }
 .contentBlockNoBorder {
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 .contentBlockNoBorder:first-child {
     margin-top: 0 !important;

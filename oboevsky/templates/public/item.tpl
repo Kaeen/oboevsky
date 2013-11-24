@@ -73,10 +73,6 @@
 
     <div class="contentBlockNoBorder">
         <style type="text/css">
-            #content .contentBlockNoBorder {
-                margin-top: 0px;
-            }
-
             #collection-nav-container {
                 height: 2em;
                 padding: .3em;
