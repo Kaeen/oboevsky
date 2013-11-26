@@ -3,6 +3,7 @@
 {% block left_sidebar %}
 <div class="pageSidebar left">
     <form action="?do" method="POST">
+    {% csrf_token %}
     <div class="pageColumn">
         <h2>Категории обоев</h2>
         <ul>
