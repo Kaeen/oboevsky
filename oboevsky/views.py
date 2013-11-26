@@ -211,25 +211,40 @@ def category(Request, Url):
     return render_to_response('public/category.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def search(Request):
-    selected_producers = Request.POST.getlist('producers', None)
-    selected_categories = Request.POST.getlist('categories', None)
-    selected_materials = Request.POST.getlist('materials', None)
-    POST = Request.POST.items()
+    if Request.GET.get('do'):
 
-    conditions = dict(visible=True)
-    if selected_producers: conditions['producer__in'] = selected_producers
-    if selected_categories: conditions['categories__in'] = selected_categories
-    if selected_materials: conditions['material_in'] = selected_materials
+        selected_producers = Request.POST.getlist('producers', None)
+        selected_categories = Request.POST.getlist('categories', None)
+        selected_materials = Request.POST.getlist('materials', None)
+        POST = Request.POST.items()
 
-    items = Wallpaper.objects.filter(**conditions)
+        if selected_producers or selected_categories or selected_materials:
+            conditions = dict(visible=True)
+            if selected_producers: conditions['producer__in'] = selected_producers
+            if selected_categories: conditions['categories__in'] = selected_categories
+            if selected_materials: conditions['material_in'] = selected_materials
+            items = Wallpaper.objects.filter(**conditions)
+            no_criteria = False
+            build_items_var(items, vars, lambda x: x.get_first_category()) # TODO: чем группировать? 
 
-    vars = {
-        'items': items,
-        'selected_producers': selected_producers,
-        'selected_materials': selected_materials,
-        'selected_categories': selected_categories,
-        'POST': POST,
-    }
+        else:
+            items = []
+            no_criteria = True
+
+        vars = {
+            'items': items,
+            'selected_producers': selected_producers,
+            'selected_materials': selected_materials,
+            'selected_categories': selected_categories,
+            'POST': POST,
+            'no_criteria': no_criteria,
+        }
+    else:
+
+        vars = {
+            'items': [],
+            'no_criteria': True
+        }
 
 
     return render_to_response('public/search.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
