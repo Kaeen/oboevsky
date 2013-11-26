@@ -55,7 +55,7 @@
             </li>
             {% endif %}
 
-            <li>
+            <li style="list-style:none; text-align:center;">
                 <h3><input type="submit" value="Искать" /></h3>
             </li>
         </ul>
