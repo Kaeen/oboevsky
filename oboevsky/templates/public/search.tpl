@@ -130,7 +130,8 @@
     <code>
     Producers: {{selected_producers}}<br />
     Categories: {{selected_categories}}<br />
-    POST: {{POST}}
+    POST: {{POST}}<br />
+    items: {{items}}
     </code>
 
 {% endblock %}
