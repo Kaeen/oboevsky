@@ -213,9 +213,9 @@ def category(Request, Url):
 def search(Request):
     if Request.GET.get('do', None) is not None:
 
-        selected_producers = Request.POST.getlist('producers', None)
-        selected_categories = Request.POST.getlist('categories', None)
-        selected_materials = Request.POST.getlist('materials', None)
+        selected_producers = map(lambda x: int(x), Request.POST.getlist('producers', None))
+        selected_categories = map(lambda x: int(x), Request.POST.getlist('categories', None))
+        selected_materials = map(lambda x: int(x), Request.POST.getlist('materials', None))
         POST = Request.POST.items()
 
         if selected_producers or selected_categories or selected_materials:
