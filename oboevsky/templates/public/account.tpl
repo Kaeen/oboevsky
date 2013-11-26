@@ -22,7 +22,7 @@
 
             <p></p>
 
-            <p> //TODO// </p>
+            {# TODO: написать нормальный текст #}
 
 
             <style type="text/css">

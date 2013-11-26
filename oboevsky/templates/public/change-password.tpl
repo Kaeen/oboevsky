@@ -22,7 +22,8 @@
 
             <p></p>
 
-            <p>//TODO//</p>
+            {# TODO: написать нормальный текст #}
+            <p>Для смены пароля заполните поля ниже: </p>
 
             <style type="text/css">
                 #order-form-table input {
