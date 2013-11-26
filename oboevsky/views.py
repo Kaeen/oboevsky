@@ -211,7 +211,7 @@ def category(Request, Url):
     return render_to_response('public/category.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def search(Request):
-    if Request.GET.get('do'):
+    if Request.GET.get('do', None) is not None:
 
         selected_producers = Request.POST.getlist('producers', None)
         selected_categories = Request.POST.getlist('categories', None)
