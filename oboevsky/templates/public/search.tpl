@@ -56,6 +56,8 @@
         </ul>
     </div>
 
+    <input type="submit" value="Искать" />
+
     </form>
 </div>
 {% endblock %}
