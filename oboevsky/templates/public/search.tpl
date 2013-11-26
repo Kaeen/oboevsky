@@ -96,7 +96,7 @@
                     <p>Найдено {{items|length}} вариантов</p>
 
                     <div class="items clear">
-                        {% for item in new_items %}
+                        {% for item in items %}
 
                             <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}'); cursor:pointer;" onClick="javascript:document.location.href='{{item.get_absolute_url}}?q={{q}}';">
                                 {% if item.get_first_image %}
