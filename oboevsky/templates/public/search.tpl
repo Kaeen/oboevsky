@@ -5,7 +5,7 @@
     <form action="?do" method="POST">
     {% csrf_token %}
     <div class="pageColumn">
-        <h2>Категории обоев</h2>
+        <h2>Критерии поиска:</h2>
         <ul>
             {% block menu_categories %}
                 {% if menu_categories|length > 0 %}
@@ -56,7 +56,7 @@
             {% endif %}
 
             <li>
-                <input type="submit" value="Искать" />
+                <h3><input type="submit" value="Искать" /></h3>
             </li>
         </ul>
     </div>
@@ -67,12 +67,6 @@
 
 {% block content %}
 
-    <div class="contentBlockNoBorder">
-        <div id="breadcrumps">
-            <a href="/">Главная</a> / <a href="/search/">Поиск</a>
-        </div>
-    </div>
-
     {% if items %}
         {% if items_display_mode == 'grouped' %}
 
@@ -82,7 +76,8 @@
 
             <div class="contentBlock">
                 <div>
-                    <h2>Найдено {{items|length}} вариантов:</h2>
+                    <h1>Результаты поиска</h1>
+                    <p>Найдено {{items|length}} вариантов</p>
 
                     <div class="items clear">
                         {% for item in items %}
@@ -129,8 +124,8 @@
             </div>
         {% else %}
             <div class="contentBlockNoBorder">
-                <h1>Сожалеем</h1>
-                <p>По Вашему запросу ничего не найдено.</p>
+                <h1>Результаты поиска</h1>
+                <p>Сожалеем: по Вашему запросу ничего не найдено.</p>
                 <p>Пожалуйста, свяжитесь с нами и сообщите о Вашем запросе — мы попробуем найти подходящие Вам товары в индивидуальном порядке. :)</p>
             </div>
         {% endif %}
