@@ -218,7 +218,7 @@ def search(Request):
         selected_materials = Request.POST.getlist('materials', None)
         POST = Request.POST.items()
 
-        if not (selected_producers or selected_categories or selected_materials):
+        if selected_producers or selected_categories or selected_materials:
             conditions = dict(visible=True)
             if selected_producers: conditions['producer__in'] = selected_producers
             if selected_categories: conditions['categories__in'] = selected_categories
