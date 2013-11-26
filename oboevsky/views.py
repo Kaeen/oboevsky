@@ -211,12 +211,20 @@ def category(Request, Url):
     return render_to_response('public/category.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def search(Request):
-    selected_producers = Request.POST.get('producers', u"NOT SPECIFIED")
-    selected_categories = Request.POST.get('categories', u"NOT SPECIFIED")
-    selected_materials = Request.POST.get('materials', u"NOT SPECIFIED")
+    selected_producers = Request.POST.getlist('producers', None)
+    selected_categories = Request.POST.getlist('categories', None)
+    selected_materials = Request.POST.getlist('materials', None)
     POST = Request.POST.items()
 
+    conditions = dict(visible=True)
+    if selected_producers: conditions['producer__in'] = selected_producers
+    if selected_categories: conditions['category__in'] = selected_categories
+    if selected_materials: conditions['material_in'] = selected_materials
+
+    items = Wallpaper.objects.filter(**conditions)
+
     vars = {
+        'items': items,
         'selected_producers': selected_producers,
         'selected_materials': selected_materials,
         'selected_categories': selected_categories,

@@ -13,7 +13,7 @@
                     <h3>Обои по назначению</h3>
                     <ul>
                         {% for temp in menu_categories %}
-                        <li><input type="checkbox" name="categories[{{temp.title}}]" {% if temp.pk in selected_categories %}checked="checked"{% endif %}/> {{temp.title}}</li>
+                        <li><input type="checkbox" name="categories" value="{{temp.title}}" {% if temp.pk in selected_categories %}checked="checked"{% endif %}/> {{temp.title}}</li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -26,7 +26,7 @@
                     <h3>Страны: </h3>
                     <ul>
                         {% for temp in menu_countries %}
-                            <li><input type="checkbox" name="countries[{{temp.pk}}]" {% if temp.pk in selected_countries %}checked="checked"{% endif %}/> {{temp.get_html|safe}}</li>
+                            <li><input type="checkbox" name="countries" value="{{temp.pk}}" {% if temp.pk in selected_countries %}checked="checked"{% endif %}/> {{temp.get_html|safe}}</li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -38,7 +38,7 @@
                 <h3>Производители:</h3>
                 <ul class="no-list">
                     {% for temp in menu_producers %}
-                        <li><input type="checkbox" name="producers[{{temp.pk}}]" {% if temp.pk in selected_producers %}checked="checked"{% endif %}/><img alt="{{item.producer.country.short_desc}}" src="{{temp.producer.country.pic.url_13x20}}"/> {{temp.title}}</li>
+                        <li><input type="checkbox" name="producers" value="{{temp.pk}}" {% if temp.pk in selected_producers %}checked="checked"{% endif %}/><img alt="{{item.producer.country.short_desc}}" src="{{temp.producer.country.pic.url_13x20}}"/> {{temp.title}}</li>
                     {% endfor %}
                 </ul>
             </li>
@@ -49,7 +49,7 @@
                 <h3>Материалы:</h3>
                 <ul>
                     {% for temp in menu_materials %}
-                        <li><input type="checkbox" name="materials[{{temp.pk}}]" {% if temp.pk in selected_materials %}checked="checked"{% endif %}/> {{temp.title}}</li>
+                        <li><input type="checkbox" name="materials" value="{{temp.pk}}" {% if temp.pk in selected_materials %}checked="checked"{% endif %}/> {{temp.title}}</li>
                     {% endfor %}
                 </ul>
             </li>
