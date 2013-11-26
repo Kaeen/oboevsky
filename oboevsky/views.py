@@ -242,9 +242,11 @@ def search(Request):
 
     else:
 
+        POST = Request.POST.items()
         vars = {
             'items': [],
-            'no_criteria': True
+            'no_criteria': True,
+            'POST': POST,
         }
 
 
