@@ -25,7 +25,7 @@
                     <h3>Обои по назначению</h3>
                     <ul>
                         {% for temp in menu_categories %}
-                        <li style="cursor:pointer;" onClick="javascript:changeChecked('category_{{temp.pk}}');"><input onClick="javascript: return false;" id="category_{{temp.pk}}" type="checkbox" name="categories" value="{{temp.pk}}" {% if temp.pk in selected_categories %}checked="checked"{% endif %}/> {{temp.title}}</li>
+                        <li style="cursor:pointer;" onClick="javascript:changeChecked('category_{{temp.pk}}');"><input onClick="javascript:changeChecked('category_{{temp.pk}}');" id="category_{{temp.pk}}" type="checkbox" name="categories" value="{{temp.pk}}" {% if temp.pk in selected_categories %}checked="checked"{% endif %}/> {{temp.title}}</li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -38,7 +38,7 @@
                     <h3>Страны: </h3>
                     <ul>
                         {% for temp in menu_countries %}
-                            <li style="cursor:pointer;" onClick="javascript:changeChecked('country_{{temp.pk}}');"><input onClick="javascript: return false;" id="country_{{temp.pk}}" type="checkbox" name="countries" value="{{temp.pk}}" {% if temp.pk in selected_countries %}checked="checked"{% endif %}/> {{temp.get_html|safe}}</li>
+                            <li style="cursor:pointer;" onClick="javascript:changeChecked('country_{{temp.pk}}');"><input onClick="javascript:changeChecked('country_{{temp.pk}}');" id="country_{{temp.pk}}" type="checkbox" name="countries" value="{{temp.pk}}" {% if temp.pk in selected_countries %}checked="checked"{% endif %}/> {{temp.get_html|safe}}</li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -50,7 +50,7 @@
                 <h3>Производители:</h3>
                 <ul class="no-list">
                     {% for temp in menu_producers %}
-                        <li style="cursor:pointer;" onClick="javascript:changeChecked('producer_{{temp.pk}}');"><input onClick="javascript: return false;" id="producer_{{temp.pk}}" type="checkbox" name="producers" value="{{temp.pk}}" {% if temp.pk in selected_producers %}checked="checked"{% endif %}/><img alt="{{item.producer.country.short_desc}}" src="{{temp.producer.country.pic.url_13x20}}"/> {{temp.title}}</li>
+                        <li style="cursor:pointer;" onClick="javascript:changeChecked('producer_{{temp.pk}}');"><input onClick="changeChecked('producer_{{temp.pk}}');" id="producer_{{temp.pk}}" type="checkbox" name="producers" value="{{temp.pk}}" {% if temp.pk in selected_producers %}checked="checked"{% endif %}/><img alt="{{item.producer.country.short_desc}}" src="{{temp.producer.country.pic.url_13x20}}"/> {{temp.title}}</li>
                     {% endfor %}
                 </ul>
             </li>
@@ -61,7 +61,7 @@
                 <h3>Материалы:</h3>
                 <ul>
                     {% for temp in menu_materials %}
-                        <li style="cursor:pointer;" onClick="javascript:changeChecked('material_{{temp.pk}}');"><input onClick="javascript: return false;" id="material_{{temp.pk}}" type="checkbox" name="materials" value="{{temp.pk}}" {% if temp.pk in selected_materials %}checked="checked"{% endif %}/> {{temp.title}}</li>
+                        <li style="cursor:pointer;" onClick="javascript:changeChecked('material_{{temp.pk}}');"><input onClick="javascript:changeChecked('material_{{temp.pk}}');" id="material_{{temp.pk}}" type="checkbox" name="materials" value="{{temp.pk}}" {% if temp.pk in selected_materials %}checked="checked"{% endif %}/> {{temp.title}}</li>
                     {% endfor %}
                 </ul>
             </li>
