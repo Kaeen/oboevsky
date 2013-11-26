@@ -241,6 +241,13 @@ def search(Request):
         }
         build_items_var(items, vars, lambda x: x.get_first_category()) # TODO: чем группировать? 
 
+        if vars['items_display_mode'] != 'grouped' and items:
+            q = ''
+            for t in items: 
+                if q != '': q+= ','
+                q+= str(t.pk)
+            vars['q'] = q
+
     else:
 
         POST = Request.POST.items()

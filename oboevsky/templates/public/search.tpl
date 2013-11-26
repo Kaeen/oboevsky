@@ -96,35 +96,24 @@
                     <p>Найдено {{items|length}} вариантов</p>
 
                     <div class="items clear">
-                        {% for item in items %}
+                        {% for item in new_items %}
 
-                                {% comment %}
-                                    {% if forloop.counter == 9 %}
-                                        <script>
-                                            function trigger_{{item.id}}() {
-                                                $('#trigger-{{item.id}}').hide();
-                                                $('#items-group-{{item.id}}').show();
-                                            }
-                                        </script>
-                                        <a id="trigger-{{item.id}}" href="javascript:trigger_{{item.id}}();" style="width:169px; height:169px; line-height: 160px; text-align:center; display:block; float: left;">Показать&nbsp;остальные</a>
-                                        <div style="display:none" id="items-group-{{item.id}}">
-                                    {% endif %}
-                                {% endcomment %}
-
-                                {% include "public/inc/wallpapers_list_item.tpl" %}
-
-                                {% if forloop.counter|divisibleby:"3" %}
-                                    <div class="spacer"></div>
+                            <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}'); cursor:pointer;" onClick="javascript:document.location.href='{{item.get_absolute_url}}?q={{q}}';">
+                                {% if item.get_first_image %}
+                                    <a href="{{item.get_absolute_url}}?q={{q}}">
+                                        <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
+                                    </a>
                                 {% endif %}
+                                <p class="title-container">
+                                    <a href="{{item.get_absolute_url}}?q={{q}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
+                                    {{item.price|floatformat:"-3"}} руб.
+                                </p>
+                                <p><a href="/put-to-cart/{{item.pk}}">Купить</a></p>
+                            </div>
 
-                                {% comment %}
-                                    {% if forloop.counter > 9 %}
-                                        {% if forloop.last %}
-                                            </div>
-                                        {% endif %}
-                                    {% endif %}
-                                {% endcomment %}
-
+                            {% if forloop.counter|divisibleby:"3" %}
+                                <div class="spacer"></div>
+                            {% endif %}
                         {% endfor %}
                     </div>
 
