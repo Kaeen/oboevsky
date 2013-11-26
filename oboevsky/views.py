@@ -210,6 +210,14 @@ def category(Request, Url):
 
     return render_to_response('public/category.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
+def search(Request):
+    vars = {
+        
+    }
+
+
+    return render_to_response('public/search.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
+
 def material(Request, Id):
     material = get_object_or_404(Material, id=Id, visible=True)
 
