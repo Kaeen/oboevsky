@@ -13,7 +13,7 @@
                     <h3>Обои по назначению</h3>
                     <ul>
                         {% for temp in menu_categories %}
-                        <li><input type="checkbox" name="categories" value="{{temp.pk}}" {% if temp.pk in selected_categories %}checked="checked"{% endif %}/> {{temp.title}}</li>
+                        <li><input type="checkbox" name="categories" value="{{temp.pk}}" {% if temp.pk in selected_categories %}checked="checked"{% endif %}/> {{temp.title}} PK:{{temp.pk}} CATS: {{selected_categories}}</li>
                         {% endfor %}
                     </ul>
                 </li>
