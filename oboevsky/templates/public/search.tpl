@@ -80,7 +80,7 @@
 
             <div class="contentBlock">
                 <div>
-                    <h2>Найденные обои</h2>
+                    <h2>Найдено {{items|len}} вариантов:</h2>
 
                     <div class="items clear">
                         {% for item in items %}

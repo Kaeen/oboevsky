@@ -225,7 +225,7 @@ def search(Request):
             if selected_materials: conditions['materials__in'] = selected_materials
             items = Wallpaper.objects.filter(**conditions)
             no_criteria = False
-            #build_items_var(items, vars, lambda x: x.get_first_category()) # TODO: чем группировать? 
+            build_items_var(items, vars, lambda x: x.get_first_category()) # TODO: чем группировать? 
 
         else:
             items = []
