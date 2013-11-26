@@ -222,7 +222,7 @@ def search(Request):
             conditions = dict(visible=True)
             if selected_producers: conditions['producer__in'] = selected_producers
             if selected_categories: conditions['categories__in'] = selected_categories
-            if selected_materials: conditions['material_in'] = selected_materials
+            if selected_materials: conditions['materials_in'] = selected_materials
             items = Wallpaper.objects.filter(**conditions)
             no_criteria = False
             #build_items_var(items, vars, lambda x: x.get_first_category()) # TODO: чем группировать? 
