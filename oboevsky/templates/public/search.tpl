@@ -71,7 +71,7 @@
         {% if items_display_mode == 'grouped' %}
 
             <div class="contentBlockNoBorder">
-                <h1>Результаты поиска ({{items|length}})</h1>
+                <h1>Результаты поиска ({{items_found}})</h1>
             </div>
 
             {% include "public/inc/grouped_wallpaper_collection.tpl" %}

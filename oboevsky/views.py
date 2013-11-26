@@ -232,6 +232,7 @@ def search(Request):
 
         vars = {
             'items': items,
+            'items_found': len(items),
             'selected_producers': selected_producers,
             'selected_materials': selected_materials,
             'selected_categories': selected_categories,
