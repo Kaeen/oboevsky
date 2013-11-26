@@ -9,7 +9,7 @@
     function changeChecked(id) {
         obj = $('#'+id)
         if(obj.attr('checked') == undefined) {
-            obj.attr('checked') = 'checked';
+            obj.attr('checked', 'checked');
         } else {
             obj.removeAttr('checked');
         }
