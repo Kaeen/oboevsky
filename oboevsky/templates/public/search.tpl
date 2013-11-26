@@ -70,6 +70,11 @@
     {% if items %}
         {% if items_display_mode == 'grouped' %}
 
+            <div class="contentBlock">
+                <h1>Результаты поиска</h1>
+                <p>Найдено {{items|length}} вариантов</p>
+            </div>
+
             {% include "public/inc/grouped_wallpaper_collection.tpl" %}
 
         {% else %}
