@@ -92,7 +92,7 @@
 
             <div class="contentBlock">
                 <div>
-                    <h1>Результаты поиска</h1>
+                    <h2>Результаты поиска</h2>
                     <p>Найдено {{items|length}} вариантов</p>
 
                     <div class="items clear">
