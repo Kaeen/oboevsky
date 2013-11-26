@@ -218,7 +218,7 @@ def search(Request):
 
     conditions = dict(visible=True)
     if selected_producers: conditions['producer__in'] = selected_producers
-    if selected_categories: conditions['category__in'] = selected_categories
+    if selected_categories: conditions['categories__in'] = selected_categories
     if selected_materials: conditions['material_in'] = selected_materials
 
     items = Wallpaper.objects.filter(**conditions)
