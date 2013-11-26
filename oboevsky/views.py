@@ -211,8 +211,14 @@ def category(Request, Url):
     return render_to_response('public/category.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def search(Request):
+    selected_producers = Request.POST.get('producers', u"NOT SPECIFIED")
+    selected_categories = Request.POST.get('categories', u"NOT SPECIFIED")
+    selected_materials = Request.POST.get('materials', u"NOT SPECIFIED")
+
     vars = {
-        
+        'selected_producers': selected_producers,
+        'selected_materials': selected_materials,
+        'selected_categories': selected_categories,
     }
 
 
