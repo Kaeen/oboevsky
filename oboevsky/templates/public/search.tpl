@@ -54,10 +54,12 @@
                 </ul>
             </li>
             {% endif %}
+
+            <li>
+                <input type="submit" value="Искать" />
+            </li>
         </ul>
     </div>
-
-    <input type="submit" value="Искать" />
 
     </form>
 </div>
