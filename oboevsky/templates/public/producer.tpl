@@ -1,5 +1,9 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block page_title %}{{block.super}} — обои {{producer.title}}, {{producer.country.title}}{% endblock %}
+{% block meta_description %}{{producer.short_desc}}{% endblock %}
+{% block meta_keywords %}Обоевский обои {{producer.title}} {{producer.country.title}}{% endblock %}
+
 {% block content %}
 
     <div class="contentBlockNoBorder">

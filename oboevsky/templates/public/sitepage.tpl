@@ -1,5 +1,9 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block page_title %}{{block.super}} — {{flatpage.title}}{% endblock %}
+{% block meta_description %}{{flatpage.title}}{% endblock %}
+{% block meta_keywords %}{{flatpage.title}}{% endblock %}
+
 {% block content %}
     <div class="contentBlockNoBorder">
         <div id="breadcrumps">

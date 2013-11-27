@@ -1,5 +1,7 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block page_title %}{{block.super}} — Искать обои по параметрам{% endblock %}
+
 {% block left_sidebar %}
 <div class="pageSidebar left">
     <form action="?do" method="POST">

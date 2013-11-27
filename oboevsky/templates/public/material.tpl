@@ -1,5 +1,9 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block page_title %}{{block.super}} — {{material.title}}, обои{% endblock %}
+{% block meta_description %}{{material.short_desc}}{% endblock %}
+{% block meta_keywords %}Обоевский обои {{material.title}} {{material.short_desc}}{% endblock %}
+
 {% block content %}
 
     <div class="contentBlockNoBorder">

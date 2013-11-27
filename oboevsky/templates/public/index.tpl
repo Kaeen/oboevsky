@@ -1,5 +1,9 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block page_title %}{{block.super}} — качественные обои из разных стран по отличным ценам!{% endblock %}
+{% block meta_description %}Интернет-магазин обоев отличного качества по волшебным ценам{% endblock %}
+{% block meta_keywords %}Обоевский обои Франция США Нидерланды Германия флизелиновые бумажные акриловые виниловые{% endblock %}
+
 {% block content %}
     {#<a href="#"><img alt="" src="/static/images/sample_moneyshot.jpg" /></a>#}
 
