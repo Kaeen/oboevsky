@@ -175,7 +175,7 @@
 
         {{item.long_desc|safe}}
 
-        <p><a href="/put-to-cart/{{item.pk}}">В корзину</a></p>
+        <p><a class="buy-link" href="/put-to-cart/{{item.pk}}">Купить</a></p>
 
     </div>
 

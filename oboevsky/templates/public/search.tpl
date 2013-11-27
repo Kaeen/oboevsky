@@ -108,7 +108,7 @@
                                     <a href="{{item.get_absolute_url}}?q={{q}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
                                     {{item.price|floatformat:"-3"}} руб.
                                 </p>
-                                <p><a href="/put-to-cart/{{item.pk}}">Купить</a></p>
+                                <p><a class="buy-link" href="/put-to-cart/{{item.pk}}">Купить</a></p>
                             </div>
 
                             {% if forloop.counter|divisibleby:"3" %}
