@@ -169,9 +169,11 @@
                 </div>
             {% endif %}
 
-        </div>
+            <div class="itemAttribute clear">
+                <div class="caption"><a class="buy-link" href="/put-to-cart/{{item.pk}}">Купить</a></div>
+            </div>
 
-        <p><a class="buy-link" href="/put-to-cart/{{item.pk}}">Купить</a></p>
+        </div>
 
         <p>&nbsp;</p>
 
