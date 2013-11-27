@@ -10,6 +10,10 @@ html, body {
     padding: 0;
 }
 
+.buy-link {
+    font-size: 1.25em;
+}
+
 #pageWrapper {
     width: 1000px;
     margin: 0 auto;
@@ -126,13 +130,18 @@ html, body {
 .itemAttribute .caption {
     float: left;
     width: 140px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     color: #948484;
 }
 .itemAttribute .left {
-    font-size: 14px;
+    font-size: 13px;
+    font-family: Arial;
     color: #2d1f1e;
+}
+
+#itemLongDescription {
+    font-size: 13px;
 }
 
 /* COMMON */

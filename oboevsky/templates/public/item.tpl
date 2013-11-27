@@ -171,11 +171,15 @@
 
         </div>
 
+        <p><a class="buy-link" href="/put-to-cart/{{item.pk}}">Купить</a></p>
+
         <p>&nbsp;</p>
 
+        <div id="itemLongDescription">
         {{item.long_desc|safe}}
+        </div>
 
-        <p><a class="buy-link" href="/put-to-cart/{{item.pk}}">Купить</a></p>
+        <p>&nbsp;</p>
 
     </div>
 
