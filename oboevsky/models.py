@@ -182,6 +182,12 @@ class Wallpaper(models.Model):
 
 		return actual_price
 
+	def materials_as_text(self):
+		t = u''
+		for x in self.materials.all():
+			t += x.title if t == '' else u',' + x.title
+		return t
+
 	class Meta:
 		verbose_name = _(u'обои')
 		verbose_name_plural = _(u'обои')

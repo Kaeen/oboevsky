@@ -12,9 +12,7 @@
             {% endfor %}
         {% endif %}
         {% if not no_materials %}
-            {% for m in item.materials.all %}
-                {{m}}<br />
-            {% endfor %}
+            {{materials_as_text}}<br />
         {% endif %}
         {{item.price|floatformat:"-3"}} руб.
     </p>
