@@ -266,7 +266,7 @@ def search(Request):
         # ГРУППИРОВКА
         if selected_categories and len(selected_categories) > 1:
             build_items_var_m(items, vars, lambda x: x.categories.all(), selected_categories)
-        elif selected_producers and len(selected_producer) > 1:
+        elif selected_producers and len(selected_producers) > 1:
             build_items_var(items, vars, lambda x: x.producer)
         elif selected_materials and len(selected_materials) > 1:
             build_items_var_m(items, vars, lambda x: x.materials.all(), selected_materials)
