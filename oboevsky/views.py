@@ -129,6 +129,7 @@ def get_items_collection(Request, query):
                 'title': t.title,
                 'price': t.price,
                 'materials': t.materials_as_text(),
+                'producer': t.producer_as_text(),
                 'pk': t.pk
             })
     import json

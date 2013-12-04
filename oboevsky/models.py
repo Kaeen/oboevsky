@@ -194,6 +194,9 @@ class Wallpaper(models.Model):
 			t += x.title if t == '' else u', ' + x.title.lower()
 		return t
 
+	def producer_as_text(self):
+		return u'<img alt="{0}" align="absmiddle" src="{1}" />{2}'.format(self.producer.country.short_desc, self.producer.country.pic.url_13x20, self.producer.title)
+
 	class Meta:
 		verbose_name = _(u'обои')
 		verbose_name_plural = _(u'обои')
