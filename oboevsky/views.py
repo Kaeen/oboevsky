@@ -266,6 +266,8 @@ def search(Request):
             'selected_producers': selected_producers,
             'selected_materials': selected_materials,
             'selected_categories': selected_categories,
+            'min_price': min_price,
+            'max_price': max_price,
             'POST': POST,
             'no_criteria': no_criteria,
         }
