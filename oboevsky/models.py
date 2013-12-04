@@ -185,13 +185,15 @@ class Wallpaper(models.Model):
 	def materials_as_text(self):
 		t = u''
 		for x in self.materials.all():
-			t += x.title if t == '' else u', ' + x.title.lower()
+			if x.visible:
+				t += x.title if t == '' else u', ' + x.title.lower()
 		return t
 
 	def categories_as_text(self):
 		t = u''
 		for x in self.categories.all():
-			t += x.title if t == '' else u', ' + x.title.lower()
+			if x.visible:
+				t += x.title if t == '' else u', ' + x.title.lower()
 		return t
 
 	def producer_as_text(self):
