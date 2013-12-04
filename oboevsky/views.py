@@ -229,6 +229,7 @@ def category(Request, Url):
 
     vars = {
         'category': category,
+        'no_categories': True,
     }
 
     wallpapers = category.wallpapers.all().filter( visible=True)
@@ -309,6 +310,7 @@ def material(Request, Id):
 
     vars = {
         'material': material,
+        'no_materials': True,
     }
 
     wallpapers = material.wallpapers.all().filter( visible=True)

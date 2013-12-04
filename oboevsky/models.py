@@ -188,6 +188,12 @@ class Wallpaper(models.Model):
 			t += x.title if t == '' else u',' + x.title
 		return t
 
+	def categories_as_text(self):
+		t = u''
+		for x in self.categories.all():
+			t += x.title if t == '' else u',' + x.title
+		return t
+
 	class Meta:
 		verbose_name = _(u'обои')
 		verbose_name_plural = _(u'обои')
