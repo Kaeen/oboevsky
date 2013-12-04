@@ -239,8 +239,10 @@ def search(Request):
         selected_producers = map(lambda x: int(x), Request.POST.getlist('producers', None))
         selected_categories = map(lambda x: int(x), Request.POST.getlist('categories', None))
         selected_materials = map(lambda x: int(x), Request.POST.getlist('materials', None))
-        min_price = int(Request.POST.get('min_price', 0))
-        max_price = int(Request.POST.get('max_price', 0))
+        min_price = Request.POST.get('min_price', 0)
+        min_price = int(min_price) if min_price else None
+        max_price = Request.POST.get('max_price', 0)
+        max_price = int(max_price) if max_price else None
 
         POST = Request.POST.items()
 
@@ -264,8 +266,8 @@ def search(Request):
             'selected_producers': selected_producers,
             'selected_materials': selected_materials,
             'selected_categories': selected_categories,
-            'min_price': min_price,
-            'max_price': max_price,
+            'min_price': min_price if min_price else '',
+            'max_price': max_price if max_price else '',
             'POST': POST,
             'no_criteria': no_criteria,
         }
