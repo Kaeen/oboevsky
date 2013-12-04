@@ -205,8 +205,9 @@ def country(Request, Url):
     }
 
     wallpapers = Wallpaper.objects.filter(producer__country=country, visible=True)
-    #build_items_var(wallpapers, vars, lambda x: x.get_first_category())
     build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
+    if vars['items_display_mode'] == 'grouped':
+        vars['no_categories'] = True
 
     return render_to_response('public/country.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
@@ -219,8 +220,9 @@ def producer(Request, Url):
     }
 
     wallpapers = Wallpaper.objects.filter(producer=producer, visible=True)
-    #build_items_var(wallpapers, vars, lambda x: x.get_first_category())
     build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
+    if vars['items_display_mode'] == 'grouped':
+        vars['no_categories'] = True
 
     return render_to_response('public/producer.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
@@ -279,12 +281,20 @@ def search(Request):
         # ГРУППИРОВКА
         if selected_categories and len(selected_categories) > 1:
             build_items_var_m(items, vars, lambda x: x.categories.all(), selected_categories)
+            if vars['items_display_mode'] == 'grouped':
+                vars['no_categories'] = True
         elif selected_producers and len(selected_producers) > 1:
             build_items_var(items, vars, lambda x: x.producer)
+            if vars['items_display_mode'] == 'no_producer':
+                vars['no_categories'] = True
         elif selected_materials and len(selected_materials) > 1:
             build_items_var_m(items, vars, lambda x: x.materials.all(), selected_materials)
+            if vars['items_display_mode'] == 'grouped':
+                vars['no_materials'] = True
         else: 
             build_items_var_m(items, vars, lambda x: x.categories.all(), selected_categories)
+            if vars['items_display_mode'] == 'grouped':
+                vars['no_categories'] = True
 
         if vars['items_display_mode'] != 'grouped' and items:
             q = ''
