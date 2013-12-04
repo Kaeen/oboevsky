@@ -29,10 +29,11 @@
     {% for flatpage in flatpages %}
         <a href="{{flatpage.url}}">{{flatpage.title}}</a>
     {% endfor %}
+    
+    <a href="/search">Поиск</a>
 
     {% if user.is_authenticated %}
         {#<a href="/account">Личный кабинет</a>#}
-        <a href="/search">Поиск</a>
     {% else %}
         <a href="/login">Авторизация</a>
     {% endif %}
