@@ -22,9 +22,16 @@
         <h2>Критерии поиска:</h2>
         <ul>
             {% block menu_categories %}
+
+                <li>
+                    <h3>Ограничить цену:</h3>
+                    От: <input type="text" name="min_price" value="{{min_price}}" />
+                    До: <input type="text" name="max_price" value="{{max_price}}" />
+                </li>
+
                 {% if menu_categories|length > 0 %}
                 <li>
-                    <h3>Обои по назначению</h3>
+                    <h3>Назначение:</h3>
                     <ul>
                         {% for temp in menu_categories %}
                         <li style="cursor:pointer;" onClick="javascript:changeChecked('category_{{temp.pk}}');"><input onClick="javascript:changeChecked('category_{{temp.pk}}');" id="category_{{temp.pk}}" type="checkbox" name="categories" value="{{temp.pk}}" {% if temp.pk in selected_categories %}checked="checked"{% endif %}/> {{temp.title}}</li>
