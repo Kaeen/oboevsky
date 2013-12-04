@@ -25,8 +25,8 @@
 
                 <li>
                     <h3>Ограничить цену:</h3>
-                    От: <input type="text" name="min_price" value="{{min_price}}" />
-                    До: <input type="text" name="max_price" value="{{max_price}}" />
+                    <li>От: <input type="text" name="min_price" value="{{min_price}}" /></li>
+                    <li>До: <input type="text" name="max_price" value="{{max_price}}" /></li>
                 </li>
 
                 {% if menu_categories|length > 0 %}
