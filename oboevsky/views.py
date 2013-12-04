@@ -204,7 +204,8 @@ def country(Request, Url):
     }
 
     wallpapers = Wallpaper.objects.filter(producer__country=country, visible=True)
-    build_items_var(wallpapers, vars, lambda x: x.get_first_category()) #start_page, step...)
+    #build_items_var(wallpapers, vars, lambda x: x.get_first_category())
+    build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
 
     return render_to_response('public/country.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
@@ -217,7 +218,8 @@ def producer(Request, Url):
     }
 
     wallpapers = Wallpaper.objects.filter(producer=producer, visible=True)
-    build_items_var(wallpapers, vars, lambda x: x.get_first_category()) #start_page, step...)
+    #build_items_var(wallpapers, vars, lambda x: x.get_first_category())
+    build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
 
     return render_to_response('public/producer.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
@@ -229,7 +231,7 @@ def category(Request, Url):
     }
 
     wallpapers = category.wallpapers.all().filter( visible=True)
-    build_items_var(wallpapers, vars, lambda x: x.producer) #start_page, step...)
+    build_items_var(wallpapers, vars, lambda x: x.producer)
 
     return render_to_response('public/category.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
@@ -309,7 +311,8 @@ def material(Request, Id):
     }
 
     wallpapers = material.wallpapers.all().filter( visible=True)
-    build_items_var(wallpapers, vars, lambda x: x.get_first_category()) #start_page, step...)
+    #build_items_var(wallpapers, vars, lambda x: x.get_first_category())
+    build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
 
     return render_to_response('public/material.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
