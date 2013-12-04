@@ -219,6 +219,7 @@ def producer(Request, Url):
 
     vars = {
         'producer': producer,
+        'no_producer': True,
     }
 
     wallpapers = Wallpaper.objects.filter(producer=producer, visible=True)
@@ -287,8 +288,8 @@ def search(Request):
                 vars['no_categories'] = True
         elif selected_producers and len(selected_producers) > 1:
             build_items_var(items, vars, lambda x: x.producer)
-            if vars['items_display_mode'] == 'no_producer':
-                vars['no_categories'] = True
+            if vars['items_display_mode'] == 'grouped':
+                vars['no_producer'] = True
         elif selected_materials and len(selected_materials) > 1:
             build_items_var_m(items, vars, lambda x: x.materials.all(), selected_materials)
             if vars['items_display_mode'] == 'grouped':
