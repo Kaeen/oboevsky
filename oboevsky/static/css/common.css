@@ -144,6 +144,11 @@ html, body {
     font-size: 13px;
 }
 
+.search_price_input {
+    width:200px;
+}
+
+
 /* COMMON */
 .left, .right { display: block; }
 .left {float:left;}
