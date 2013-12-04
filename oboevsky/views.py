@@ -59,7 +59,7 @@ def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_
 
     return vars
 
-def build_items_var_m(items_list, vars, group_criteria_func=lambda x: x.categories, include_groups=[]):
+def build_items_var_m(items_list, vars, group_criteria_func=lambda x: x.categories.all(), include_groups=[]):
     # То же самое, что и build_items_var, но для мультигрупп
     groups = dict()
     for item in items_list:
@@ -264,14 +264,14 @@ def search(Request):
         }
 
         # ГРУППИРОВКА
-        if selected_categories and len(selected_categories) > 1:
-            build_items_var_m(items, vars, lambda x: x.categories, selected_categories)
-        elif selected_producers and len(selected_producers) > 1:
+        if selected_categories and len(selected_categories.all()) > 1:
+            build_items_var_m(items, vars, lambda x: x.categories.all(), selected_categories)
+        elif selected_producers and len(selected_producer) > 1:
             build_items_var(items, vars, lambda x: x.producer)
-        elif selected_materials and len(strelected_materials) > 1:
-            build_items_vars(items, vars, lambda x: x.materials, selected_materials)
+        elif selected_materials and len(strelected_materials.all()) > 1:
+            build_items_var_m(items, vars, lambda x: x.materials.all(), selected_materials)
         else: 
-            build_items_var_m(items, vars, lambda x: x.categories, selected_categories)
+            build_items_var_m(items, vars, lambda x: x.categories.all(), selected_categories)
 
         if vars['items_display_mode'] != 'grouped' and items:
             q = ''
