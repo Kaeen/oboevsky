@@ -6,6 +6,16 @@
     {% endif %}
     <p class="title-container">
         <a href="{{item.get_absolute_url}}?q={{group.2.0.id}}{% for t in group.2|slice:"1:" %},{{t.id}}{% endfor %}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
+        {% if not no_categories %}
+            {% for c in item.categories.all %}
+                {{c.title}}<br />
+            {% endfor %}
+        {% endif %}
+        {% if not no_materials %}
+            {% for m in item.materials.all %}
+                {{m}}<br />
+            {% endfor %}
+        {% endif %}
         {{item.price|floatformat:"-3"}} руб.
     </p>
     <p><a class="buy-link" href="/put-to-cart/{{item.pk}}">Купить</a></p>
