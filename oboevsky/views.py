@@ -271,6 +271,7 @@ def search(Request):
         elif selected_materials and len(strelected_materials) > 1:
             build_items_vars(items, vars, lambda x: x.materials, selected_materials)
         else: 
+            build_items_var_m(items, vars, lambda x: x.categories, selected_categories)
 
         if vars['items_display_mode'] != 'grouped' and items:
             q = ''
