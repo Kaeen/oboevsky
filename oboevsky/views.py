@@ -246,13 +246,13 @@ def search(Request):
 
         POST = Request.POST.items()
 
-        if selected_producers or selected_categories or selected_materials:
+        if selected_producers or selected_categories or selected_materials or min_price or max_price:
             conditions = dict(visible=True)
             if selected_producers: conditions['producer__in'] = selected_producers
             if selected_categories: conditions['categories__in'] = selected_categories
             if selected_materials: conditions['materials__in'] = selected_materials
             if min_price: conditions['price__gte'] = min_price
-            if max_price: conditions['price_lte'] = max_price
+            if max_price: conditions['price__lte'] = max_price
             items = Wallpaper.objects.filter(**conditions)
             no_criteria = False
 
