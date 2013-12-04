@@ -239,6 +239,8 @@ def search(Request):
         selected_producers = map(lambda x: int(x), Request.POST.getlist('producers', None))
         selected_categories = map(lambda x: int(x), Request.POST.getlist('categories', None))
         selected_materials = map(lambda x: int(x), Request.POST.getlist('materials', None))
+        min_price = int(Request.POST.get('min_price', 0)) if Request.POST.get('min_price') or None
+        max_price = int(Request.POST.get('max_price', 0)) if Request.POST.get('max_price') or None
         POST = Request.POST.items()
 
         if selected_producers or selected_categories or selected_materials:
@@ -246,6 +248,8 @@ def search(Request):
             if selected_producers: conditions['producer__in'] = selected_producers
             if selected_categories: conditions['categories__in'] = selected_categories
             if selected_materials: conditions['materials__in'] = selected_materials
+            if min_price: conditions['price__gte'] = min_price
+            if max_price: conditions['price_lte'] = max_price
             items = Wallpaper.objects.filter(**conditions)
             no_criteria = False
 

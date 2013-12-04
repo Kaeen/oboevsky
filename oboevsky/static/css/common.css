@@ -145,7 +145,8 @@ html, body {
 }
 
 .search_price_input {
-    width:200px;
+    width: 80px;
+    border-bottom: 1px solid #847171;
 }
 
 
