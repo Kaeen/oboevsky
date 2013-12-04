@@ -7,7 +7,7 @@
     <p class="title-container">
         <a href="{{item.get_absolute_url}}?q={{group.2.0.id}}{% for t in group.2|slice:"1:" %},{{t.id}}{% endfor %}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
         {% if not no_producer %}
-            {{item.producer_as_text}}<br />
+            {{item.producer_as_text|safe}}<br />
         {% endif %}
         {% if not no_categories %}
             {{item.categories_as_text}}<br />
