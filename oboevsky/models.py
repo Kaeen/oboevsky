@@ -771,6 +771,8 @@ class PromoCampain(models.Model):
 		#raise NotImplementedError, u'В разработке'
 		super(PromoCampain, self).save()
 
+	#TODO: процедуры проверки условий акции для отдельной обоины, стоимости заказа и стоимости доставки
+
 
 class PromoCampainAdmin(admin.ModelAdmin):
 	readonly_fields = ('created', 'modified')

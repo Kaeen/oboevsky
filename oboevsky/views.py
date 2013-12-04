@@ -32,7 +32,7 @@ def generate_hash():
     from random import random
     return md5(str(random())).hexdigest()
 
-def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_category(), start_page=0, step=15):
+def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_category()):
     # Checking for by_attribute
     groups = dict()
     for item in items_list:
@@ -43,15 +43,8 @@ def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_
 
     if len(groups.keys()) == 1:
         vars['items_display_mode'] = 'plain'
-
-        if step and start_page:
-            vars['items'] = items_list[start_page::step]
-        else:
-            vars['items'] = items_list
-
-        vars['start_page'] = start_page
+        vars['items'] = items_list
         vars['items_number'] = len(items_list)
-        vars['step'] = step
     else:
         wallpapers = []
         for x in groups:
@@ -60,6 +53,36 @@ def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_
             except Exception, e:
                 pass
 
+        vars['items_number'] = len(items_list)
+        vars['items_display_mode'] = 'grouped'
+        vars['items'] = wallpapers
+
+    return vars
+
+def build_items_var_m(items_list, vars, group_criteria_func=lambda x: x.categories, include_groups=[]):
+    # То же самое, что и build_items_var, но для мультигрупп
+    groups = dict()
+    for item in items_list:
+        for c in group_criteria_func(item):
+            if include_groups and c.pk not in include_groups or not c.visible: continue
+            if c in groups:
+                groups[c].append(item)
+            else:
+                groups[c] = [item,]
+
+    if len(groups.keys()) == 1:
+        vars['items_display_mode'] = 'plain'
+        vars['items'] = items_list
+        vars['items_number'] = len(items_list)
+    else:
+        wallpapers = []
+        for x in groups:
+            try: 
+                wallpapers.append( (x.title, x.get_absolute_url(), groups[x]) )
+            except Exception, e:
+                pass
+
+        vars['items_number'] = len(items_list)
         vars['items_display_mode'] = 'grouped'
         vars['items'] = wallpapers
 
@@ -239,7 +262,15 @@ def search(Request):
             'POST': POST,
             'no_criteria': no_criteria,
         }
-        build_items_var(items, vars, lambda x: x.get_first_category()) # TODO: чем группировать? 
+
+        # ГРУППИРОВКА
+        if selected_categories and len(selected_categories) > 1:
+            build_items_var_m(items, vars, lambda x: x.categories, selected_categories)
+        elif selected_producers and len(selected_producers) > 1:
+            build_items_var(items, vars, lambda x: x.producer)
+        elif selected_materials and len(strelected_materials) > 1:
+            build_items_vars(items, vars, lambda x: x.materials, selected_materials)
+        else: 
 
         if vars['items_display_mode'] != 'grouped' and items:
             q = ''
