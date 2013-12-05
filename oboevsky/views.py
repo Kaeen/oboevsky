@@ -13,7 +13,7 @@ from django.core.exceptions import ObjectDoesNotExist
 ####################################
 
 default_wallpapers_ordering = ['-priority', 'price']
-additional_wallpapers_ordering = ['-categories__priority', '-producer__priority', '-country__priority', '-materials__priority']
+additional_wallpapers_ordering = ['-categories__priority', '-producer__priority', '-producer__country__priority', '-materials__priority']
 default_categories_ordering = ['-priority',]
 default_producers_ordering = ['-priority',]
 default_countries_ordering = ['-priority',]
