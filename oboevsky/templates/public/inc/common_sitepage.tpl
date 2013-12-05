@@ -91,7 +91,6 @@
                 <p><a href="/account/">Личный кабинет</a></p>
                 <p><a href="/logout/">Выйти</a></p>
             </div>
-            {% endif %}
 
             <div class="pageColumn">
                 <h2>Сортировка</h2>
@@ -120,6 +119,7 @@
                     </li>
                 </ul>
             </div>
+            {% endif %}
 
             {% comment %}
             <div class="pageColumn">
