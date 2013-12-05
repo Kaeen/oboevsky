@@ -306,7 +306,7 @@ class Producer(models.Model):
 
 class ProducerAdmin(admin.ModelAdmin): 
 	readonly_fields = ('created', 'modified')
-	list_display = ['title', 'country', 'url', 'visible']
+	list_display = ['title', 'country', 'url', 'priority', 'visible']
 
 
 ############################
