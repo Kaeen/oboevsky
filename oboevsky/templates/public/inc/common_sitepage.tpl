@@ -114,7 +114,7 @@
                         {% if ordering == '-price' %}
                             По цене, от большой к маленькой
                         {% else %}
-                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=price">По цене, от большой к маленькой</a>
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-price">По цене, от большой к маленькой</a>
                         {% endif %}
                     </li>
                 </ul>
