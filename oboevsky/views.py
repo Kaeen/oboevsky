@@ -131,7 +131,7 @@ def common_context_proc(Request=None):
 ####################################
 
 def get_items_collection(Request, query):
-
+    ordering = Request.session.get('ordering', default_wallpapers_ordering)
     from django.core.serializers.json import DjangoJSONEncoder
 
     query = query.split(',')
