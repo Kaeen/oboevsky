@@ -1,5 +1,7 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block sorting %}{% endblock %}
+
 {% block menu_countries %}
 {% endblock %}
 

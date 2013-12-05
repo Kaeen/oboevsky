@@ -1,5 +1,7 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block sorting %}{% endblock %}
+
 {% block page_title %}{{block.super}} — {{flatpage.title}}{% endblock %}
 {% block meta_description %}{{flatpage.title}}{% endblock %}
 {% block meta_keywords %}{{flatpage.title}}{% endblock %}

@@ -1,5 +1,7 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block sorting %}{% endblock %}
+
 {% block left_sidebar %}
 <div class="pageSidebar left">
         <div class="pageColumn">

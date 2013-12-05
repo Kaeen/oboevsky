@@ -1,5 +1,7 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block sorting %}{% endblock %}
+
 {% block content %}
     <div class="contentBlockNoBorder">
         <div id="breadcrumps">

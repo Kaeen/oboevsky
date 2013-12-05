@@ -1,5 +1,7 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block sorting %}{% endblock %}
+
 {% block page_title %}{{block.super}} — {{item.title}}, обои {{item.producer.title}}, {{item.producer.country.title}}{% endblock %}
 {% block meta_description %}{{item.short_desc}}{% endblock %}
 {% block meta_keywords %}Обоевский обои {{item.producer.title}} {{item.producer.country.title}}{#{% for t in item.materials %} {{t.title}}{% endfor %}#} {{item.sku}}{% endblock %}

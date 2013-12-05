@@ -1,5 +1,7 @@
 {% extends "public/inc/common_sitepage.tpl" %}
 
+{% block sorting %}{% endblock %}
+
 {% block page_title %}{{block.super}} — Ошибка{% endblock %}
 
 {% block content %}

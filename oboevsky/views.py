@@ -187,6 +187,8 @@ def home(Request):
 
 
 def wallpaper(Request, Url):
+    if Request.GET.get('order'): Request.session['ordering'] = Request.GET.get('order').split(',')
+
     item = get_object_or_404(Wallpaper, url=Url, visible=True)
 
     q = Request.GET.get('q', str(item.id))
@@ -367,6 +369,7 @@ def material(Request, Id):
     return render_to_response('public/material.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def countries(Request):
+    if Request.GET.get('order'): Request.session['ordering'] = Request.GET.get('order').split(',')
     countries = Country.objects.filter( visible=True ).order_by(*default_countries_ordering)
     vars = {
         'countries': countries,
