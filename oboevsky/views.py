@@ -90,10 +90,10 @@ def build_items_var_m(items_list, vars, group_criteria_func=lambda x: x.categori
     else:
         wallpapers = []
         for x in groups:
-            try: 
-                wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
-            except Exception, e:
-                pass
+            #try: 
+            wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
+            #except Exception, e:
+            #    pass
 
         wallpapers.sort( cmp=lambda x, y: cmp(x[3], y[3]), reverse=True )
 
