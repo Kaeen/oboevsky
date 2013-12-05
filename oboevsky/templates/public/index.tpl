@@ -22,6 +22,15 @@
                             {% endif %}
                             <p class="title-container">
                                 <a href="{{item.get_absolute_url}}?q={{new_items_q}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
+                                {% if not no_producer %}
+                                    {{item.producer_as_text|safe}}<br />
+                                {% endif %}
+                                {% if not no_categories %}
+                                    {{item.categories_as_text}}<br />
+                                {% endif %}
+                                {% if not no_materials %}
+                                    {{item.materials_as_text}}<br />
+                                {% endif %}
                                 {{item.price|floatformat:"-3"}} руб.
                             </p>
                             <p><a class="buy-link" href="/put-to-cart/{{item.pk}}">Купить</a></p>
@@ -51,6 +60,15 @@
                             {% endif %}
                             <p class="title-container">
                                 <a href="{{item.get_absolute_url}}?q={{top_sells_q}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
+                                {% if not no_producer %}
+                                    {{item.producer_as_text|safe}}<br />
+                                {% endif %}
+                                {% if not no_categories %}
+                                    {{item.categories_as_text}}<br />
+                                {% endif %}
+                                {% if not no_materials %}
+                                    {{item.materials_as_text}}<br />
+                                {% endif %}
                                 {{item.price|floatformat:"-3"}} руб.
                             </p>
                             <p><a class="buy-link" href="/put-to-cart/{{item.pk}}">Купить</a></p>
