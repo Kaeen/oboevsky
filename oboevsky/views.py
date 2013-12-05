@@ -112,7 +112,7 @@ def common_context_proc(Request=None):
     user = Request.user
     cart_items = Request.session.get('cart', {}).values()
     cart_items_total = Request.session.get('cart_total', 0)
-    ordering = Request.session.get('ordering', '-priority,price')
+    ordering = ','.join(*Request.session.get('ordering')) if Request.session.get('ordering') else '-priority,price'
 
     return {
         'menu_categories': menu_categories,
