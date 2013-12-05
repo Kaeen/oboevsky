@@ -197,7 +197,7 @@ class Wallpaper(models.Model):
 		return t
 
 	def producer_as_text(self):
-		return u'<img alt="{0}" align="absmiddle" src="{1}" />{2}'.format(self.producer.country.short_desc, self.producer.country.pic.url_13x20, self.producer.title)
+		return u'<img alt="{0}" align="absmiddle" src="{1}" />&nbsp;{2}'.format(self.producer.country.short_desc, self.producer.country.pic.url_13x20, self.producer.title)
 
 	class Meta:
 		verbose_name = _(u'обои')
