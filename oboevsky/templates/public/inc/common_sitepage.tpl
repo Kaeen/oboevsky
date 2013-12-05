@@ -96,6 +96,7 @@
             {% block sorting %}
             <div class="pageColumn">
                 <h2>Сортировка товаров</h2>
+                <p>Выбранное правило будет действовать и на остальных страницах каталога обоев</p>
                 <ul class="no-list">
                     <li>
                         {% if ordering == '-priority,price' %}

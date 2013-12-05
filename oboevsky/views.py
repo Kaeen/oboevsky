@@ -58,10 +58,11 @@ def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_
     else:
         wallpapers = []
         for x in groups:
-            try: 
-                wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
-            except Exception, e:
-                pass
+            wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
+            #try: 
+            #    wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
+            #except Exception, e:
+            #    pass
 
         wallpapers.sort( cmp=lambda x, y: cmp(x[3], y[3]), reverse=True )
 
