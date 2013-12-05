@@ -28,6 +28,17 @@
                         {% endif %}
                     {% endblock %}
 
+                    {% block menu_prices %}
+                        <li>
+                            <h3>Обои по цене</h3>
+                            <ul>
+                                <li><a href="/search?do&max_price=1500">До 1000 рублей</a></li>
+                                <li><a href="/search?do&min_price=1500&max_price=3000">От 1000 до 3000 рублей</a></li>
+                                <li><a href="/search?do&min_price=3000">От 3000 рублей</a></li>
+                            </ul>
+                        </li>
+                    {% endblock %}
+
                     {% block menu_countries %}
                         {% if menu_countries|length > 0 %}
                         <li>
