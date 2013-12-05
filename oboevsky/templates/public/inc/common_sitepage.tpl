@@ -85,7 +85,6 @@
 
         {% block right_sidebar %}
         <div class="pageSidebar right">
-
             {% if not user.is_anonymous %}
             <div class="pageColumn">
                 <h2>Здравствуйте, {{user.customer.first_name}}{% if user.customer.second_name %} {{user.customer.second_name}}{% endif %}!</h2>
@@ -93,6 +92,34 @@
                 <p><a href="/logout/">Выйти</a></p>
             </div>
             {% endif %}
+
+            <div class="pageColumn">
+                <h2>Сортировка</h2>
+                <p>Вы можете выбрать способ сортировки товаров на сайте</p>
+                <ul class="no-list">
+                    <li>
+                        {% if ordering == '-priority,price' %}
+                            По умолчанию
+                        {% else %}
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-priority,price">По умолчанию</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if ordering == 'price' %}
+                            По цене, от маленькой к большой
+                        {% else %}
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=price">По цене, от маленькой к большой</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if ordering == '-price' %}
+                            По цене, от большой к маленькой
+                        {% else %}
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=price">По цене, от большой к маленькой</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
 
             {% comment %}
             <div class="pageColumn">
