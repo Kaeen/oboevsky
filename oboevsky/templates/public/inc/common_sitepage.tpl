@@ -102,7 +102,7 @@
                         {% else %}
                             <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-priority,price">По умолчанию</a>
                         {% endif %}
-                    </li>
+                    </li><br />
                     <li><h3>По цене:</h3></li>
                     <li>
                         {% if ordering == 'price' %}
@@ -117,7 +117,7 @@
                         {% else %}
                             <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-price">Сначала дорогие (&darr;)</a>
                         {% endif %}
-                    </li>
+                    </li><br />
                     <li><h3>По новизне:</h3></li>
                     <li>
                         {% if ordering == '-created' %}
