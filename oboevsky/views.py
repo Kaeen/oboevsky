@@ -331,6 +331,7 @@ def search(Request):
         vars = {
             'items': [],
             'no_criteria': True,
+            'GET': Request.GET.items(),
         }
 
 

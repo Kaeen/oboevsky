@@ -147,13 +147,11 @@
         {% endif %}
     {% endif %}
 
-    {% comment %}
     <code>
     Producers: {{selected_producers}}<br />
     Categories: {{selected_categories}}<br />
-    POST: {{POST}}<br />
+    GET: {{GET}}<br />
     items: {{items}}
     </code>
-    {% endcomment %}
 
 {% endblock %}
