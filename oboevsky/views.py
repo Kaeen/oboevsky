@@ -239,6 +239,8 @@ def category(Request, Url):
 
     wallpapers = category.wallpapers.all().filter( visible=True)
     build_items_var(wallpapers, vars, lambda x: x.producer)
+    if vars['items_display_mode'] == 'grouped':
+        vars['no_producer'] = True
 
     return render_to_response('public/category.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
@@ -329,6 +331,8 @@ def material(Request, Id):
     wallpapers = material.wallpapers.all().filter( visible=True)
     #build_items_var(wallpapers, vars, lambda x: x.get_first_category())
     build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
+    if vars['items_display_mode'] == 'grouped':
+        vars['no_categories'] = True
 
     return render_to_response('public/material.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
