@@ -94,7 +94,7 @@
 
             <div class="pageColumn">
                 <h2>Сортировка</h2>
-                <p>Вы можете выбрать способ сортировки товаров на сайте</p>
+                <p>Вы можете выбрать способ сортировки товаров на сайте: </p>
                 <ul class="no-list">
                     <li>
                         {% if ordering == '-priority,price' %}
@@ -105,16 +105,30 @@
                     </li>
                     <li>
                         {% if ordering == 'price' %}
-                            По цене &uarr;
+                            По цене, &uarr;
                         {% else %}
-                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=price">По цене &uarr;</a>
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=price">По цене, &uarr;</a>
                         {% endif %}
                     </li>
                     <li>
                         {% if ordering == '-price' %}
-                            По цене &darr;
+                            По цене, &darr;
                         {% else %}
-                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-price">По цене &darr;</a>
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-price">По цене, &darr;</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if ordering == '-created' %}
+                            По новизне, сначала новые
+                        {% else %}
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-created">По новизне, сначала новые</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if ordering == 'created' %}
+                            По новизне, сначала старые
+                        {% else %}
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=created">По новизне, сначала старые</a>
                         {% endif %}
                     </li>
                 </ul>
