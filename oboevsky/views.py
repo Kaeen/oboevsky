@@ -152,8 +152,8 @@ def error(Request):
 
 
 def home(Request):
-    top_sells = Wallpaper.objects.filter(top_sells=True, visible=True)
-    new_items = Wallpaper.objects.filter(new=True, visible=True)
+    top_sells = Wallpaper.objects.filter(top_sells=True, visible=True).order_by('-priority')
+    new_items = Wallpaper.objects.filter(new=True, visible=True).order_by('-priority')
     top_sells_q = new_items_q = ''
     for t in top_sells: top_sells_q += str(t.id) if top_sells_q == '' else ','+str(t.id)
     for t in new_items: new_items_q += str(t.id) if new_items_q == '' else ','+str(t.id)
@@ -206,7 +206,7 @@ def country(Request, Url):
         'producers': Producer.objects.all().filter(country=country, visible=True),
     }
 
-    wallpapers = Wallpaper.objects.filter(producer__country=country, visible=True)
+    wallpapers = Wallpaper.objects.filter(producer__country=country, visible=True).order_by('-priority')
     build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
     if vars['items_display_mode'] == 'grouped':
         vars['no_categories'] = True
@@ -222,7 +222,7 @@ def producer(Request, Url):
         'no_producer': True,
     }
 
-    wallpapers = Wallpaper.objects.filter(producer=producer, visible=True)
+    wallpapers = Wallpaper.objects.filter(producer=producer, visible=True).order_by('-priority')
     build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
     if vars['items_display_mode'] == 'grouped':
         vars['no_categories'] = True
@@ -237,7 +237,7 @@ def category(Request, Url):
         'no_categories': True,
     }
 
-    wallpapers = category.wallpapers.all().filter( visible=True)
+    wallpapers = category.wallpapers.all().filter( visible=True).order_by('-priority')
     build_items_var(wallpapers, vars, lambda x: x.producer)
     if vars['items_display_mode'] == 'grouped':
         vars['no_producer'] = True
@@ -265,7 +265,7 @@ def search(Request):
             if selected_materials: conditions['materials__in'] = selected_materials
             if min_price: conditions['price__gte'] = min_price
             if max_price: conditions['price__lte'] = max_price
-            items = Wallpaper.objects.filter(**conditions)
+            items = Wallpaper.objects.filter(**conditions).order_by('-priority')
             no_criteria = False
 
         else:
@@ -329,7 +329,7 @@ def material(Request, Id):
         'no_materials': True,
     }
 
-    wallpapers = material.wallpapers.all().filter( visible=True)
+    wallpapers = material.wallpapers.all().filter( visible=True).order_by('-priority')
     #build_items_var(wallpapers, vars, lambda x: x.get_first_category())
     build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
     if vars['items_display_mode'] == 'grouped':
