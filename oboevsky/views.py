@@ -251,18 +251,9 @@ def search(Request):
         selected_categories = map(lambda x: int(x), Request.POST.getlist('categories', None))
         selected_materials = map(lambda x: int(x), Request.POST.getlist('materials', None))
 
-        if not Request.GET.get('min_price'):
-            min_price = Request.POST.get('min_price', 0)
-        else:
-            min_price = Request.GET.get('min_price',0)
-
+        min_price = Request.GET.get('min_price', 0) or Request.POST.get('min_price', 0)
         min_price = int(min_price) if min_price else None
-
-        if not Request.GET.get('max_price'):
-            max_price = Request.POST.get('max_price', 0)
-        else:
-            max_price = Request.GET.get('max_price',0)
-
+        max_price = Request.GET.get('max_price', 0) or Request.POST.get('max_price', 0)
         max_price = int(max_price) if max_price else None
 
         POST = Request.POST.items()
