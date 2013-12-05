@@ -135,7 +135,7 @@ def get_items_collection(Request, query):
     from django.core.serializers.json import DjangoJSONEncoder
 
     query = query.split(',')
-    db = Wallpaper.objects.filter(pk__in=query, visible=True)
+    db = Wallpaper.objects.filter(pk__in=query, visible=True).order_by(*ordering+additional_wallpapers_ordering)
     objects = []
     for t in db:
         objects.append({
