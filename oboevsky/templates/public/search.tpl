@@ -5,7 +5,7 @@
 {% block left_sidebar %}
 <div class="pageSidebar left">
     <form action="?do" method="GET">
-    {% csrf_token %}
+    {#% csrf_token %#}
 
     <script>
     function changeChecked(id) {
