@@ -13,10 +13,6 @@
                 {{breadcrump.title}}
             {% endfor %}
         </div>
-        <div id="producerProfile">
-            <h1>{{category.title}}</h1>
-            {{category.long_desc|safe}}
-        </div>
         {% if items|length > 0 %}
         <h1>{{category.title}}</h1>
         {% endif %}
@@ -69,6 +65,10 @@
                 </div>
 
             </div>
+        </div>
+        <div id="producerProfile">
+            <h1>{{category.title}}</h1>
+            {{category.long_desc|safe}}
         </div>
 
     {% endif %}

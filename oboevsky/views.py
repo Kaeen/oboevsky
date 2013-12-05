@@ -13,11 +13,11 @@ from django.core.exceptions import ObjectDoesNotExist
 ####################################
 
 default_wallpapers_ordering = ['-priority', 'price']
-additional_wallpapers_ordering = ['-producer__priority',]#['-categories__priority', '-materials__priority', '-producer__country__priority']
+additional_wallpapers_ordering = ['-producer__priority',]
 default_categories_ordering = ['-priority',]
 default_producers_ordering = ['-priority',]
 default_countries_ordering = ['-priority',]
-default_materials_ordering = []#['-priority',]
+default_materials_ordering = []
 
 ####################################
 #       Common functionality       # 
@@ -58,11 +58,8 @@ def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_
     else:
         wallpapers = []
         for x in groups:
-            wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
-            #try: 
-            #    wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
-            #except Exception, e:
-            #    pass
+            if x.visible:
+                wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
 
         wallpapers.sort( cmp=lambda x, y: cmp(x[3], y[3]), reverse=True )
 
@@ -90,10 +87,8 @@ def build_items_var_m(items_list, vars, group_criteria_func=lambda x: x.categori
     else:
         wallpapers = []
         for x in groups:
-            #try: 
-            wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
-            #except Exception, e:
-            #    pass
+            if x.visible:
+                wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
 
         wallpapers.sort( cmp=lambda x, y: cmp(x[3], y[3]), reverse=True )
 
@@ -220,7 +215,6 @@ def wallpaper(Request, Url):
 def country(Request, Url):
     if Request.GET.get('order'): Request.session['ordering'] = Request.GET.get('order').split(',')
     ordering = Request.session.get('ordering', default_wallpapers_ordering)
-
 
     country = get_object_or_404(Country, url=Url, visible=True)
 
