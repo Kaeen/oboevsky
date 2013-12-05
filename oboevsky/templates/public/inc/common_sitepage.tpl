@@ -105,16 +105,16 @@
                     </li>
                     <li>
                         {% if ordering == 'price' %}
-                            По цене, от маленькой к большой
+                            По цене &uarr;
                         {% else %}
-                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=price">По цене, от маленькой к большой</a>
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=price">По цене &uarr;</a>
                         {% endif %}
                     </li>
                     <li>
                         {% if ordering == '-price' %}
-                            По цене, от большой к маленькой
+                            По цене &darr;
                         {% else %}
-                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-price">По цене, от большой к маленькой</a>
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-price">По цене &darr;</a>
                         {% endif %}
                     </li>
                 </ul>
