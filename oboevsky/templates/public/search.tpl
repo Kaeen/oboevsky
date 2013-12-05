@@ -4,7 +4,7 @@
 
 {% block left_sidebar %}
 <div class="pageSidebar left">
-    <form action="?do" method="POST">
+    <form action="?do" method="GET">
     {% csrf_token %}
 
     <script>
