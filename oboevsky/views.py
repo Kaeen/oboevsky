@@ -12,7 +12,12 @@ from django.core.exceptions import ObjectDoesNotExist
 #             Constants            # 
 ####################################
 
-default_ordering = ['-priority', 'price']
+default_wallpapers_ordering = ['-priority', 'price']
+additional_wallpapers_ordering = ['-categories__priority', '-producer__priority', '-country__priority', '-materials__priority']
+default_categories_ordering = ['-priority',]
+default_producers_ordering = ['-priority',]
+default_countries_ordering = ['-priority',]
+default_materials_ordering = ['-priority',]
 
 ####################################
 #       Common functionality       # 
@@ -95,10 +100,10 @@ def build_items_var_m(items_list, vars, group_criteria_func=lambda x: x.categori
 
 def common_context_proc(Request=None):
     # Building menus:
-    menu_categories = Category.objects.filter(visible=True)
-    menu_countries = Country.objects.filter(visible=True)
-    menu_materials = Material.objects.filter(visible=True)
-    menu_producers = Producer.objects.filter(visible=True)
+    menu_categories = Category.objects.filter(visible=True).order_by(*default_categories_ordering)
+    menu_countries = Country.objects.filter(visible=True).order_by(*default_countries_ordering)
+    menu_materials = Material.objects.filter(visible=True).order_by(*default_materials_ordering)
+    menu_producers = Producer.objects.filter(visible=True).order_by(*default_producers_ordering)
     flatpages = FlatPage.objects.all()
     user = Request.user
     cart_items = Request.session.get('cart', {}).values()
@@ -159,8 +164,8 @@ def error(Request):
 
 
 def home(Request):
-    top_sells = Wallpaper.objects.filter(top_sells=True, visible=True).order_by('-priority')
-    new_items = Wallpaper.objects.filter(new=True, visible=True).order_by('-priority')
+    top_sells = Wallpaper.objects.filter(top_sells=True, visible=True).order_by('-priority', *additional_wallpapers_ordering)
+    new_items = Wallpaper.objects.filter(new=True, visible=True).order_by('-priority', *additional_wallpapers_ordering)
     top_sells_q = new_items_q = ''
     for t in top_sells: top_sells_q += str(t.id) if top_sells_q == '' else ','+str(t.id)
     for t in new_items: new_items_q += str(t.id) if new_items_q == '' else ','+str(t.id)
@@ -207,17 +212,17 @@ def wallpaper(Request, Url):
 
 def country(Request, Url):
     if Request.GET.get('order'): Request.session['ordering'] = Request.GET.get('order').split(',')
-    ordering = Request.session.get('ordering', default_ordering)
+    ordering = Request.session.get('ordering', default_wallpapers_ordering)
 
 
     country = get_object_or_404(Country, url=Url, visible=True)
 
     vars = {
         'country': country,
-        'producers': Producer.objects.all().filter(country=country, visible=True),
+        'producers': Producer.objects.all().filter(country=country, visible=True).order_by(*default_producers_ordering),
     }
 
-    wallpapers = Wallpaper.objects.filter(producer__country=country, visible=True).order_by(*ordering)
+    wallpapers = Wallpaper.objects.filter(producer__country=country, visible=True).order_by(*ordering+additional_wallpapers_ordering)
     build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
     if vars['items_display_mode'] == 'grouped':
         vars['no_categories'] = True
@@ -227,7 +232,7 @@ def country(Request, Url):
 
 def producer(Request, Url):
     if Request.GET.get('order'): Request.session['ordering'] = Request.GET.get('order').split(',')
-    ordering = Request.session.get('ordering', default_ordering)
+    ordering = Request.session.get('ordering', default_wallpapers_ordering)
     producer = get_object_or_404(Producer, url=Url, visible=True)
 
     vars = {
@@ -235,7 +240,7 @@ def producer(Request, Url):
         'no_producer': True,
     }
 
-    wallpapers = Wallpaper.objects.filter(producer=producer, visible=True).order_by(*ordering)
+    wallpapers = Wallpaper.objects.filter(producer=producer, visible=True).order_by(*ordering+additional_wallpapers_ordering)
     build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
     if vars['items_display_mode'] == 'grouped':
         vars['no_categories'] = True
@@ -244,7 +249,7 @@ def producer(Request, Url):
 
 def category(Request, Url):
     if Request.GET.get('order'): Request.session['ordering'] = Request.GET.get('order').split(',')
-    ordering = Request.session.get('ordering', default_ordering)
+    ordering = Request.session.get('ordering', default_wallpapers_ordering)
     category = get_object_or_404(Category, url=Url, visible=True)
 
     vars = {
@@ -252,7 +257,7 @@ def category(Request, Url):
         'no_categories': True,
     }
 
-    wallpapers = category.wallpapers.all().filter( visible=True).order_by(*ordering)
+    wallpapers = category.wallpapers.all().filter( visible=True).order_by(*ordering+additional_wallpapers_ordering)
     build_items_var(wallpapers, vars, lambda x: x.producer)
     if vars['items_display_mode'] == 'grouped':
         vars['no_producer'] = True
@@ -261,7 +266,7 @@ def category(Request, Url):
 
 def search(Request):
     if Request.GET.get('order'): Request.session['ordering'] = Request.GET.get('order').split(',')
-    ordering = Request.session.get('ordering', default_ordering)
+    ordering = Request.session.get('ordering', default_wallpapers_ordering)
     if Request.GET.get('do', None) is not None:
 
         selected_producers = map(lambda x: int(x), Request.POST.getlist('producers', None))
@@ -282,7 +287,7 @@ def search(Request):
             if selected_materials: conditions['materials__in'] = selected_materials
             if min_price: conditions['price__gte'] = min_price
             if max_price: conditions['price__lte'] = max_price
-            items = Wallpaper.objects.filter(**conditions).order_by(*ordering)
+            items = Wallpaper.objects.filter(**conditions).order_by(*ordering+additional_wallpapers_ordering)
             no_criteria = False
 
         else:
@@ -340,7 +345,7 @@ def search(Request):
 
 def material(Request, Id):
     if Request.GET.get('order'): Request.session['ordering'] = Request.GET.get('order').split(',')
-    ordering = Request.session.get('ordering', default_ordering)
+    ordering = Request.session.get('ordering', default_wallpapers_ordering)
     material = get_object_or_404(Material, id=Id, visible=True)
 
     vars = {
@@ -348,7 +353,7 @@ def material(Request, Id):
         'no_materials': True,
     }
 
-    wallpapers = material.wallpapers.all().filter( visible=True).order_by(*ordering)
+    wallpapers = material.wallpapers.all().filter( visible=True).order_by(*ordering+additional_wallpapers_ordering)
     #build_items_var(wallpapers, vars, lambda x: x.get_first_category())
     build_items_var_m(wallpapers, vars, lambda x: x.categories.all())
     if vars['items_display_mode'] == 'grouped':
@@ -357,7 +362,7 @@ def material(Request, Id):
     return render_to_response('public/material.tpl', vars, RequestContext(Request, processors=[common_context_proc,]))
 
 def countries(Request):
-    countries = Country.objects.filter( visible=True )
+    countries = Country.objects.filter( visible=True ).order_by(*default_countries_ordering)
     vars = {
         'countries': countries,
     }
