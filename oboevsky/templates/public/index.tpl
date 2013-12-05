@@ -7,21 +7,21 @@
 {% block content %}
     {#<a href="#"><img alt="" src="/static/images/sample_moneyshot.jpg" /></a>#}
 
-    {% if new_items|length > 0 %}
+    {% if top_sells_items|length > 0 %}
         <div class="contentBlock">
             <div>
-                <a{# href="#"#}><h2>Новинки</h2></a>
+                <a{# href="#"#}><h2>Топ продаж</h2></a>
                 <div class="items clear">
-                    {% for item in new_items %}
+                    {% for item in top_sells_items %}
 
-                        <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}'); cursor:pointer;" onClick="javascript:document.location.href='{{item.get_absolute_url}}?q={{new_items_q}}';">
+                        <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}'); cursor:pointer;" onClick="javascript:document.location.href='{{item.get_absolute_url}}?q={{top_sells_q}}';">
                             {% if item.get_first_image %}
-                                <a href="{{item.get_absolute_url}}?q={{new_items_q}}">
+                                <a href="{{item.get_absolute_url}}?q={{top_sells_q}}">
                                     <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
                                 </a>
                             {% endif %}
                             <p class="title-container">
-                                <a href="{{item.get_absolute_url}}?q={{new_items_q}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
+                                <a href="{{item.get_absolute_url}}?q={{top_sells_q}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
                                 {% if not no_producer %}
                                     {{item.producer_as_text|safe}}<br />
                                 {% endif %}
@@ -45,21 +45,21 @@
         </div>
     {% endif %}
 
-    {% if top_sells_items|length > 0 %}
+    {% if new_items|length > 0 %}
         <div class="contentBlock">
             <div>
-                <a{# href="#"#}><h2>Топ продаж</h2></a>
+                <a{# href="#"#}><h2>Новинки</h2></a>
                 <div class="items clear">
-                    {% for item in top_sells_items %}
+                    {% for item in new_items %}
 
-                        <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}'); cursor:pointer;" onClick="javascript:document.location.href='{{item.get_absolute_url}}?q={{top_sells_q}}';">
+                        <div class="item new-look" style="background:url('{{item.get_first_image.image.url_170x111}}'); cursor:pointer;" onClick="javascript:document.location.href='{{item.get_absolute_url}}?q={{new_items_q}}';">
                             {% if item.get_first_image %}
-                                <a href="{{item.get_absolute_url}}?q={{top_sells_q}}">
+                                <a href="{{item.get_absolute_url}}?q={{new_items_q}}">
                                     <img src="{{item.get_first_image.image.url_170x111}}" alt="{{item.short_desc}}" />
                                 </a>
                             {% endif %}
                             <p class="title-container">
-                                <a href="{{item.get_absolute_url}}?q={{top_sells_q}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
+                                <a href="{{item.get_absolute_url}}?q={{new_items_q}}"><b style="text-decoration:none;">{{item.title}}</b></a><br />
                                 {% if not no_producer %}
                                     {{item.producer_as_text|safe}}<br />
                                 {% endif %}
