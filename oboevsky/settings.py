@@ -117,7 +117,7 @@ if os.environ.get("OBOEVSKY_SERVER") == 'stage':
         # Don't forget to use absolute paths, not relative paths.
     )
 
-    TEMPLATE_CONTEXT_PROCESSORS = ('oboevsky.views.common_context_proc', 'django.contrib.auth.context_processors.auth')
+    TEMPLATE_CONTEXT_PROCESSORS = ('oboevsky.views.common_context_proc', 'django.core.context_processors.request', 'django.contrib.auth.context_processors.auth')
 
     INSTALLED_APPS = (
         'django.contrib.auth',
@@ -280,7 +280,7 @@ else:
         # Don't forget to use absolute paths, not relative paths.
     )
 
-    TEMPLATE_CONTEXT_PROCESSORS = ('oboevsky.views.common_context_proc', 'django.contrib.auth.context_processors.auth')
+    TEMPLATE_CONTEXT_PROCESSORS = ('oboevsky.views.common_context_proc', 'django.core.context_processors.request', 'django.contrib.auth.context_processors.auth')
 
     INSTALLED_APPS = (
         'django.contrib.auth',
