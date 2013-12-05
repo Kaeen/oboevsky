@@ -47,6 +47,8 @@ tinyMCE.init({
     advimage_update_dimensions_onchange: true,
     file_browser_callback: "CustomFileBrowser",
     relative_urls: false,
+    apply_source_formatting: true,
+    verify_html: false,
     valid_elements : "" +
     "-p," + 
     "a[href|target=_blank|class]," +
