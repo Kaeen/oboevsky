@@ -95,7 +95,7 @@
             <div class="pageColumn">
                 <h2>Сортировка</h2>
                 <p>Вы можете выбрать способ сортировки товаров на сайте: </p>
-                <ul>
+                <ul class="no-list">
                     <li>
                         {% if ordering == '-priority,price' %}
                             По умолчанию
