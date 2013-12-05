@@ -270,12 +270,16 @@ def search(Request):
     ordering = Request.session.get('ordering', default_wallpapers_ordering)
     if Request.GET.get('do', None) is not None:
 
-        selected_producers = map(lambda x: int(x), Request.GET.getlist('producers', None))
-        selected_categories = map(lambda x: int(x), Request.GET.getlist('categories', None))
-        selected_materials = map(lambda x: int(x), Request.GET.getlist('materials', None))
+        selected_producers = map(lambda x: int(x), Request.POST.getlist('producers', None))
+        selected_categories = map(lambda x: int(x), Request.POST.getlist('categories', None))
+        selected_materials = map(lambda x: int(x), Request.POST.getlist('materials', None))
 
-        min_price = int(Request.GET.get('min_price', 0)) if Request.GET.get('min_price', 0) else None
-        max_price = int(Request.GET.get('max_price', 0)) if Request.GET.get('max_price', 0) else None
+        min_price = Request.GET.get('min_price', 0) or Request.POST.get('min_price', 0)
+        min_price = int(min_price) if min_price else None
+        max_price = Request.GET.get('max_price', 0) or Request.POST.get('max_price', 0)
+        max_price = int(max_price) if max_price else None
+
+        POST = Request.POST.items()
 
         if selected_producers or selected_categories or selected_materials or min_price or max_price:
             conditions = dict(visible=True)
@@ -299,6 +303,7 @@ def search(Request):
             'selected_categories': selected_categories,
             'min_price': min_price if min_price else '',
             'max_price': max_price if max_price else '',
+            'POST': POST,
             'no_criteria': no_criteria,
         }
 
@@ -328,10 +333,12 @@ def search(Request):
             vars['q'] = q
 
     else:
+
+        POST = Request.POST.items()
         vars = {
             'items': [],
             'no_criteria': True,
-            'GET': Request.GET.items(),
+            'POST': POST,
         }
 
 

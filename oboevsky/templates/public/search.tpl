@@ -4,8 +4,8 @@
 
 {% block left_sidebar %}
 <div class="pageSidebar left">
-    <form action="?do" method="GET">
-    {#% csrf_token %#}
+    <form action="?do" method="POST">
+    {% csrf_token %}
 
     <script>
     function changeChecked(id) {
@@ -147,11 +147,13 @@
         {% endif %}
     {% endif %}
 
+    {% comment %}
     <code>
     Producers: {{selected_producers}}<br />
     Categories: {{selected_categories}}<br />
-    GET: {{GET}}<br />
+    POST: {{POST}}<br />
     items: {{items}}
     </code>
+    {% endcomment %}
 
 {% endblock %}
