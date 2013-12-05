@@ -98,7 +98,7 @@
                 <ul class="no-list">
                     <li>
                         {% if ordering == '-priority,price' %}
-                            &#2713; По умолчанию
+                            &#10003; По умолчанию
                         {% else %}
                             <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-priority,price">По умолчанию</a>
                         {% endif %}
@@ -106,14 +106,14 @@
                     <li><h3>По цене:</h3></li>
                     <li>
                         {% if ordering == 'price' %}
-                            &#2713; Сначала подешевле (&uarr;)
+                            &#10003; Сначала подешевле (&uarr;)
                         {% else %}
                             <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=price">Сначала подешевле (&uarr;)</a>
                         {% endif %}
                     </li>
                     <li>
                         {% if ordering == '-price' %}
-                            &#2713; Сначала дорогие (&darr;)
+                            &#10003; Сначала дорогие (&darr;)
                         {% else %}
                             <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-price">Сначала дорогие (&darr;)</a>
                         {% endif %}
@@ -121,14 +121,14 @@
                     <li><h3>По новизне:</h3></li>
                     <li>
                         {% if ordering == '-created' %}
-                            &#2713; Сначала новые
+                            &#10003; Сначала новые
                         {% else %}
                             <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-created">Сначала новые</a>
                         {% endif %}
                     </li>
                     <li>
                         {% if ordering == 'created' %}
-                            &#2713; Сначала старые
+                            &#10003; Сначала старые
                         {% else %}
                             <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=created">Сначала старые</a>
                         {% endif %}
