@@ -66,11 +66,12 @@
 
             </div>
         </div>
-        <div id="producerProfile">
-            <h1>{{category.title}}</h1>
-            {{category.long_desc|safe}}
-        </div>
 
     {% endif %}
+
+    <div id="producerProfile">
+        <h1>{{category.title}}</h1>
+        {{category.long_desc|safe}}
+    </div>
 
 {% endblock %}
