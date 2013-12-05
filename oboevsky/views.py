@@ -17,7 +17,7 @@ additional_wallpapers_ordering = ['-producer__priority',]#['-categories__priorit
 default_categories_ordering = ['-priority',]
 default_producers_ordering = ['-priority',]
 default_countries_ordering = ['-priority',]
-default_materials_ordering = ['-priority',]
+default_materials_ordering = []#['-priority',]
 
 ####################################
 #       Common functionality       # 
