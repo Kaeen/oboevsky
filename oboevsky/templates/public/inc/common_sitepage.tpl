@@ -103,32 +103,34 @@
                             <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-priority,price">По умолчанию</a>
                         {% endif %}
                     </li>
+                    <li><h3>По цене:</h3></li>
                     <li>
                         {% if ordering == 'price' %}
-                            По цене, &uarr;
+                            Сначала подешевле (&uarr;)
                         {% else %}
-                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=price">По цене, &uarr;</a>
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=price">Сначала подешевле (&uarr;)</a>
                         {% endif %}
                     </li>
                     <li>
                         {% if ordering == '-price' %}
-                            По цене, &darr;
+                            Сначала дорогие (&darr;)
                         {% else %}
-                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-price">По цене, &darr;</a>
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-price">Сначала дорогие (&darr;)</a>
                         {% endif %}
                     </li>
+                    <li><h3>По новизне:</h3></li>
                     <li>
                         {% if ordering == '-created' %}
-                            По новизне, сначала новые
+                            Сначала новые
                         {% else %}
-                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-created">По новизне, сначала новые</a>
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=-created">Сначала новые</a>
                         {% endif %}
                     </li>
                     <li>
                         {% if ordering == 'created' %}
-                            По новизне, сначала старые
+                            Сначала старые
                         {% else %}
-                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=created">По новизне, сначала старые</a>
+                            <a href="{{request.get_full_path}}{% if '?' in request.get_full_path %}&{% else %}?{% endif %}order=created">Сначала старые</a>
                         {% endif %}
                     </li>
                 </ul>
