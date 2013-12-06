@@ -19,6 +19,7 @@
           <script src="/static/js/jquery.mousewheel.min.js"></script>
           <script src="/static/js/jquery.mCustomScrollbar.min.js"></script>
     {% endblock %}
+    {% if not user.is_staff %}
     <!--
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -34,8 +35,10 @@
       })();
     </script>
     -->
+    {% endif %}
 </head>
 <body id="{% block body_id %}{% endblock %}">
+    {% if not user.is_staff %}
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
     (function (d, w, c) {
@@ -63,6 +66,7 @@
     </script>
     <noscript><div><img src="//mc.yandex.ru/watch/21595306" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+    {% endif %}
 {% block body %}{% endblock %}
 </body>
 </html>
