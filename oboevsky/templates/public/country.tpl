@@ -42,21 +42,19 @@
         <div class="contentBlock">
             <div>
                 <h2>Обои</h2>
-                {# PAGINATION #}
-                {#<p><a href="#">1</a>, <a href="#">2</a>, <a href="#">3</a></p>#}
 
                 <div class="items clear">
                     {% for item in items %}
 
                             {% if forloop.counter == 9 %}
                                 <script>
-                                    function trigger_{{item.id}}() {
-                                        $('#trigger-{{item.id}}').hide();
-                                        $('#items-group-{{item.id}}').show();
+                                    function trigger() {
+                                        $('#trigger').hide();
+                                        $('#items-group').show();
                                     }
                                 </script>
-                                <a id="trigger-{{item.id}}" href="javascript:trigger_{{item.id}}();" style="width:169px; height:169px; line-height: 160px; text-align:center; display:block; float: left;">Показать&nbsp;остальные</a>
-                                <div style="display:none" id="items-group-{{item.id}}">
+                                <a id="trigger" href="javascript:trigger();" style="width:169px; height:169px; line-height: 160px; text-align:center; display:block; float: left;">Показать&nbsp;остальные</a>
+                                <div style="display:none" id="items-group}">
                             {% endif %}
 
                             {% include "public/inc/wallpapers_list_item.tpl" %}
@@ -73,9 +71,6 @@
 
                     {% endfor %}
                 </div>
-
-                {# PAGINATION #}
-                {#<p><a href="#">1</a>, <a href="#">2</a>, <a href="#">3</a></p>#}
             </div>
         </div>
 
