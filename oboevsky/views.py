@@ -59,7 +59,7 @@ def build_items_var(items_list, vars, group_criteria_func=lambda x: x.get_first_
         wallpapers = []
         for x in groups:
             if x.visible:
-                wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
+                wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if 'priority' in dir(x) else 0) )
 
         wallpapers.sort( cmp=lambda x, y: cmp(x[3], y[3]), reverse=True )
 
@@ -88,7 +88,7 @@ def build_items_var_m(items_list, vars, group_criteria_func=lambda x: x.categori
         wallpapers = []
         for x in groups:
             if x.visible:
-                wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if x.priority else 0) )
+                wallpapers.append( (x.title, x.get_absolute_url(), groups[x], x.priority if 'priority' in dir(x) else 0) )
 
         wallpapers.sort( cmp=lambda x, y: cmp(x[3], y[3]), reverse=True )
 
